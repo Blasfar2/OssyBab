@@ -185,7 +185,7 @@
                                         <li><a class="dropdown-item" href="#">Departement</a></li>
                                         <li><a class="dropdown-item" href="#">Supermaker</a></li>
                                         <li><a class="dropdown-item" href="#">Health & Beauty</a></li>
-                                        <li><a class="dropdown-item" href="#">Home & Office</a></li>
+                                        <li><a class="dropdown-item" href="#">Home & Office hello</a></li>
                                         <li><a class="dropdown-item" href="#">Appliance</a></li>
                                         <li><a class="dropdown-item" href="#">Phone & Tablets</a></li>
                                         <li><a class="dropdown-item" href="#">Computing</a></li>
