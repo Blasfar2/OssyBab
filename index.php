@@ -53,52 +53,52 @@
 
 
         .block-21 .img {
-  display: block;
-  height: 80px;
-  width: 80px; }
+            display: block;
+            height: 80px;
+            width: 80px; }
 
-.block-21 .text {
-  width: calc(100% - 100px); }
-  .block-21 .text .heading {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.4; }
-    .block-21 .text .heading a {
-      color: #000; }
-      .block-21 .text .heading a:hover, .block-21 .text .heading a:active, .block-21 .text .heading a:focus {
-        text-decoration: none; }
-  .block-21 .text .meta > div {
-    display: inline-block;
-    font-size: 12px;
-    margin-right: 5px; }
-    .block-21 .text .meta > div a {
-      color: gray; }
+        .block-21 .text {
+            width: calc(100% - 100px); }
+        .block-21 .text .heading {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.4; }
+        .block-21 .text .heading a {
+            color: #000; }
+        .block-21 .text .heading a:hover, .block-21 .text .heading a:active, .block-21 .text .heading a:focus {
+                text-decoration: none; }
+        .block-21 .text .meta > div {
+            display: inline-block;
+            font-size: 12px;
+            margin-right: 5px; }
+        .block-21 .text .meta > div a {
+            color: gray; }
 
-.block-23 ul {
-  padding: 0; }
-  .block-23 ul li, .block-23 ul li > a {
-    display: table;
-    line-height: 1.5;
-    margin-bottom: 15px; }
-  .block-23 ul li .icon, .block-23 ul li .text {
-    display: table-cell;
-    vertical-align: top; }
-  .block-23 ul li .icon {
-    width: 40px;
-    font-size: 18px;
-    padding-top: 2px; }
+        .block-23 ul {
+            padding: 0; }
+        .block-23 ul li, .block-23 ul li > a {
+            display: table;
+            line-height: 1.5;
+            margin-bottom: 15px; }
+        .block-23 ul li .icon, .block-23 ul li .text {
+            display: table-cell;
+            vertical-align: top; }
+        .block-23 ul li .icon {
+            width: 40px;
+            font-size: 18px;
+            padding-top: 2px; }
 
-.block-24 a.img {
-  width: 100px;
-  height: 100px;
-  display: block; 
-  object-fit: contain;
-}
+        .block-24 a.img {
+            width: 100px;
+            height: 100px;
+            display: block; 
+            object-fit: contain;
+        }
 
-.ftco-section {
-  padding: 12em 0; }
-  .ftco-section h2 {
-    margin-bottom: 0; }
+        .ftco-section {
+            padding: 12em 0; }
+        .ftco-section h2 {
+            margin-bottom: 0; }
 
 
 
@@ -182,6 +182,7 @@
                                         All
                                     </button>
                                     <ul class="dropdown-menu" size="2" aria-labelledby="navbarDropdownMenuLink">
+                                        <li><a class="dropdown-item" href="#">Departement</a></li>
                                         <li><a class="dropdown-item" href="#">Supermaker</a></li>
                                         <li><a class="dropdown-item" href="#">Health & Beauty</a></li>
                                         <li><a class="dropdown-item" href="#">Home & Office</a></li>
@@ -281,7 +282,7 @@
 <div class="container text-center">
     <div class=" row justify-content-around loc row-cols-4">
         <div class="col mt-3 ">
-            <div class="card text-center border-primary " style="width:18rem;">
+            <div class="card text-center border-primary" style="">
             <div class="card-body">
                 <h5 class="card-title text-primary">Supermaker</h5>
             </div>
