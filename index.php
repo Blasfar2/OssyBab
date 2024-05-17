@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
 
-	<link rel="stylesheet" href="./assetes/css/styles.css">
+	<link rel="stylesheet" href="./assets/css/styles.css">
 
 </head>
 <body>
@@ -18,7 +18,7 @@
                                                                     <!-- NavBar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-        <a class="navbar-brand madimi " href="#">OssyBab</a>
+        <a class="navbar-brand madimi " href="./index.php">OssyBab</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -35,7 +35,7 @@
                                         All
                                     </button>
                                     <ul class="dropdown-menu" size="2" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#">Departement</a></li>
+                                        <li><a class="dropdown-item" href="./produit.php">Departement</a></li>
                                         <li><a class="dropdown-item" href="#">Supermaker</a></li>
                                         <li><a class="dropdown-item" href="#">Health & Beauty</a></li>
                                         <li><a class="dropdown-item" href="#">Home & Office</a></li>
