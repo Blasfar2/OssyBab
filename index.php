@@ -10,6 +10,7 @@
 
 
 	<link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/footer.css">
 
 </head>
 <body>
@@ -54,7 +55,7 @@
                 <a class="text-white p-0" href="#" id="button-addon2"><i class="fas fa-search ps-3"></i></a>
             </form>
 
-            <ul class="navbar-nav ms-3">
+            <ul class="navbar-nav ms-3 align-items-center">
                 <li class="nav-item">
                 <button 
                     class="nav-link d-flex align-items-center me-3 position-relative"
@@ -68,8 +69,14 @@
                     2
                 </button>
                 </li>
-                <li class="nav-item" style="width: 65px;">
-                <a class="nav-link d-flex align-items-center" href="#!">Sign In</a>
+                <li class="nav-item">
+                    <div class="container">
+                        <div id="user-info">
+                            <img id="user-image" src="" alt="User Image">
+                            <span id="user-name"></span>
+                        </div>
+                        <button id="sign-in-btn" class="btn btn-primary text-center">Sign In</button>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -221,6 +228,17 @@
     </div>
   </div>
 </div>
+
+<div class="container">
+  <div id="user-info">
+    <img id="user-image" src="" alt="User Image">
+    <span id="user-name"></span>
+  </div>
+  <button id="sign-in-btn" class="btn btn-primary">Sign In</button>
+</div>
+
+
+
 
                                                                     <!-- Footer -->
 <footer class="footer-09 bg-primary">
