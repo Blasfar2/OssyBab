@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&display=swap');
+        .navbar-dark .nav-item .nav-link {
+            color: #fff;
+        }
+
+        .navbar-dark .nav-item .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            border-radius: 0.25rem;
+            color: #fff;
+        }
+
+        .fa-li {
+            position: relative;
+            left: 0;
+        }
+        .madimi {
+            font-family: "Madimi One", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        button:active {
+            box-shadow: none;
+        }
+        .card > img {
+            width: 286px;
+            height: 286px;
+            object-fit: cover;
+           
+        }
+        .carousel > img {
+            width: 397.594px;
+            height: 100px;
+            object-fit: cover;
+        }
+
+
+
+        .block-21 .img {
+            display: block;
+            height: 80px;
+            width: 80px; }
+
+        .block-21 .text {
+            width: calc(100% - 100px); }
+        .block-21 .text .heading {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.4; }
+        .block-21 .text .heading a {
+            color: #000; }
+        .block-21 .text .heading a:hover, .block-21 .text .heading a:active, .block-21 .text .heading a:focus {
+                text-decoration: none; }
+        .block-21 .text .meta > div {
+            display: inline-block;
+            font-size: 12px;
+            margin-right: 5px; }
+        .block-21 .text .meta > div a {
+            color: gray; }
+
+        .block-23 ul {
+            padding: 0; }
+        .block-23 ul li, .block-23 ul li > a {
+            display: table;
+            line-height: 1.5;
+            margin-bottom: 15px; }
+        .block-23 ul li .icon, .block-23 ul li .text {
+            display: table-cell;
+            vertical-align: top; }
+        .block-23 ul li .icon {
+            width: 40px;
+            font-size: 18px;
+            padding-top: 2px; }
+
+        .block-24 a.img {
+            width: 100px;
+            height: 100px;
+            display: block; 
+            object-fit: contain;
+        }
+
+        .ftco-section {
+            padding: 12em 0; }
+        .ftco-section h2 {
+            margin-bottom: 0; }
+
+
+
+        footer {
+            padding: 2.5em 0; }
+        .footer-09 .border-top {
+            border-color: rgba(255, 255, 255, 0.1) !important; }
+        .footer-09 a {
+            color: white; }
+        .footer-09 a:hover {
+            color: rgba(255, 255, 255, 0.9); }
+        .footer-09 p {
+            color: rgba(255, 255, 255, 0.3); }
+        .footer-09 .footer-heading {
+            color: white;
+            font-size: 22px;
+            margin-bottom: 30px; }
+        .footer-09 .footer-heading .icon {
+            width: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+            height: 40px;
+            display: block;
+            color: white;}
+        .footer-09 ul.list-unstyled li a {
+            color: white; }
+        .footer-09 .block-21 .heading a {
+            color: white    ; }
+        .footer-09 .block-21 .meta div a {
+            color: white; }
+        .footer-09 .block-23 ul li {
+            color: rgba(255, 255, 255, 0.5); }
+        .footer-09 .subscribe-form .form-group {
+            position: relative;
+            margin-bottom: 0;
+            border-radius: 0; }
+        .footer-09 .subscribe-form .form-group input {
+            background: rgba(0, 0, 0, 0.05) !important;
+            border: 2px solid white !important;
+            outline: none !important;
+            color: white !important;
+            font-size: 16px;
+            border-radius: 0; }
+        .footer-09 .subscribe-form .form-group input::-webkit-input-placeholder {
+            color: white !important; }
+        .footer-09 .subscribe-form .form-group input:focus {
+            outline: none !important;
+            -webkit-box-shadow: none;
+            box-shadow: none; }
+        .footer-09 .subscribe-form .form-group .submit {
+            display: block;
+            width: 52px;
+            height: 52px;
+            font-size: 16px;
+            background: white !important;
+            border: none;
+            border-radius: 0; }
+        .footer-09 .subscribe-form .form-group .submit:hover, .footer-09 .subscribe-form .form-group .submit:focus {
+            text-decoration: none !important;
+            outline: none !important; }
