@@ -99,7 +99,7 @@
 
         <div class="col text-center p-4">
             <div class="card">
-                    <img src="/img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
+                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
                     <p class="pt-1"><strong>Xiamio g</strong></p>
                     <p><strong>Categorie :</strong>15$</p>
                     <p><strong>Prix :</strong>15$</p>
@@ -108,7 +108,7 @@
         </div>
         <div class="col text-center p-4">
             <div class="card">
-                    <img src="/img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
+                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
                     <p class="pt-1"><strong>Xiamio g</strong></p>
                     <p><strong>Categorie :</strong>15$</p>
                     <p><strong>Prix :</strong>15$</p>
@@ -117,7 +117,7 @@
         </div>
         <div class="col text-center p-4">
             <div class="card">
-                    <img src="/img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
+                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
                     <p class="pt-1"><strong>Xiamio g</strong></p>
                     <p><strong>Categorie :</strong>15$</p>
                     <p><strong>Prix :</strong>15$</p>
@@ -126,7 +126,7 @@
         </div>
         <div class="col text-center p-4">
             <div class="card">
-                    <img src="/img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
+                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
                     <p class="pt-1"><strong>Xiamio g</strong></p>
                     <p><strong>Categorie :</strong>15$</p>
                     <p><strong>Prix :</strong>15$</p>
@@ -135,7 +135,7 @@
         </div>
         <div class="col text-center p-4">
             <div class="card">
-                    <img src="/img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
+                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
                     <p class="pt-1"><strong>Xiamio g</strong></p>
                     <p><strong>Categorie :</strong>15$</p>
                     <p><strong>Prix :</strong>15$</p>
@@ -144,7 +144,7 @@
         </div>
         <div class="col text-center p-4">
             <div class="card">
-                    <img src="/img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
+                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
                     <p class="pt-1"><strong>Xiamio g</strong></p>
                     <p><strong>Categorie :</strong>15$</p>
                     <p><strong>Prix :</strong>15$</p>
@@ -153,7 +153,7 @@
         </div>
         <div class="col text-center p-4">
             <div class="card">
-                    <img src="/img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
+                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
                     <p class="pt-1"><strong>Xiamio g</strong></p>
                     <p><strong>Categorie :</strong>15$</p>
                     <p><strong>Prix :</strong>15$</p>
@@ -162,7 +162,7 @@
         </div>
         <div class="col text-center p-4">
             <div class="card">
-                    <img src="/img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
+                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
                     <p class="pt-1"><strong>Xiamio g</strong></p>
                     <p><strong>Categorie :</strong>15$</p>
                     <p><strong>Prix :</strong>15$</p>
@@ -171,7 +171,7 @@
         </div>
         <div class="col text-center p-4">
             <div class="card">
-                    <img src="/img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
+                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
                     <p class="pt-1"><strong>Xiamio g</strong></p>
                     <p><strong>Categorie :</strong>15$</p>
                     <p><strong>Prix :</strong>15$</p>
@@ -180,7 +180,7 @@
         </div>
         <div class="col text-center p-4">
             <div class="card">
-                    <img src="/img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
+                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
                     <p class="pt-1"><strong>Xiamio g</strong></p>
                     <p><strong>Categorie :</strong>15$</p>
                     <p><strong>Prix :</strong>15$</p>
@@ -189,7 +189,7 @@
         </div>
         <div class="col text-center p-4">
             <div class="card">
-                    <img src="/img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
+                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
                     <p class="pt-1"><strong>Xiamio g</strong></p>
                     <p><strong>Categorie :</strong>15$</p>
                     <p><strong>Prix :</strong>15$</p>
@@ -198,7 +198,7 @@
         </div>
         <div class="col text-center p-4">
             <div class="card">
-                    <img src="/img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
+                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
                     <p class="pt-1"><strong>Xiamio g</strong></p>
                     <p><strong>Categorie :</strong>15$</p>
                     <p><strong>Prix :</strong>15$</p>
@@ -207,7 +207,7 @@
         </div>
         <div class="col text-center p-4">
             <div class="card">
-                    <img src="/img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
+                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
                     <p class="pt-1"><strong>Xiamio g</strong></p>
                     <p><strong>Categorie :</strong>15$</p>
                     <p><strong>Prix :</strong>15$</p>
@@ -250,6 +250,28 @@
                 </div>
             </div>
         </div>
+
+        <hr>
+        <div class="row align-items-center">
+            <div class="col-4 p-1 "> 
+                <img src="./img/Fashion.jpg" class="rounded-2 "style="width: 100px; height: 100px; object-fit: cover;" >
+            </div>
+            
+            <div class="col-auto">
+                <div class="text-center">
+                    <div ><strong> Xiamio n-12</strong></div>
+                    <div ><strong>Prix : </strong>15£</div>
+                    <div ><strong>Categorie : </strong>Phone & Tablets</div>
+                    <div class="row gap-1 "> 
+                            <button class="btn btn-primary col-3"><i class="fa-solid fa-plus"></i></button>
+                            <p class="col-2">1</p>
+                            <button class="btn btn-primary col-3"><i class="fa-solid fa-minus"></i></button>
+                            <div class="btn btn-danger col-3">del</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
 
 
     </div>
