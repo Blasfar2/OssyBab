@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="./assets/css/styles.css">
@@ -17,8 +18,8 @@
 
 
                                                                     <!-- NavBar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary py-3 sticky-top">
+    <div class="container"style="">
         <a class="navbar-brand madimi " href="./index.php">OssyBab</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -71,11 +72,11 @@
                 </li>
                 <li class="nav-item">
                     <div class="container">
-                        <div id="user-info">
-                            <img id="user-image" src="" alt="User Image">
+                        <div id="user-info" class="d-flex align-items-center btn btn-primary p-0">
+                            <img id="user-image" src="">
                             <span id="user-name"></span>
                         </div>
-                        <button id="sign-in-btn" class="btn btn-primary text-center">Sign In</button>
+                        <button id="sign-in-btn" class="btn btn-primary">Sign In</button>
                     </div>
                 </li>
             </ul>
@@ -141,12 +142,12 @@
 
 <div class="container text-center">
     <div class=" row justify-content-around loc row-cols-4">
-        <div class="col mt-3 ">
-            <div class="card text-center border-primary" style="">
-            <div class="card-body">
-                <h5 class="card-title text-primary">Supermaker</h5>
-            </div>
-            <img src="./img/superMaker.jpg" class="card-img-bottom">
+        <div class="col mt-3 card-zoom ">
+            <div class="card text-center border-primary" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">Supermaker</h5>
+                </div>
+                <img src="./img/superMaker.jpg" class="card-img-bottom">
             </div>
         </div>
         <div class="col mt-3">
@@ -228,16 +229,6 @@
     </div>
   </div>
 </div>
-
-<div class="container">
-  <div id="user-info">
-    <img id="user-image" src="" alt="User Image">
-    <span id="user-name"></span>
-  </div>
-  <button id="sign-in-btn" class="btn btn-primary">Sign In</button>
-</div>
-
-
 
 
                                                                     <!-- Footer -->
