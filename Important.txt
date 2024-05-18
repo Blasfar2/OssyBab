@@ -1,0 +1,12 @@
+for testing use
+
+    for admin login : 
+        badr@mail.com
+        A2@sssss
+
+    for user login : 
+        oussa@mail.com
+        A2@sssss
+
+        yacin@mail.com
+        Yacin@123

@@ -76,7 +76,11 @@
                             <img id="user-image" src="">
                             <span id="user-name"></span>
                         </div>
-                        <button id="sign-in-btn" class="btn btn-primary ">Sign In</button>
+                        <form action="login/">
+                        <button id="sign-in-btn"class="btn btn-primary ">Sign In</button>
+                        </form>
+                        
+
                     </div>
                 </li>
             </ul>
