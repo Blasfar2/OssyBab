@@ -70,13 +70,13 @@
                     2
                 </button>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" style="width: 100px;;">
                     <div class="container">
-                        <div id="user-info" class="d-flex align-items-center btn btn-primary p-0">
+                        <div id="user-info" class="d-flex align-items-center btn btn-primary  gap-1 p-0">
                             <img id="user-image" src="">
                             <span id="user-name"></span>
                         </div>
-                        <button id="sign-in-btn" class="btn btn-primary">Sign In</button>
+                        <button id="sign-in-btn" class="btn btn-primary ">Sign In</button>
                     </div>
                 </li>
             </ul>
@@ -139,7 +139,6 @@
 
 
                                                                     <!-- Cards -->
-
 <div class="container text-center">
     <div class=" row justify-content-around loc row-cols-4">
         <div class="col mt-3 card-zoom ">

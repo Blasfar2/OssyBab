@@ -1,6 +1,6 @@
 
 
-const isAdmin = true; // Replace with your logic to determine admin status
+const isAdmin = false; // Replace with your logic to determine admin status
 const AdminName = "Badr"
 
 
@@ -23,7 +23,7 @@ function updateContent() {
     userImage.style.borderRadius="50%"
 
     userName.style.color = "white";
-    userName.style.padding = "10px  ";
+
 
 
   } else {
@@ -31,6 +31,7 @@ function updateContent() {
     userImage.src = ''; // Clear image source
     userName.textContent = ''; // Clear name
     signInBtn.style.display = 'block';
+
   }
 }
 
