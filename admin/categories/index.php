@@ -1,5 +1,6 @@
 <?php
 require_once '../includes/session_test.php';
+include ("../../includes/connection.php");
 $adminId = $_SESSION['id'];
 
 ?>
@@ -18,13 +19,31 @@ $adminId = $_SESSION['id'];
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css" />
 
     <link rel="stylesheet" href="../assets/css/nav_sidebar.css" />
-    <link rel="stylesheet" href="../assets/css/style.css" />
+    <!-- <link rel="stylesheet" href="../assets/css/style.css" /> -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         crossorigin="anonymous" />
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
+    <style>
+        .table-data .order table th {
+            font-size: 17px;
+            text-align: center;
+        }
+
+        .table-data .order table td {
+            font-size: 16px;
+        }
+
+        .preview-image {
+            max-width: 250px;
+            max-height: 250px;
+            width: auto;
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -60,20 +79,13 @@ $adminId = $_SESSION['id'];
                 <div class="order">
                     <div class="container-fluid admin">
                         <div style="display: flex;flex-direction: row;justify-content: flex-end;">
-                        <a href="./create.php" class="btn btn-primary bt-sm" style="display: flex; align-items: center;"><i class='bx bx-plus'></i>Add New</a>
+                            <a href="./create.php" class="btn btn-primary bt-sm"
+                                style="display: flex; align-items: center;"><i class='bx bx-plus'></i>Add New</a>
                         </div>
                         <br>
                         <div class="card">
                             <div class="card-body">
                                 <table class="table table-bordered" id="OrderTable">
-                                    <colgroup>
-                                        <!-- 	<col width="10%">
-                                                <col width="10%">
-                                                <col width="10%">
-                                                <col width="10%">
-                                                <col width="20%">
-                                                <col width="10%"> -->
-                                    </colgroup>
                                     <thead>
                                         <tr>
                                             <th>CategoryID</th>
@@ -85,32 +97,27 @@ $adminId = $_SESSION['id'];
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Images</td>
-                                            <td>Name here</td>
-                                            <td>Descriptions</td>
-                                            <td>
-                                                <button class='btn btn-sm btn-outline-primary edit_student'
-                                                    type='button'>
-                                                    <i class='fa fa-edit'></i> Edit</button>
-                                            </td>
+                                        <?php
 
+                                        $sql = "SELECT * FROM categories";
+                                        $result = mysqli_query($conn, $sql);
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                echo "<tr>";
+                                                echo "<td style='text-align: center;'>" . $row['CategoryID'] . "</td>";
+                                                echo "<td style='text-align: center;'><img src='../../uploads/" . $row['CategoryImage'] . "'  class='preview-image'></td>";
+                                                echo "<td>" . $row['CategoryName'] . "</td>";
+                                                echo "<td>" . $row['Description'] . "</td>";
+                                                echo "<td class='action-column'>";
+                                                echo "<a href='view.php?id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-primary edit_student'><i class='fa fa-edit'></i> Edit</a>";
+                                                echo "<a href='edit.php?id=" . $row['CategoryID'] . "' class='btn btn-warning'><i class='fa fa-pencil-square-o icon'></i></a>";
+                                                echo "<a href='delete.php?id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-danger remove_student'><i class='fa fa-trash'></i>Delete</a>";
+                                                echo "</td>";
+                                                echo "</tr>";
+                                            }
+                                        }
+                                        ?>
 
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Images</td>
-                                            <td>Name here</td>
-                                            <td>Descriptions</td>
-                                            <td>
-                                                <button class='btn btn-sm btn-outline-primary edit_student'
-                                                    type='button'>
-                                                    <i class='fa fa-edit'></i> Edit</button>
-                                            </td>
-
-
-                                        </tr>
 
 
                                     </tbody>

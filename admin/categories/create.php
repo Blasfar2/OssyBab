@@ -18,7 +18,7 @@ $adminId = $_SESSION['id'];
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css" />
 
     <link rel="stylesheet" href="../assets/css/nav_sidebar.css" />
-    <link rel="stylesheet" href="../assets/css/style.css" />
+    <!-- <link rel="stylesheet" href="../assets/css/style.css" /> -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         crossorigin="anonymous" />
@@ -76,10 +76,7 @@ $adminId = $_SESSION['id'];
                 </div>
 
             </div>
-            <div style="
-    display: flex;
-    justify-content: center;
-">
+            <div style=" display: flex; justify-content: center;">
                 <div class="table-data" style="width: 90%;">
                     <div class="order">
                         <div class="container-fluid admin">
@@ -92,29 +89,18 @@ $adminId = $_SESSION['id'];
 
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="both" style="
-    display: flex;
-">
-                                        <div style="
-   
-   width: 25%;
-    margin: 5px;
-    padding: 5px;
-
-">
+                                    <div class="both" style="display: flex;">
+                                        <div style="width: 25%; margin: 5px; padding: 5px;">
                                             <div class="form-element my-4">
                                                 <p class="image-text">Preview Image : </p>
                                                 <img id="imgPreview" src="../assets/img/placeholder-image.jpg" alt="Preview"
                                                     class="preview-image">
                                             </div>
                                         </div>
-                                        <div style="
-    width: 75%;
-    margin: 80px 10px;
-">
+                                        <div style="width: 75%; margin: 80px 10px;">
                                             <form action="process.php" method="post" enctype="multipart/form-data">
                                                 <div class="form-element my-4">
-                                                    <input type="text" name="name" class="form-control"
+                                                    <input type="text" name="categoryName" class="form-control"
                                                         placeholder="Category Name " required>
                                                 </div>
                                                 <div class="form-element my-4">
@@ -122,7 +108,7 @@ $adminId = $_SESSION['id'];
                                                         placeholder="Category Description " required>
                                                 </div>
                                                 <div class="form-element my-4">
-                                                    <input type="file" name="image" class="form-control" required>
+                                                    <input type="file" name="categoryImage" class="form-control" required>
                                                 </div>
 
                                                 <div class="form-element"
