@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 18 mai 2024 à 22:28
+-- Généré le : lun. 20 mai 2024 à 14:48
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -44,7 +44,8 @@ CREATE TABLE `cartitems` (
 CREATE TABLE `categories` (
   `CategoryID` int(11) NOT NULL,
   `CategoryName` varchar(100) NOT NULL,
-  `Description` text DEFAULT NULL
+  `Description` text DEFAULT NULL,
+  `CategoryImage` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -146,8 +147,10 @@ CREATE TABLE `products` (
   `Description` text DEFAULT NULL,
   `Price` decimal(10,2) NOT NULL,
   `Stock` int(11) NOT NULL,
+  `ProductImage` text NOT NULL,
   `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp(),
-  `UpdatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `UpdatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `IsDeleted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -179,6 +182,7 @@ CREATE TABLE `users` (
   `ZipCode` varchar(20) DEFAULT NULL,
   `PhoneNumber` varchar(20) DEFAULT NULL,
   `is_admin` tinyint(1) DEFAULT 0,
+  `UserImage` text NOT NULL,
   `archived` tinyint(1) DEFAULT 0,
   `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp(),
   `UpdatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -188,9 +192,10 @@ CREATE TABLE `users` (
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`UserID`, `Username`, `PasswordHash`, `Email`, `FirstName`, `LastName`, `Address`, `City`, `ZipCode`, `PhoneNumber`, `is_admin`, `archived`, `CreatedAt`, `UpdatedAt`) VALUES
-(1, 'LoveBird', '$2y$10$tXov3cucd5HJEYsWxvGjHe2uiNJBZan5qWbRZbnM36BBnDogZcuUC', 'oussa@mail.com', 'Oussama', 'LEKHAL', NULL, NULL, NULL, NULL, 1, 0, '2024-05-18 12:03:36', '2024-05-18 20:22:37'),
-(2, 'CleverTimes', '$2y$10$tXov3cucd5HJEYsWxvGjHe2uiNJBZan5qWbRZbnM36BBnDogZcuUC', 'dfvb@main.com', NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '2024-05-18 20:06:01', '2024-05-18 20:06:01');
+INSERT INTO `users` (`UserID`, `Username`, `PasswordHash`, `Email`, `FirstName`, `LastName`, `Address`, `City`, `ZipCode`, `PhoneNumber`, `is_admin`, `UserImage`, `archived`, `CreatedAt`, `UpdatedAt`) VALUES
+(1, 'LoveBird', '$2y$10$tXov3cucd5HJEYsWxvGjHe2uiNJBZan5qWbRZbnM36BBnDogZcuUC', 'badr@mail.com', 'Oussama', 'LEKHAL', NULL, NULL, NULL, NULL, 1, '', 0, '2024-05-18 12:03:36', '2024-05-18 20:29:46'),
+(2, 'CleverTimes', '$2y$10$tXov3cucd5HJEYsWxvGjHe2uiNJBZan5qWbRZbnM36BBnDogZcuUC', 'oussa@mail.com', NULL, NULL, NULL, NULL, NULL, NULL, 0, '', 0, '2024-05-18 20:06:01', '2024-05-18 20:32:55'),
+(4, 'CleverTimes_', '$2y$10$m8lCSTkv2KnGHN6degq4qOIQVkztTAmT2Np9STKWwUv578Aqqzere', 'yacin@mail.com', NULL, NULL, NULL, NULL, NULL, NULL, 0, '', 0, '2024-05-18 20:35:15', '2024-05-18 20:35:15');
 
 -- --------------------------------------------------------
 
@@ -360,7 +365,7 @@ ALTER TABLE `producttypes`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `wishlistitems`
