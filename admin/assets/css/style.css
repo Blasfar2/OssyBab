@@ -163,20 +163,6 @@ li {
 	padding: 24px;
 	overflow-x: auto;
 }
-#content main .table-data .head {
-	display: flex;
-	align-items: center;
-	grid-gap: 16px;
-	margin-bottom: 24px;
-}
-#content main .table-data .head h3 {
-	margin-right: auto;
-	font-size: 24px;
-	font-weight: 600;
-}
-#content main .table-data .head .bx {
-	cursor: pointer;
-}
 
 #content main .table-data .order {
 	flex-grow: 1;
@@ -262,9 +248,6 @@ li {
 		grid-template-columns: 1fr;
 	}
 
-	#content main .table-data .head {
-		min-width: 420px;
-	}
 	#content main .table-data .order table {
 		min-width: 420px;
 	}
