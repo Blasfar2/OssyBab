@@ -33,7 +33,7 @@ $adminId = $_SESSION['id'];
         <main>
             <div class="head-title">
                 <div class="left">
-                    <h1>Dashboard</h1>
+                    <h1>Categories</h1>
                     <ul class="dreadleft">
                         <li>
                             <a class="active" href="../dashboard/">Dashboard</a>
