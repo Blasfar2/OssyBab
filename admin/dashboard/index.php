@@ -34,12 +34,12 @@ $adminId = $_SESSION['id'];
 <body>
 
   <!-- SIDEBAR -->
-  <?php include('../includes/sidebar.php'); ?>
+  <?php include ('../includes/sidebar.php'); ?>
   <!-- /SIDEBAR -->
 
   <section class="content" id="content">
     <!-- NAVBAR -->
-    <?php include('../includes/navbar.php'); ?>
+    <?php include ('../includes/navbar.php'); ?>
     <!-- NAVBAR -->
 
     <!-- MAIN -->
@@ -100,11 +100,11 @@ $adminId = $_SESSION['id'];
                 <table class="table table-bordered" id="OrderTable">
                   <colgroup>
                     <!-- 	<col width="10%">
-										<col width="10%">
-										<col width="10%">
-										<col width="10%">
-										<col width="20%">
-										<col width="10%"> -->
+                    <col width="10%">
+                    <col width="10%">
+                    <col width="10%">
+                    <col width="20%">
+                    <col width="10%"> -->
                   </colgroup>
                   <thead>
                     <tr>
@@ -190,14 +190,6 @@ $adminId = $_SESSION['id'];
                 </table>
                 </table>
 
-                <script>
-                $('#OrderTable').DataTable({
-                    orderMulti: false,
-                    lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, 'All'],]
-                  });
-
-                </script>
-
               </div>
             </div>
           </div>
@@ -206,6 +198,14 @@ $adminId = $_SESSION['id'];
     </main>
     <!-- MAIN -->
   </section>
+  <script>
+    $('#OrderTable').DataTable({
+      orderMulti: false,
+      lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, 'All'],]
+    });
+
+  </script>
+
   <script>
     $(document).ready(function () {
       $('#myTable').DataTable();
