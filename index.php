@@ -18,6 +18,7 @@
 
 
                                                                     <!-- NavBar -->
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-3 sticky-top">
     <div class="container"style="">
         <a class="navbar-brand madimi " href="./index.php">OssyBab</a>
@@ -77,10 +78,8 @@
                             <span id="user-name"></span>
                         </div>
                         <form action="login/">
-                        <button id="sign-in-btn"class="btn btn-primary ">Sign In</button>
+                        <button id="sign-in-btn"class="btn btn-primary sign-in-btn">Sign In</button>
                         </form>
-                        
-
                     </div>
                 </li>
             </ul>

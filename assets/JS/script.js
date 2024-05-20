@@ -1,6 +1,6 @@
 
 
-const isAdmin = false; // Replace with your logic to determine admin status
+const isAdmin = True; // Replace with your logic to determine admin status
 const AdminName = "Badr"
 
 
@@ -8,7 +8,7 @@ const AdminName = "Badr"
 const userInfoDiv = document.getElementById('user-info');
 const userImage = document.getElementById('user-image');
 const userName = document.getElementById('user-name');
-const signInBtn = document.getElementById('sign-in-btn');
+const signInBtn = document.getElementsByClassName('sign-in-btn');
 
 function updateContent() {
   if (isAdmin) {
