@@ -109,9 +109,9 @@ $adminId = $_SESSION['id'];
                                                 echo "<td>" . $row['CategoryName'] . "</td>";
                                                 echo "<td>" . $row['Description'] . "</td>";
                                                 echo "<td class='action-column'>";
-                                                echo "<a href='view.php?id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-primary edit_student'><i class='fa fa-edit'></i> Edit</a>";
-                                                echo "<a href='edit.php?id=" . $row['CategoryID'] . "' class='btn btn-warning'><i class='fa fa-pencil-square-o icon'></i></a>";
-                                                echo "<a href='delete.php?id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-danger remove_student'><i class='fa fa-trash'></i>Delete</a>";
+                                                echo "<a href='view.php?id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-success'><i class='fa-regular fa-eye'></i>View</a>";
+                                                echo "<a href='edit.php?id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-primary'><i class='fa fa-edit'></i>Edit</a>";
+                                                // echo "<a href='delete.php?id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-danger'><i class='fa-regular fa-trash-can'></i>Delete</a>";
                                                 echo "</td>";
                                                 echo "</tr>";
                                             }
