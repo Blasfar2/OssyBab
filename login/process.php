@@ -43,13 +43,16 @@
             if($user){
                  if(password_verify($password,$user["PasswordHash"])){
                     session_start();
-                    $_SESSION['user']="yes";
+                    
                    
                     $_SESSION['username']=$user["Username"];
                     $_SESSION['id']=$user["UserID"];
                     if ($user["is_admin"]) {
-                        header("Location: ../admin/index.php");
+                        header("Location: ../admin/dashboard/");
                     } else {
+                        // $_SESSION['user']="yes";
+                        $_SESSION['username']=$user["Username"];
+                        $_SESSION['id']=$user["UserID"];
                         header("Location: ../index.php");
                     }
                     
