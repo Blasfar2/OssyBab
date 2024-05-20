@@ -11,10 +11,11 @@ $adminId = $_SESSION['id'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Categories</title>
-      <!-- Boxicons -->
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../assets/css/nav_sidebar.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 </head>
 
@@ -39,9 +40,9 @@ $adminId = $_SESSION['id'];
                             <a class="active" href="../dashboard/">Dashboard</a>
                         </li>
                         <li><i class="bx bx-chevron-right"></i></li>
-              <li>
-                <a href="#">Categories</a>
-              </li>
+                        <li>
+                            <a href="#">Categories</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- <a href="#" class="btn-download">
@@ -49,6 +50,13 @@ $adminId = $_SESSION['id'];
             <span class="text">Download PDF</span>
           </a> -->
             </div>
+
+            <div class="table-data">
+                <div class="order">
+
+                </div>
+            </div>
+
         </main>
     </section>
 
