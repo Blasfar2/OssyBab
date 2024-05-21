@@ -119,7 +119,6 @@ $adminId = $_SESSION['id'];
                                         ?>
 
 
-
                                     </tbody>
 
                                 </table>
