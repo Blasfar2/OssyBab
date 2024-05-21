@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="./assets/css/styles.css">
 
 </head>
-<body>
+<body style="background-color:#f5f5f5">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-3 sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-3  sticky-top ">
         <div class="container"style="">
             <a class="navbar-brand madimi " href="./index.php">OssyBab</a>
     
@@ -25,7 +25,7 @@
     
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
     
-                <form class="d-flex align-items-center w-100 form-search">
+                <form class="d-flex align-items-center w-100 form-search z-3">
                     <div class="input-group">
                                         <button class="btn btn-light dropdown-toggle bg-white shadow-0" id="navbarDropdownMenuLink" role="button"
                                             data-bs-toggle="dropdown" aria-expanded="false" style="padding-bottom: 0.4rem;">
@@ -60,7 +60,7 @@
                         data-bs-target="#Id2"
                         aria-controls="Id2"
                         >
-                        <i class="fa fa-cart-shopping pe-2 "></i>Cart
+                        <i class="fa fa-cart-shopping p-1 "></i>Cart
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger s-2">
                         2
                     </button>
@@ -80,9 +80,55 @@
     </nav>
 
     <div class="row">
-    <div class="col-3">
-        
-        
+    <div class="d-flex col-3 flex-column z-3 sticky-top" style="height:80vh ; top:10vh"> 
+            <div class="btn-group container align-items-center"style="height:5rem">
+                
+            <a class="btn btn-primary  " style="" href="#" role="button">Rest</a>
+            <a class="btn btn-primary  " href="#" role="button">Rest</a>
+
+            </div>        
+
+            <div class="categorie mx-3 p-2 rounded" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;background-color:white;">
+                <h3 class="text-primary">Categorie</h3>
+                <div class="form-check">
+                  <div class=" px-4">
+                    <input type="checkbox" class="form-check-input" name="Supermaker" id="Supermaker" value="checkedValue" checked>
+                    Supermaker <br>
+                    <input type="checkbox" class="form-check-input" name="Health" id="Health" value="checkedValue" checked>
+                    Health & Beauty <br>
+                    <input type="checkbox" class="form-check-input" name="Home" id="Home" value="checkedValue" checked>
+                    Home & Office <br>
+                    <input type="checkbox" class="form-check-input" name="Appliance" id="Appliance" value="checkedValue" checked>
+                    Appliance <br>
+                    <input type="checkbox" class="form-check-input" name="Phone" id="Phone" value="checkedValue" checked>
+                    Phone & Tablets <br>
+                    <input type="checkbox" class="form-check-input" name="Computing" id="Computing" value="checkedValue" checked>
+                    Computing <br>
+                    <input type="checkbox" class="form-check-input" name="Electronics" id="Electronics" value="checkedValue" checked>
+                    Home & Office <br>
+                    <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue" checked>
+                    Home & Office <br>
+                    <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue" checked>
+                    Home & Office <br>
+                    <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue" checked>
+                    Home & Office <br>
+                    <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue" checked>
+                    Home & Office <br>
+                    
+                  </div>
+                </div>
+            </div>
+            <div class="categorie mx-3 mt-3 p-2 rounded" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;background-color:white;">
+                <h3 class="text-primary">Prix</h3>
+                <div class=" px-4">
+                
+            
+            
+                </div>
+    
+            </div>
+
+
         
         
         
@@ -293,8 +339,6 @@
 
             toast.show()
         })}
-
-
     </script>
 </body>
 </html>

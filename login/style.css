@@ -12,7 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #48e27bd2;
+    background: #4fc3f7;
     transition: 0.5s;
 }
 
@@ -135,7 +135,7 @@ body.active {
 }
 
 .formBx .form form input[type="submit"] {
-    background: #03a9f4;
+    background: #03A9F4;
     border: none;
     color: #fff;
     max-width: 100px;
