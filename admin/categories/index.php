@@ -108,7 +108,10 @@ $adminId = $_SESSION['id'];
                                         $sql = "SELECT * FROM categories";
                                         $result = mysqli_query($conn, $sql);
                                         if (mysqli_num_rows($result) > 0) {
+                                            $token = uniqid(); // Generate a unique token
+                                            $_SESSION['token'] = $token;
                                             while ($row = mysqli_fetch_assoc($result)) {
+                                                
                                                 echo "<tr>";
                                                 echo "<td style='text-align: center;'>" . $row['CategoryID'] . "</td>";
                                                 echo "<td style='text-align: center; width: 140px;height: 168px;'><img src='../../uploads/" . $row['CategoryImage'] . "'  class='preview-image'></td>";
@@ -116,8 +119,8 @@ $adminId = $_SESSION['id'];
                                                 echo "<td>" . $row['Description'] . "</td>";
                                                 echo "<td class='action-column'>";
                                                 echo "<div class='actionBtns'>";
-                                                echo "<a href='view.php?id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-success'><i class='fa-regular fa-eye'></i>View</a>";
-                                                echo "<a href='edit.php?id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-primary'><i class='fa fa-edit'></i>Edit</a>";
+                                                echo "<a href='view.php?token=" . $token . "&cat_id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-success' name='view'><i class='fa-regular fa-eye'></i>View</a>";
+                                                echo "<a href='edit.php?token=" . $token . "&cat_id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-primary'><i class='fa fa-edit'></i>Edit</a>";
                                                 echo "</div>";
                                                 echo "</td>";
                                                 echo "</tr>";

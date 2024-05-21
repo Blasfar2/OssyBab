@@ -2,12 +2,16 @@
 require_once '../includes/session_test.php';
 include ("../../includes/connection.php");
 $adminId = $_SESSION['id'];
-if (isset($_GET['id'])) {
-    $cat_id = $_GET['id'];
+
+if (isset($_GET['token']) && isset($_GET['cat_id'])) {
+    if ($_GET['token'] === $_SESSION['token']) {
+        $cat_id = $_GET['cat_id'];
+
+    }
+
 } else {
     header("Location: ./");
 }
-
 
 ?>
 
