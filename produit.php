@@ -9,6 +9,7 @@
     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/range.css">
 
 </head>
 <body style="background-color:#f5f5f5">
@@ -120,8 +121,31 @@
             </div>
             <div class="categorie mx-3 mt-3 p-2 rounded" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;background-color:white;">
                 <h3 class="text-primary">Prix</h3>
-                <div class=" px-4">
-                
+                <div class="">
+                    <div class="double-slider-box">
+                        <div class="range-slider">
+                            <span class="slider-track"></span>
+                            <input type="range" name="min-val" class="min-val" min="1000" max="12000" value="2000" oninput="slideMin()">
+                            <input type="range" name="max-val" class="max-val" min="1000" max="12000" value="8000" oninput="slideMax()">
+                            <div class="tooltip min-tooltip"></div>
+                            <div class="tooltip max-tooltip"></div>
+                        </div>
+                        <div class="input-box">
+                            <div class="min-box">
+                                <div class="input-wrap">
+                                    <span class="input-addon">Dh</span>
+                                    <input type="text" name="min-input" class="input-field min-input" onchange="setMinInput()">
+                                </div>
+                            </div>
+                            <div class="max-box">
+                                <div class="input-wrap">
+                                    <span class="input-addon">Dh</span>
+                                    <input type="text" name="max-input" class="input-field max-input" onchange="setMaxInput()">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
             
             
                 </div>
@@ -330,6 +354,7 @@
 
 
     <script src="./assets/JS/bootstrap.bundle.js"></script>
+    <script src="./assets/JS/range.js"></script>
     <script>
         const toastTrigger = document.getElementById('liveToastBtn')
         const toastLiveExample = document.getElementById('liveToast')
