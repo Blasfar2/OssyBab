@@ -34,14 +34,20 @@ $adminId = $_SESSION['id'];
 
         .table-data .order table td {
             font-size: 16px;
+            align-content: center;
         }
 
         .preview-image {
-            max-width: 250px;
-            max-height: 250px;
+            max-width: 200px;
+            max-height: 150px;
             width: auto;
             height: auto;
             border-radius: 10px;
+        }
+
+        .actionBtns {
+            display: flex;
+            justify-content: space-evenly;
         }
     </style>
 </head>
@@ -105,13 +111,14 @@ $adminId = $_SESSION['id'];
                                             while ($row = mysqli_fetch_assoc($result)) {
                                                 echo "<tr>";
                                                 echo "<td style='text-align: center;'>" . $row['CategoryID'] . "</td>";
-                                                echo "<td style='text-align: center;'><img src='../../uploads/" . $row['CategoryImage'] . "'  class='preview-image'></td>";
+                                                echo "<td style='text-align: center; width: 140px;height: 168px;'><img src='../../uploads/" . $row['CategoryImage'] . "'  class='preview-image'></td>";
                                                 echo "<td>" . $row['CategoryName'] . "</td>";
                                                 echo "<td>" . $row['Description'] . "</td>";
                                                 echo "<td class='action-column'>";
+                                                echo "<div class='actionBtns'>";
                                                 echo "<a href='view.php?id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-success'><i class='fa-regular fa-eye'></i>View</a>";
                                                 echo "<a href='edit.php?id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-primary'><i class='fa fa-edit'></i>Edit</a>";
-                                                // echo "<a href='delete.php?id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-danger'><i class='fa-regular fa-trash-can'></i>Delete</a>";
+                                                echo "</div>";
                                                 echo "</td>";
                                                 echo "</tr>";
                                             }
