@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 20 mai 2024 à 14:48
+-- Généré le : mer. 22 mai 2024 à 16:35
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -47,6 +47,21 @@ CREATE TABLE `categories` (
   `Description` text DEFAULT NULL,
   `CategoryImage` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Déchargement des données de la table `categories`
+--
+
+INSERT INTO `categories` (`CategoryID`, `CategoryName`, `Description`, `CategoryImage`) VALUES
+(2, 'Supermaker', 'Supermaker', '664dec97816e2_664dc70608734_superMaker.jpg'),
+(3, 'Health & Beauty', 'Health & Beauty', '664dcbbbc148a_Health & Beauty.jpg'),
+(4, 'Home & Office', 'Home & Office', '664dcbdb47b9f_Home & Office.jpg'),
+(5, 'Appliance', 'Appliance', '664dcc14ebe87_Appliance.jpg'),
+(6, 'Phone & Tablets', 'Phone & Tablets', '664dcc2944b3f_Phone & Tablets.jpg'),
+(7, 'Computing', 'Computing', '664dcc41469ea_Computing.jpg'),
+(8, 'Electronics', 'Electronics', '664dcc632d7d8_Electronics.jpg'),
+(9, 'Fashion', 'Fashion', '664dcc8d6da6d_Fashion.jpg'),
+(10, 'Baby Products', 'Baby Products', '664dd311b5355_jomjakkapat-parrueng-qaUMOLJwb48-unsplash.jpg');
 
 -- --------------------------------------------------------
 
@@ -317,7 +332,7 @@ ALTER TABLE `cartitems`
 -- AUTO_INCREMENT pour la table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `orderdetails`
