@@ -1,3 +1,10 @@
+<?php
+    include ("./includes/connection.php");
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -183,70 +190,27 @@
                                                                     <!-- Cards -->
 <div class="container text-center">
     <div class=" row justify-content-around loc row-cols-4">
-        <div class="col mt-3 card-zoom ">
-            <div class="card text-center border-primary" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title text-primary">Supermaker</h5>
-                </div>
-                <img src="./img/superMaker.jpg" class="card-img-bottom">
-            </div>
-        </div>
-        <div class="col mt-3">
-            <div class="card text-center border-primary" style="width:18rem;">
-            <div class="card-body">
-                <h5 class="card-title text-primary">Health & Beauty</h5>
-            </div>
-            <img src="./img/Health & Beauty.jpg" class="card-img-bottom">
-            </div>
-        </div>
-        <div class="col mt-3">
-            <div class="card text-center border-primary" style="width:18rem;">
-            <div class="card-body">
-                <h5 class="card-title text-primary">Home & Office</h5>
-            </div>
-            <img src="./img/Home & Office.jpg" class="card-img-bottom">
-            </div>
-        </div>
-        <div class="col mt-3">
-            <div class="card text-center border-primary" style="width:18rem;">
-            <div class="card-body">
-                <h5 class="card-title text-primary">Appliance</h5>
-            </div>
-            <img src="./img/Appliance.jpg" class="card-img-bottom">
-            </div>
-        </div>
-        <div class="col mt-3 ">
-            <div class="card text-center border-primary" style="width:18rem;">
-            <div class="card-body">
-                <h5 class="card-title text-primary">Phone & Tablets</h5>
-            </div>
-            <img src="./img/Phone & Tablets.jpg" class="card-img-bottom">
-            </div>
-        </div>
-        <div class="col mt-3">
-            <div class="card text-center border-primary" style="width:18rem;">
-            <div class="card-body">
-                <h5 class="card-title text-primary">Computing</h5>
-            </div>
-            <img src="./img/Computing.jpg" class="card-img-bottom">
-            </div>
-        </div>
-        <div class="col mt-3">
-            <div class="card text-center border-primary" style="width:18rem;">
-            <div class="card-body">
-                <h5 class="card-title text-primary">Electronics</h5>
-            </div>
-            <img src="./img/Electronics.jpg" class="card-img-bottom">
-            </div>
-        </div>
-        <div class="col mt-3">
-            <div class="card text-center border-primary" style="width:18rem;">
-            <div class="card-body">
-                <h5 class="card-title text-primary">Fashion</h5>
-            </div>
-            <img src="./img/Fashion.jpg" class="card-img-bottom">
-            </div>
-        </div>
+
+        <?php
+            $sql = "SELECT * FROM categories";
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                $token = uniqid(); // Generate a unique token
+                $_SESSION['token'] = $token;
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<div class='col mt-3 card-zoom'>";
+                    echo "<div class='card text-center border-primary' style='width: 18rem;'>";
+                    echo "<div class='card-body'>";
+                    echo "<h5 class='card-title text-primary'>".$row['CategoryName']."</h5>";
+                    echo "</div>";
+                    echo "<img src='./uploads/".$row['CategoryImage']."' class='card-img-bottom'>";
+                    echo "</div>";
+                    echo "</div>";
+                }
+            }
+
+
+        ?>
     </div>
 </div>
 
