@@ -66,13 +66,15 @@
                         2
                     </button>
                     </li>
-                    <li class="nav-item" style="width: 100px;;">
+                    <li class="nav-item" style="width: 100px;">
                         <div class="container">
                             <div id="user-info" class="d-flex align-items-center btn btn-primary  gap-1 p-0">
                                 <img id="user-image" src="">
                                 <span id="user-name"></span>
                             </div>
-                            <button id="sign-in-btn" class="btn btn-primary ">Sign In</button>
+                            <form action="login/">
+                                <button id="sign-in-btn" class="btn btn-primary ">Sign In</button>
+                            </form>
                         </div>
                     </li>
                 </ul>
@@ -95,25 +97,25 @@
                   <div class=" px-4">
                     <input type="checkbox" class="form-check-input" name="Supermaker" id="Supermaker" value="checkedValue" checked>
                     Supermaker <br>
-                    <input type="checkbox" class="form-check-input" name="Health" id="Health" value="checkedValue" checked>
+                    <input type="checkbox" class="form-check-input" name="Health" id="Health" value="checkedValue" >
                     Health & Beauty <br>
-                    <input type="checkbox" class="form-check-input" name="Home" id="Home" value="checkedValue" checked>
+                    <input type="checkbox" class="form-check-input" name="Home" id="Home" value="checkedValue">
                     Home & Office <br>
-                    <input type="checkbox" class="form-check-input" name="Appliance" id="Appliance" value="checkedValue" checked>
+                    <input type="checkbox" class="form-check-input" name="Appliance" id="Appliance" value="checkedValue" >
                     Appliance <br>
                     <input type="checkbox" class="form-check-input" name="Phone" id="Phone" value="checkedValue" checked>
                     Phone & Tablets <br>
-                    <input type="checkbox" class="form-check-input" name="Computing" id="Computing" value="checkedValue" checked>
+                    <input type="checkbox" class="form-check-input" name="Computing" id="Computing" value="checkedValue" >
                     Computing <br>
                     <input type="checkbox" class="form-check-input" name="Electronics" id="Electronics" value="checkedValue" checked>
                     Home & Office <br>
-                    <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue" checked>
+                    <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
                     Home & Office <br>
-                    <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue" checked>
+                    <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue>
                     Home & Office <br>
-                    <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue" checked>
+                    <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
                     Home & Office <br>
-                    <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue" checked>
+                    <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
                     Home & Office <br>
                     
                   </div>
@@ -121,35 +123,30 @@
             </div>
             <div class="categorie mx-3 mt-3 p-2 rounded" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;background-color:white;">
                 <h3 class="text-primary">Prix</h3>
-                <div class="">
-                    <div class="double-slider-box">
-                        <div class="range-slider">
-                            <span class="slider-track"></span>
-                            <input type="range" name="min-val" class="min-val" min="1000" max="12000" value="2000" oninput="slideMin()">
-                            <input type="range" name="max-val" class="max-val" min="1000" max="12000" value="8000" oninput="slideMax()">
-                            <div class="tooltip min-tooltip"></div>
-                            <div class="tooltip max-tooltip"></div>
-                        </div>
-                        <div class="input-box">
-                            <div class="min-box">
-                                <div class="input-wrap">
-                                    <span class="input-addon">Dh</span>
-                                    <input type="text" name="min-input" class="input-field min-input" onchange="setMinInput()">
-                                </div>
-                            </div>
-                            <div class="max-box">
-                                <div class="input-wrap">
-                                    <span class="input-addon">Dh</span>
-                                    <input type="text" name="max-input" class="input-field max-input" onchange="setMaxInput()">
-                                </div>
-                            </div>
-
-                        </div>
+                <div class="double-slider-box">
+                    <div class="range-slider">
+                        <span class="slider-track"></span>
+                        <input type="range" name="min-val" class="min-val" min="1000" max="12000" value="2000" oninput="slideMin()">
+                        <input type="range" name="max-val" class="max-val" min="1000" max="12000" value="8000" oninput="slideMax()">
+                        <div class="tooltip min-tooltip"></div>
+                        <div class="tooltip max-tooltip"></div>
                     </div>
-            
-            
+                    <div class="input-box">
+                        <div class="min-box">
+                            <div class="input-wrap">
+                                <span class="input-addon">Dh</span>
+                                <input type="text" name="min-input" class="input-field min-input" onchange="setMinInput()">
+                            </div>
+                        </div>
+                        <div class="max-box">
+                            <div class="input-wrap">
+                                <span class="input-addon">Dh</span>
+                                <input type="text" name="max-input" class="input-field max-input" onchange="setMaxInput()">
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-    
             </div>
 
 
@@ -165,8 +162,8 @@
     
     
     </div>
-    <div class="row row-cols-4  col-8 justify-content-around align-items-center g-2 text-center">
-
+    <div class="newCard row row-cols-4  col-8 justify-content-around align-items-center g-2 text-center">
+        <!-- ---------------------------- -->
         <div class="col text-center p-4">
             <div class="card">
                     <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
@@ -176,115 +173,7 @@
                     <button class="btn btn-primary m-2">Add</button>
             </div>
         </div>
-        <div class="col text-center p-4">
-            <div class="card">
-                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
-                    <p class="pt-1"><strong>Xiamio g</strong></p>
-                    <p><strong>Categorie :</strong>15$</p>
-                    <p><strong>Prix :</strong>15$</p>
-                    <button class="btn btn-primary m-2">Add</button>
-            </div>
-        </div>
-        <div class="col text-center p-4">
-            <div class="card">
-                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
-                    <p class="pt-1"><strong>Xiamio g</strong></p>
-                    <p><strong>Categorie :</strong>15$</p>
-                    <p><strong>Prix :</strong>15$</p>
-                    <button class="btn btn-primary m-2">Add</button>
-            </div>
-        </div>
-        <div class="col text-center p-4">
-            <div class="card">
-                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
-                    <p class="pt-1"><strong>Xiamio g</strong></p>
-                    <p><strong>Categorie :</strong>15$</p>
-                    <p><strong>Prix :</strong>15$</p>
-                    <button class="btn btn-primary m-2">Add</button>
-            </div>
-        </div>
-        <div class="col text-center p-4">
-            <div class="card">
-                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
-                    <p class="pt-1"><strong>Xiamio g</strong></p>
-                    <p><strong>Categorie :</strong>15$</p>
-                    <p><strong>Prix :</strong>15$</p>
-                    <button class="btn btn-primary m-2">Add</button>
-            </div>
-        </div>
-        <div class="col text-center p-4">
-            <div class="card">
-                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
-                    <p class="pt-1"><strong>Xiamio g</strong></p>
-                    <p><strong>Categorie :</strong>15$</p>
-                    <p><strong>Prix :</strong>15$</p>
-                    <button class="btn btn-primary m-2">Add</button>
-            </div>
-        </div>
-        <div class="col text-center p-4">
-            <div class="card">
-                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
-                    <p class="pt-1"><strong>Xiamio g</strong></p>
-                    <p><strong>Categorie :</strong>15$</p>
-                    <p><strong>Prix :</strong>15$</p>
-                    <button class="btn btn-primary m-2">Add</button>
-            </div>
-        </div>
-        <div class="col text-center p-4">
-            <div class="card">
-                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
-                    <p class="pt-1"><strong>Xiamio g</strong></p>
-                    <p><strong>Categorie :</strong>15$</p>
-                    <p><strong>Prix :</strong>15$</p>
-                    <button class="btn btn-primary m-2">Add</button>
-            </div>
-        </div>
-        <div class="col text-center p-4">
-            <div class="card">
-                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
-                    <p class="pt-1"><strong>Xiamio g</strong></p>
-                    <p><strong>Categorie :</strong>15$</p>
-                    <p><strong>Prix :</strong>15$</p>
-                    <button class="btn btn-primary m-2">Add</button>
-            </div>
-        </div>
-        <div class="col text-center p-4">
-            <div class="card">
-                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
-                    <p class="pt-1"><strong>Xiamio g</strong></p>
-                    <p><strong>Categorie :</strong>15$</p>
-                    <p><strong>Prix :</strong>15$</p>
-                    <button class="btn btn-primary m-2">Add</button>
-            </div>
-        </div>
-        <div class="col text-center p-4">
-            <div class="card">
-                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
-                    <p class="pt-1"><strong>Xiamio g</strong></p>
-                    <p><strong>Categorie :</strong>15$</p>
-                    <p><strong>Prix :</strong>15$</p>
-                    <button class="btn btn-primary m-2">Add</button>
-            </div>
-        </div>
-        <div class="col text-center p-4">
-            <div class="card">
-                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
-                    <p class="pt-1"><strong>Xiamio g</strong></p>
-                    <p><strong>Categorie :</strong>15$</p>
-                    <p><strong>Prix :</strong>15$</p>
-                    <button class="btn btn-primary m-2">Add</button>
-            </div>
-        </div>
-        <div class="col text-center p-4">
-            <div class="card">
-                    <img src="./img/inst1.jpg" style="width: 16rem;" class="rounded w-100">
-                    <p class="pt-1"><strong>Xiamio g</strong></p>
-                    <p><strong>Categorie :</strong>15$</p>
-                    <p><strong>Prix :</strong>15$</p>
-                    <button class="btn btn-primary m-2">Add</button>
-            </div>
-        </div>
-
+        <!-- ---------------------------- -->
     
     </div>
 </div>
@@ -355,6 +244,7 @@
 
     <script src="./assets/JS/bootstrap.bundle.js"></script>
     <script src="./assets/JS/range.js"></script>
+    <script src="./assets/JS/produit.js"></script>
     <script>
         const toastTrigger = document.getElementById('liveToastBtn')
         const toastLiveExample = document.getElementById('liveToast')
