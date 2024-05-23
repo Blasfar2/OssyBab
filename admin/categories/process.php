@@ -75,4 +75,9 @@ if (isset($_POST['update'])) {
     }
 }
 
+if (isset($_POST['delete'])) {
+    $id = mysqli_real_escape_string($conn, $_POST['categoryId']);
+    
+}
+
 ?>
