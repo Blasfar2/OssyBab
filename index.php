@@ -58,7 +58,7 @@
             <div class="col-auto">
                 <div class="text-center">
                     <div ><strong> Xiamio n-12</strong></div>
-                    <div ><strong>Prix : </strong>15£</div>
+                    <div ><strong>Prix : </strong>15Dh</div>
                     <div ><strong>Categorie : </strong>Phone & Tablets</div>
                     <div class="row gap-1 "> 
                             <button class="btn btn-primary col-3"><i class="fa-solid fa-plus"></i></button>
