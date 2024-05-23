@@ -48,6 +48,8 @@ $adminId = $_SESSION['id'];
         .actionBtns {
             display: flex;
             justify-content: space-evenly;
+            flex-direction: column;
+            gap: 15px;
         }
     </style>
 </head>
@@ -111,16 +113,17 @@ $adminId = $_SESSION['id'];
                                             $token = uniqid(); // Generate a unique token
                                             $_SESSION['token'] = $token;
                                             while ($row = mysqli_fetch_assoc($result)) {
-                                                
+
                                                 echo "<tr>";
                                                 echo "<td style='text-align: center;'>" . $row['CategoryID'] . "</td>";
                                                 echo "<td style='text-align: center; width: 140px;height: 168px;'><img src='../../uploads/" . $row['CategoryImage'] . "'  class='preview-image'></td>";
                                                 echo "<td>" . $row['CategoryName'] . "</td>";
                                                 echo "<td>" . $row['Description'] . "</td>";
-                                                echo "<td class='action-column'>";
+                                                echo "<td class='action-column' style='width: 15%;'>";
                                                 echo "<div class='actionBtns'>";
-                                                echo "<a href='view.php?token=" . $token . "&cat_id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-success' name='view'><i class='fa-regular fa-eye'></i>View</a>";
-                                                echo "<a href='edit.php?token=" . $token . "&cat_id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-primary'><i class='fa fa-edit'></i>Edit</a>";
+                                                echo "<a href='view.php?token=" . $token . "&cat_id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-success' name='view'><i class='fa-regular fa-eye'></i> View</a>";
+                                                echo "<a href='edit.php?token=" . $token . "&cat_id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-primary'><i class='fa fa-edit'></i> Edit</a>";
+                                                echo "<a href='./' class='btn btn-sm btn-outline-danger'><i class='fa fa-trash'></i> Delete</a>";
                                                 echo "</div>";
                                                 echo "</td>";
                                                 echo "</tr>";
