@@ -102,13 +102,13 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-        <img src="./img/sale2.jpg" class="d-block w-100" style="height: 500px;object-fit: cover;"alt="...">
+        <img src="./assets/img/black-friday-hero.webp" class="d-block w-100" style="height: 500px;object-fit: cover;"alt="...">
         </div>
         <div class="carousel-item">
-        <img src="./img/sale1.jpg" class="d-block w-100" style="height: 500px;object-fit: cover;"alt="...">
+        <img src="./assets/img/Black_Friday.webp" class="d-block w-100" style="height: 500px;object-fit: cover;"alt="...">
         </div>
         <div class="carousel-item">
-        <img src="./img/sale.jpg" class="d-block w-100 " style="height: 500px;object-fit: cover;" alt="...">
+        <img src="./assets/img/Dubai-super-sale-4.jpg" class="d-block w-100 " style="height: 500px;object-fit: cover;" alt="...">
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
