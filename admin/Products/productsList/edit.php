@@ -7,7 +7,7 @@ if (isset($_GET['token']) && isset($_GET['prod_id'])) {
     if ($_GET['token'] === $_SESSION['token']) {
 
         $product_id = $_GET['prod_id'];
-
+        echo "<script>var productId = $product_id;</script>";
 
         ?>
 
@@ -260,21 +260,23 @@ if (isset($_GET['token']) && isset($_GET['prod_id'])) {
                 });
             </script>
             <script>
-                $(document).ready(function() {
+             $(document).ready(function() {
     // Define a function to fetch attributes and generate inputs
-    function fetchAndDisplayAttributes(productTypeID) {
+    function fetchAndDisplayAttributes(productTypeID, productID) {
         if (productTypeID !== '') {
             $.ajax({
-                url: 'fetch_attributes.php',
+                url: 'fetch_attributes_update.php',
                 type: 'post',
-                data: { productTypeID: productTypeID },
+                data: { productTypeID: productTypeID, productID: productID }, // Sending both productTypeID and productID to server
                 dataType: 'json',
                 success: function(response) {
+                    console.log('Response:', response);
                     // Clear previous attributes
                     $('#attributeFields').empty();
                     // Dynamically generate labels and inputs for each attribute within a table
                     var table = $('<table>').addClass('table');
                     $.each(response, function(index, attribute) {
+                        // console.log('Attribute:', attribute); // Log each attribute for debugging
                         var row = $('<tr>');
                         var labelCell = $('<td>').append($('<label>').addClass('form-label').text(attribute.AttributeName));
                         var inputCell = $('<td>');
@@ -282,30 +284,31 @@ if (isset($_GET['token']) && isset($_GET['prod_id'])) {
                             type: 'text', // default to text input
                             name: 'attribute_' + attribute.AttributeID,
                             class: 'form-control',
-                            // placeholder: attribute.AttributeName
                         };
                         // Set input attributes based on attribute data type
                         switch (attribute.DataType) {
                             case 'string':
-                                inputAttributes.value = attribute.ValueString;
+                                // console.log('String attribute detected');
+                                inputAttributes.value = attribute.Values[0].ValueString; // Update with appropriate value
                                 break;
                             case 'integer':
+                                // console.log('Integer attribute detected');
                                 inputAttributes.type = 'number';
-                                inputAttributes.value = attribute.ValueInteger;
+                                inputAttributes.value = attribute.Values[0].ValueInteger; // Update with appropriate value
                                 break;
                             case 'decimal':
                                 inputAttributes.type = 'number';
                                 inputAttributes.step = '0.01';
-                                inputAttributes.value = attribute.ValueDecimal;
+                                inputAttributes.value = attribute.Values[0].ValueDecimal; // Update with appropriate value
                                 break;
                             case 'boolean':
                                 inputAttributes.type = 'checkbox';
-                                inputAttributes.checked = attribute.ValueBoolean == 1 ? true : false;
+                                inputAttributes.checked = attribute.Values[0].ValueBoolean == 1 ? true : false;
                                 inputAttributes.class = 'form-check-input';
                                 break;
                             case 'date':
                                 inputAttributes.type = 'date';
-                                inputAttributes.value = attribute.ValueDate;
+                                inputAttributes.value = attribute.Values[0].ValueDate; // Update with appropriate value
                                 break;
                         }
                         inputCell.append($('<input>').attr(inputAttributes));
@@ -326,13 +329,14 @@ if (isset($_GET['token']) && isset($_GET['prod_id'])) {
     }
 
     // Call the function on initial page load
-    fetchAndDisplayAttributes($('#productTypeSelect').val());
+    var productTypeID = $('#productTypeSelect').val();
+    fetchAndDisplayAttributes(productTypeID, productId); // Pass productId here
 
     // Change event handler for product type select
     $('#productTypeSelect').change(function() {
         var productTypeID = $(this).val();
         // Call the function when product type is changed
-        fetchAndDisplayAttributes(productTypeID);
+        fetchAndDisplayAttributes(productTypeID, productId); // Pass productId here
     });
 });
 

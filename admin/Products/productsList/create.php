@@ -47,6 +47,7 @@ $adminId = $_SESSION['id'];
             font-size: 20px;
             color: #888;
         }
+
         table,
         th,
         td {
@@ -142,7 +143,8 @@ $adminId = $_SESSION['id'];
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="form-label">product Type</label>
-                                                    <select class="form-select"  id="productTypeSelect" aria-label="Select product type" name="ProductTypeId">
+                                                    <select class="form-select" id="productTypeSelect"
+                                                        aria-label="Select product type" name="ProductTypeId">
                                                         <option selected>Open this select menu</option>
                                                         <?php
 
@@ -218,62 +220,69 @@ $adminId = $_SESSION['id'];
 
     </script>
     <script>
-$(document).ready(function() {
-    $('#productTypeSelect').change(function() {
-        var productTypeID = $(this).val();
-        if (productTypeID !== '') {
-            $.ajax({
-                url: 'fetch_attributes.php',
-                type: 'post',
-                data: { productTypeID: productTypeID },
-                dataType: 'json',
-                success: function(response) {
-                    // Clear previous attributes
-                    $('#attributeFields').empty();
-                    // Dynamically generate labels and inputs for each attribute within a table
-                    var table = $('<table>').addClass('table');
-                    $.each(response, function(index, attribute) {
-                        var row = $('<tr>');
-                        var labelCell = $('<td>').append($('<label>').addClass('form-label').text(attribute.AttributeName));
-                        var inputCell = $('<td>');
-                        var inputAttributes = {
-                            type: 'text', // default to text input
-                            name: 'attribute_' + attribute.AttributeID,
-                            class: 'form-control',
-                            placeholder: 'Sample text'
-                        };
-                        if (attribute.DataType === 'integer') {
-                            inputAttributes.type = 'number';
-                            inputAttributes.step = '1';
-                            inputAttributes.placeholder = 'Example: 123';
-                        } else if (attribute.DataType === 'decimal') {
-                            inputAttributes.type = 'number';
-                            inputAttributes.step = '0.01';
-                            inputAttributes.placeholder = 'Example: 123.45';
-                        } else if (attribute.DataType === 'boolean') {
-                            inputAttributes.type = 'checkbox';
-                            inputAttributes.class = 'form-check-input';
-                        } else if (attribute.DataType === 'date') {
-                            inputAttributes.type = 'date';
+        $(document).ready(function () {
+            $('#productTypeSelect').change(function () {
+                var productTypeID = $(this).val();
+                if (productTypeID !== '') {
+                    $.ajax({
+                        url: 'fetch_attributes.php',
+                        type: 'post',
+                        data: { productTypeID: productTypeID },
+                        dataType: 'json',
+                        success: function (response) {
+                            // Clear previous attributes
+                            $('#attributeFields').empty();
+                            // Dynamically generate labels and inputs for each attribute within a table
+                            var table = $('<table>').addClass('table');
+                            $.each(response, function (index, attribute) {
+                                var row = $('<tr>');
+                                var labelCell = $('<td>').append($('<label>').addClass('form-label').text(attribute.AttributeName));
+                                var inputCell = $('<td>');
+                                var inputAttributes = {
+                                    type: 'text', // default to text input
+                                    name: 'attribute_' + attribute.AttributeID,
+                                    class: 'form-control',
+                                    placeholder: 'Sample text'
+                                };
+                                if (attribute.DataType === 'integer') {
+                                    inputAttributes.type = 'number';
+                                    inputAttributes.step = '1';
+                                    inputAttributes.placeholder = 'Example: 123';
+                                } else if (attribute.DataType === 'decimal') {
+                                    inputAttributes.type = 'number';
+                                    inputAttributes.step = '0.01';
+                                    inputAttributes.placeholder = 'Example: 123.45';
+                                } else if (attribute.DataType === 'boolean') {
+                                    inputAttributes.type = 'checkbox';
+                                    inputAttributes.class = 'form-check-input';
+                                    inputAttributes.value = '1'; // value when checked
+                                    inputCell.append($('<input>').attr({
+                                        type: 'hidden',
+                                        name: 'attribute_' + attribute.AttributeID,
+                                        value: '0' // value when unchecked
+                                    }));
+                                }
+                                else if (attribute.DataType === 'date') {
+                                    inputAttributes.type = 'date';
+                                }
+                                inputCell.append($('<input>').attr(inputAttributes));
+                                row.append(labelCell, inputCell);
+                                table.append(row);
+                            });
+                            $('#attributeFields').append(table);
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(xhr.responseText);
+                            alert('Error fetching attributes. Please try again.');
                         }
-                        inputCell.append($('<input>').attr(inputAttributes));
-                        row.append(labelCell, inputCell);
-                        table.append(row);
                     });
-                    $('#attributeFields').append(table);
-                },
-                error: function(xhr, status, error) {
-                    console.error(xhr.responseText);
-                    alert('Error fetching attributes. Please try again.');
+                } else {
+                    // Clear attributes if no product type is selected
+                    $('#attributeFields').empty();
                 }
             });
-        } else {
-            // Clear attributes if no product type is selected
-            $('#attributeFields').empty();
-        }
-    });
-});
-</script>
+        });
+    </script>
 
 
 

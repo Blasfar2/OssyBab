@@ -32,12 +32,12 @@ if (isset($_POST['create'])) {
                     $attributeValue = mysqli_real_escape_string($conn, $value);
 
                     // Check and insert based on the type of attribute value
-                    if (is_numeric($attributeValue) && strpos($attributeValue, '.') !== false) {
+                    if ($attributeValue === '0' || $attributeValue === '1') {
+                        $sqlAttr = "INSERT INTO productattributevalues (ProductID, AttributeID, ValueBoolean) VALUES ('$productId', '$attributeId', '$attributeValue')";
+                    } elseif (is_numeric($attributeValue) && strpos($attributeValue, '.') !== false) {
                         $sqlAttr = "INSERT INTO productattributevalues (ProductID, AttributeID, ValueDecimal) VALUES ('$productId', '$attributeId', '$attributeValue')";
                     } elseif (is_numeric($attributeValue)) {
                         $sqlAttr = "INSERT INTO productattributevalues (ProductID, AttributeID, ValueInteger) VALUES ('$productId', '$attributeId', '$attributeValue')";
-                    } elseif ($attributeValue === '0' || $attributeValue === '1') {
-                        $sqlAttr = "INSERT INTO productattributevalues (ProductID, AttributeID, ValueBoolean) VALUES ('$productId', '$attributeId', '$attributeValue')";
                     } elseif (strtotime($attributeValue)) {
                         $sqlAttr = "INSERT INTO productattributevalues (ProductID, AttributeID, ValueDate) VALUES ('$productId', '$attributeId', '$attributeValue')";
                     } else {
