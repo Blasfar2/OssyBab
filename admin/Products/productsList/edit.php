@@ -7,7 +7,6 @@ if (isset($_GET['token']) && isset($_GET['prod_id'])) {
     if ($_GET['token'] === $_SESSION['token']) {
 
         $product_id = $_GET['prod_id'];
-        echo "<script>var productId = $product_id;</script>";
 
         ?>
 
@@ -62,6 +61,10 @@ if (isset($_GET['token']) && isset($_GET['prod_id'])) {
                     border: 1px solid black;
                     border-collapse: collapse;
                 }
+
+                #cancelButton {
+                    display: none;
+                }
             </style>
         </head>
 
@@ -108,6 +111,7 @@ if (isset($_GET['token']) && isset($_GET['prod_id'])) {
                                     </div>
                                     <br>
                                     <?php
+                                    echo "<script>var productId = $product_id;</script>";
 
                                     $sql = "SELECT * FROM products WHERE ProductID = '$product_id'";
                                     $result = mysqli_query($conn, $sql);
@@ -124,17 +128,31 @@ if (isset($_GET['token']) && isset($_GET['prod_id'])) {
                                                         </div>
                                                         <div class="form-element my-4">
                                                             <p class="image-text">New Image : </p>
-                                                            <img id="imgPreview" src="../../assets/img/placeholder-image.jpg"
-                                                                alt="Preview" class="preview-image">
+                                                            <div>
+                                                                <div>
+
+                                                                    <img id="imgPreview"
+                                                                        src="../../assets/img/placeholder-image.jpg" alt="Preview"
+                                                                        class="preview-image">
+                                                                </div>
+                                                                <br>
+                                                                <div style="width: 85%;text-align: center;">
+                                                                    <!-- Cancel Button -->
+                                                                    <button type="button" id="cancelButton"
+                                                                        class="btn btn-danger">Cancel</button>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div style="width: 75%; margin: 80px 10px;">
-                                                        <form action="process.php" method="post" enctype="multipart/form-data"
-                                                            class="row g-3">
+                                                        <form id="formId" action="process.php" method="post"
+                                                            enctype="multipart/form-data" class="row g-3">
 
                                                             <div class="col-md-6">
                                                                 <input type="hidden" name="productID"
                                                                     value="<?php echo $row['ProductID']; ?>">
+                                                                <input type="hidden" name="oldImage"
+                                                                    value="<?php echo $row['ProductImage']; ?>">
                                                                 <label class="form-label">product Name</label>
                                                                 <input type="text" name="productName" class="form-control"
                                                                     placeholder="product Name" value="<?php echo $row['Name']; ?>"
@@ -233,11 +251,9 @@ if (isset($_GET['token']) && isset($_GET['prod_id'])) {
                     function previewImage(input) {
                         if (input.files && input.files[0]) {
                             var reader = new FileReader();
-
                             reader.onload = function (e) {
                                 $('#imgPreview').attr('src', e.target.result);
                             }
-
                             reader.readAsDataURL(input.files[0]); // Convert to base64 string
                         }
                     }
@@ -247,7 +263,6 @@ if (isset($_GET['token']) && isset($_GET['prod_id'])) {
                         var file = this.files[0];
                         var fileExtension = file.name.split('.').pop().toLowerCase();
                         var allowedExtensions = ['jpg', 'jpeg', 'png', 'svg'];
-
                         // Check if the file type is an image with allowed extension
                         if ($.inArray(fileExtension, allowedExtensions) !== -1) {
                             previewImage(this);
@@ -257,88 +272,124 @@ if (isset($_GET['token']) && isset($_GET['prod_id'])) {
                             alert('Please select a valid image file with extension .jpg, .jpeg, .png, or .svg.');
                         }
                     });
+
+                    // Function to handle file input change
+                    $('input[type="file"]').change(function () {
+                        if ($(this).val()) {
+                            $('#cancelButton').show();
+                        } else {
+                            $('#cancelButton').hide();
+                        }
+                    });
+
+                    // Function to handle cancel button click
+                    $('#cancelButton').click(function () {
+                        $('input[type="file"]').val('');
+                        $('#imgPreview').attr('src', '../../assets/img/placeholder-image.jpg');
+                        $(this).hide();
+                    });
                 });
             </script>
             <script>
-             $(document).ready(function() {
-    // Define a function to fetch attributes and generate inputs
-    function fetchAndDisplayAttributes(productTypeID, productID) {
-        if (productTypeID !== '') {
-            $.ajax({
-                url: 'fetch_attributes_update.php',
-                type: 'post',
-                data: { productTypeID: productTypeID, productID: productID }, // Sending both productTypeID and productID to server
-                dataType: 'json',
-                success: function(response) {
-                    console.log('Response:', response);
-                    // Clear previous attributes
-                    $('#attributeFields').empty();
-                    // Dynamically generate labels and inputs for each attribute within a table
-                    var table = $('<table>').addClass('table');
-                    $.each(response, function(index, attribute) {
-                        // console.log('Attribute:', attribute); // Log each attribute for debugging
-                        var row = $('<tr>');
-                        var labelCell = $('<td>').append($('<label>').addClass('form-label').text(attribute.AttributeName));
-                        var inputCell = $('<td>');
-                        var inputAttributes = {
-                            type: 'text', // default to text input
-                            name: 'attribute_' + attribute.AttributeID,
-                            class: 'form-control',
-                        };
-                        // Set input attributes based on attribute data type
-                        switch (attribute.DataType) {
-                            case 'string':
-                                // console.log('String attribute detected');
-                                inputAttributes.value = attribute.Values[0].ValueString; // Update with appropriate value
-                                break;
-                            case 'integer':
-                                // console.log('Integer attribute detected');
-                                inputAttributes.type = 'number';
-                                inputAttributes.value = attribute.Values[0].ValueInteger; // Update with appropriate value
-                                break;
-                            case 'decimal':
-                                inputAttributes.type = 'number';
-                                inputAttributes.step = '0.01';
-                                inputAttributes.value = attribute.Values[0].ValueDecimal; // Update with appropriate value
-                                break;
-                            case 'boolean':
-                                inputAttributes.type = 'checkbox';
-                                inputAttributes.checked = attribute.Values[0].ValueBoolean == 1 ? true : false;
-                                inputAttributes.class = 'form-check-input';
-                                break;
-                            case 'date':
-                                inputAttributes.type = 'date';
-                                inputAttributes.value = attribute.Values[0].ValueDate; // Update with appropriate value
-                                break;
+                $(document).ready(function () {
+                    // Define a function to fetch attributes and generate inputs
+                    function fetchAndDisplayAttributes(productTypeID, productID) {
+                        if (productTypeID !== '') {
+                            $.ajax({
+                                url: 'fetch_attributes_update.php',
+                                type: 'post',
+                                data: { productTypeID: productTypeID, productID: productID }, // Sending both productTypeID and productID to server
+                                dataType: 'json',
+                                success: function (response) {
+                                    console.log('Response:', response);
+                                    $('#attributeFields').empty();
+                                    var table = $('<table>').addClass('table');
+                                    $.each(response, function (index, attribute) {
+                                        var row = $('<tr>');
+                                        var labelCell = $('<td>').append($('<label>').addClass('form-label').text(attribute.AttributeName));
+                                        var inputCell = $('<td>');
+                                        var inputAttributes = {
+                                            type: 'text', // default to text input
+                                            name: 'attribute_' + attribute.AttributeID,
+                                            class: 'form-control',
+                                        };
+                                        // Set input attributes based on attribute data type
+                                        switch (attribute.DataType) {
+                                            case 'string':
+                                                inputAttributes.value = attribute.Values[0].ValueString; // Update with appropriate value
+                                                inputCell.append($('<input>').attr(inputAttributes));
+                                                break;
+                                            case 'integer':
+                                                inputAttributes.type = 'number';
+                                                inputAttributes.value = attribute.Values[0].ValueInteger; // Update with appropriate value
+                                                inputCell.append($('<input>').attr(inputAttributes));
+                                                break;
+                                            case 'decimal':
+                                                inputAttributes.type = 'number';
+                                                inputAttributes.step = '0.01';
+                                                inputAttributes.value = attribute.Values[0].ValueDecimal; // Update with appropriate value
+                                                inputCell.append($('<input>').attr(inputAttributes));
+                                                break;
+                                            case 'boolean':
+                                                inputAttributes.type = 'checkbox';
+                                                inputAttributes.class = 'form-check-input';
+                                                inputAttributes.name = '';
+                                                if (attribute.Values[0].ValueBoolean == 1) {
+                                                    inputAttributes.checked = true;
+                                                }
+                                                // Add the checkbox input
+                                                var checkbox = $('<input>').attr(inputAttributes);
+                                                // Add a hidden input to hold the unchecked value
+                                                var hiddenInput = $('<input>').attr({
+                                                    type: 'hidden',
+                                                    name: 'attribute_' + attribute.AttributeID,
+                                                    value: '0'
+                                                });
+                                                inputCell.append(hiddenInput).append(checkbox);
+                                                // Update the hidden input value on change
+                                                checkbox.change(function () {
+                                                    hiddenInput.val(this.checked ? 1 : 0);
+                                                });
+                                                break;
+                                            case 'date':
+                                                inputAttributes.type = 'date';
+                                                inputAttributes.value = attribute.Values[0].ValueDate; // Update with appropriate value
+                                                inputCell.append($('<input>').attr(inputAttributes));
+                                                break;
+                                        }
+                                        // inputCell.append($('<input>').attr(inputAttributes));
+                                        row.append(labelCell, inputCell);
+                                        table.append(row);
+                                    });
+                                    $('#attributeFields').append(table);
+                                },
+                                error: function (xhr, status, error) {
+                                    console.error(xhr.responseText);
+                                    alert('Error fetching attributes. Please try again.');
+                                }
+                            });
+                        } else {
+                            // Clear attributes if no product type is selected
+                            $('#attributeFields').empty();
                         }
-                        inputCell.append($('<input>').attr(inputAttributes));
-                        row.append(labelCell, inputCell);
-                        table.append(row);
+                    }
+
+                    var productTypeID = $('#productTypeSelect').val();
+                    fetchAndDisplayAttributes(productTypeID, productId); // Pass productId here
+
+                    $('#productTypeSelect').change(function () {
+                        var productTypeID = $(this).val();
+                        // Call the function when product type is changed
+                        fetchAndDisplayAttributes(productTypeID, productId); // Pass productId here
                     });
-                    $('#attributeFields').append(table);
-                },
-                error: function(xhr, status, error) {
-                    console.error(xhr.responseText);
-                    alert('Error fetching attributes. Please try again.');
-                }
-            });
-        } else {
-            // Clear attributes if no product type is selected
-            $('#attributeFields').empty();
-        }
-    }
-
-    // Call the function on initial page load
-    var productTypeID = $('#productTypeSelect').val();
-    fetchAndDisplayAttributes(productTypeID, productId); // Pass productId here
-
-    // Change event handler for product type select
-    $('#productTypeSelect').change(function() {
-        var productTypeID = $(this).val();
-        // Call the function when product type is changed
-        fetchAndDisplayAttributes(productTypeID, productId); // Pass productId here
-    });
-});
+                    // Convert only decimal inputs to the correct format on form submission
+                    $('#formId').submit(function () {
+                        $('input[type="number"][step="0.01"]').each(function () {
+                            var decimalValue = parseFloat($(this).val()).toFixed(2);
+                            $(this).val(decimalValue);
+                        });
+                    });
+                });
 
 
             </script>

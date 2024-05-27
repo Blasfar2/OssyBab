@@ -112,7 +112,7 @@ $adminId = $_SESSION['id'];
                                             </div>
                                         </div>
                                         <div style="width: 75%; margin: 80px 10px;">
-                                            <form action="process.php" method="post" enctype="multipart/form-data"
+                                            <form id="formId" action="process.php" method="post" enctype="multipart/form-data"
                                                 class="row g-3">
                                                 <div class="col-md-6">
                                                     <label class="form-label">product Name</label>
@@ -280,6 +280,14 @@ $adminId = $_SESSION['id'];
                     // Clear attributes if no product type is selected
                     $('#attributeFields').empty();
                 }
+            });
+
+            // Convert only decimal inputs to the correct format on form submission
+            $('#formId').submit(function () {
+                $('input[type="number"][step="0.01"]').each(function () {
+                    var decimalValue = parseFloat($(this).val()).toFixed(2);
+                    $(this).val(decimalValue);
+                });
             });
         });
     </script>
