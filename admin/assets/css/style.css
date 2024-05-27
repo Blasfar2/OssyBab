@@ -37,13 +37,13 @@ li {
 	list-style: none;
 }
 
- *{
+ /* *{
    margin: 0;
    padding: 0;
    box-sizing: border-box;
    font-family: "Poppins" , sans-serif;
  }
- 
+  */
 
 /* CONTENT */
 /* MAIN */
@@ -99,7 +99,7 @@ li {
 
 
 
-
+/* 
 #content main .box-info {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -144,7 +144,7 @@ li {
 #content main .box-info li .text p {
 	color: var(--dark);	
 }
-
+ */
 
 
 

@@ -422,7 +422,7 @@ nav .profile .profile-link a:hover {
 	grid-gap: 24px;
 	margin-top: 36px;
 }
-#content main .box-info li {
+#content main .box-info .li-item {
 	padding: 24px;
 	background: var(--light);
 	border-radius: 20px;
@@ -431,7 +431,7 @@ nav .profile .profile-link a:hover {
 	grid-gap: 24px;
     box-shadow: 4px 4px 16px rgba(0, 0, 0, .05);
 }
-#content main .box-info li .bx {
+#content main .box-info .li-item .bx {
 	width: 80px;
 	height: 80px;
 	border-radius: 10px;
@@ -440,23 +440,23 @@ nav .profile .profile-link a:hover {
 	justify-content: center;
 	align-items: center;
 }
-#content main .box-info li:nth-child(1) .bx {
+#content main .box-info .li-item:nth-child(1) .bx {
 	background: var(--light-blue);
 	color: var(--blue);
 }
-#content main .box-info li:nth-child(2) .bx {
+#content main .box-info .li-item:nth-child(2) .bx {
 	background: var(--light-yellow);
 	color: var(--yellow);
 }
-#content main .box-info li:nth-child(3) .bx {
+#content main .box-info .li-item:nth-child(3) .bx {
 	background: var(--light-orange);
 	color: var(--orange);
 }
-#content main .box-info li .text h3 {
+#content main .box-info .li-item .text h3 {
 	font-size: 24px;
 	font-weight: 600;
 	color: var(--dark);
 }
-#content main .box-info li .text p {
+#content main .box-info .li-item .text p {
 	color: var(--dark);	
 }

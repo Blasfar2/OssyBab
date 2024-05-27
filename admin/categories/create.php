@@ -14,7 +14,8 @@ $adminId = $_SESSION['id'];
     <!-- Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css" />
 
     <link rel="stylesheet" href="../assets/css/nav_sidebar.css" />
@@ -27,6 +28,10 @@ $adminId = $_SESSION['id'];
     <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
 
     <style>
+        ul {
+            padding-left: 0rem;
+        }
+
         .preview-image {
             max-width: 100%;
             max-height: 100%;
@@ -93,8 +98,8 @@ $adminId = $_SESSION['id'];
                                         <div style="width: 25%; margin: 5px; padding: 5px;">
                                             <div class="form-element my-4">
                                                 <p class="image-text">Preview Image : </p>
-                                                <img id="imgPreview" src="../assets/img/placeholder-image.jpg" alt="Preview"
-                                                    class="preview-image">
+                                                <img id="imgPreview" src="../assets/img/placeholder-image.jpg"
+                                                    alt="Preview" class="preview-image">
                                             </div>
                                         </div>
                                         <div style="width: 75%; margin: 80px 10px;">
@@ -108,7 +113,8 @@ $adminId = $_SESSION['id'];
                                                         placeholder="Category Description " required>
                                                 </div>
                                                 <div class="form-element my-4">
-                                                    <input type="file" name="categoryImage" class="form-control" required>
+                                                    <input type="file" name="categoryImage" class="form-control"
+                                                        required>
                                                 </div>
 
                                                 <div class="form-element"

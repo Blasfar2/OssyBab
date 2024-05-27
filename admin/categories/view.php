@@ -121,6 +121,27 @@ if (isset($_GET['token']) && isset($_GET['cat_id'])) {
                                                     <h1>Description: </h1>
                                                     <h3 style="margin-left: 5%;"><?php echo $row['Description']; ?></h3>
                                                 </div>
+                                                <div class="form-element my-4">
+                                                    <h5>Product types that belong to this category:</h5>                                                    
+                                                        <?php
+                                                        // Assuming you have fetched categories from the database and stored them in $categories array
+                                                        $sql = "SELECT DISTINCT pt.TypeName 
+                                                                FROM ProductTypes pt
+                                                                JOIN producttypecategories ptc ON pt.ProductTypeID = ptc.ProductTypeID
+                                                                JOIN Categories c ON ptc.CategoryID = c.CategoryID
+                                                                WHERE c.CategoryID = '$cat_id'";
+
+                                                        $result = mysqli_query($conn, $sql);
+                                                        if (mysqli_num_rows($result) > 0) {
+                                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                                echo '<h4 style="margin-left: 5%; color:blue;">' . $row['TypeName'] . '</h4>';
+                                                            }
+                                                        } else {
+                                                            echo "<li>No product types found.</li>";
+                                                        }
+                                                        ?>
+                                                </div>
+
 
                                             </div>
                                         </div>

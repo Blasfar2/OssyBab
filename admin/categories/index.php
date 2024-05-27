@@ -27,14 +27,43 @@ $adminId = $_SESSION['id'];
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
     <style>
+        .table-data {
+            display: flex;
+            flex-wrap: wrap;
+            grid-gap: 24px;
+            margin-top: 24px;
+            width: 100%;
+            color: var(--dark);
+        }
+
+        .table-data>div {
+            border-radius: 20px;
+            background: var(--light);
+            padding: 24px;
+            overflow-x: auto;
+        }
+
+        .table-data .order {
+            flex-grow: 1;
+            flex-basis: 500px;
+            box-shadow: 4px 4px 16px rgba(0, 0, 0, .05);
+        }
+
+        .table-data .order table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
         .table-data .order table th {
+            padding-bottom: 12px;
             font-size: 17px;
             text-align: center;
+            border-bottom: 1px solid var(--grey);
         }
 
         .table-data .order table td {
-            font-size: 16px;
-            align-content: center;
+            padding: 16px 0;
+            text-align: center;
         }
 
         .preview-image {
@@ -50,6 +79,7 @@ $adminId = $_SESSION['id'];
             justify-content: space-evenly;
             flex-direction: column;
             gap: 15px;
+            align-items: center; 
         }
     </style>
 </head>
@@ -121,9 +151,9 @@ $adminId = $_SESSION['id'];
                                                 echo "<td>" . $row['Description'] . "</td>";
                                                 echo "<td class='action-column' style='width: 15%;'>";
                                                 echo "<div class='actionBtns'>";
-                                                echo "<a href='view.php?token=" . $token . "&cat_id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-success' name='view'><i class='fa-regular fa-eye'></i> View</a>";
-                                                echo "<a href='edit.php?token=" . $token . "&cat_id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-primary'><i class='fa fa-edit'></i> Edit</a>";
-                                                echo "<a href='./' class='btn btn-sm btn-outline-danger'><i class='fa fa-trash'></i> Delete</a>";
+                                                echo "<a href='view.php?token=" . $token . "&cat_id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-success' name='view' style='width: 90%;'><i class='fa-regular fa-eye'></i> View</a>";
+                                                echo "<a href='edit.php?token=" . $token . "&cat_id=" . $row['CategoryID'] . "' class='btn btn-sm btn-outline-primary' style='width: 90%;'><i class='fa fa-edit'></i> Edit</a>";
+                                                echo "<a href='./' class='btn btn-sm btn-outline-danger' style='width: 90%;'><i class='fa fa-trash'></i> Delete</a>";
                                                 echo "</div>";
                                                 echo "</td>";
                                                 echo "</tr>";
@@ -134,7 +164,6 @@ $adminId = $_SESSION['id'];
 
                                     </tbody>
 
-                                </table>
                                 </table>
 
 
