@@ -8,7 +8,7 @@
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
 
-        $sql = "SELECT * FROM users WHERE email = '$email'";
+        $sql = "SELECT * FROM users WHERE Email = '$email'";
         $res = mysqli_query($conn,$sql);
         $rowCount = mysqli_num_rows($res);
         if($rowCount>0){
@@ -37,7 +37,7 @@
             $email = $_POST["email"];
             $password = $_POST["password"];
 
-            $sql = "SELECT * FROM users WHERE Email = '$email'";
+            $sql = "SELECT * FROM users WHERE Email = '$email' AND archived = 0";
             $result = mysqli_query($conn,$sql);
             $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
             if($user){
@@ -47,6 +47,7 @@
                    
                     $_SESSION['username']=$user["Username"];
                     $_SESSION['id']=$user["UserID"];
+                    $_SESSION['UserImage']=$user["UserImage"];
                     if ($user["is_admin"]) {
                         header("Location: ../admin/dashboard/");
                     } else {
