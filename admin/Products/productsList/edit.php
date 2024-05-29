@@ -153,33 +153,33 @@ if (isset($_GET['token']) && isset($_GET['prod_id'])) {
                                                                     value="<?php echo $row['ProductID']; ?>">
                                                                 <input type="hidden" name="oldImage"
                                                                     value="<?php echo $row['ProductImage']; ?>">
-                                                                <label class="form-label">product Name</label>
+                                                                <p class="form-label">product Name</p>
                                                                 <input type="text" name="productName" class="form-control"
                                                                     placeholder="product Name" value="<?php echo $row['Name']; ?>"
                                                                     required>
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label class="form-label">product Description</label>
+                                                                <p class="form-label">product Description</p>
                                                                 <input type="text" name="productDescription" class="form-control"
                                                                     placeholder="product Description"
                                                                     value="<?php echo $row['Description']; ?>">
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label class="form-label">Price</label>
+                                                                <p class="form-label">Price</p>
                                                                 <input type="number" step="0.01" name="productPrice"
                                                                     class="form-control" placeholder="Price"
                                                                     value="<?php echo $row['Price']; ?>" required>
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">product in Stock</label>
+                                                                <p class="form-label">product in Stock</p>
                                                                 <input type="number" name="productStock" class="form-control"
                                                                     placeholder="product Stock "
                                                                     value="<?php echo $row['Stock']; ?>" required>
                                                             </div>
 
                                                             <div class="col-md-6">
-                                                                <label class="form-label">product Image</label>
+                                                                <p class="form-label">product Image</p>
                                                                 <input type="file" name="productImage" class="form-control">
                                                             </div>
 
@@ -196,7 +196,7 @@ if (isset($_GET['token']) && isset($_GET['prod_id'])) {
 
                                                                 // Output the dropdown menu with the selected option
                                                                 echo '<div class="col-md-6">';
-                                                                echo '<label class="form-label">Product Type</label>';
+                                                                echo '<p class="form-label">Product Type</p>';
                                                                 echo '<select class="form-select" id="productTypeSelect" aria-label="Select product type" name="ProductTypeId">';
                                                                 echo '<option value="" selected>Select product type</option>';
 
@@ -306,7 +306,7 @@ if (isset($_GET['token']) && isset($_GET['prod_id'])) {
                                     var table = $('<table>').addClass('table');
                                     $.each(response, function (index, attribute) {
                                         var row = $('<tr>');
-                                        var labelCell = $('<td>').append($('<label>').addClass('form-label').text(attribute.AttributeName));
+                                        var labelCell = $('<td>').append($('<p>').addClass('form-label').text(attribute.AttributeName));
                                         var inputCell = $('<td>');
                                         var inputAttributes = {
                                             type: 'text', // default to text input
