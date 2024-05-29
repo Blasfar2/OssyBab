@@ -23,9 +23,10 @@ if (isset($_POST['create'])) {
             $sql = "INSERT INTO categories (CategoryName, Description, CategoryImage) VALUES ('$name', '$categoryDescription','$uniqueFileName')";
             if (mysqli_query($conn, $sql)) {
                 // session_start();
-                // $_SESSION['create'] = "The category has been added successfully!";
+                $_SESSION['info'] = "The category has been added successfully!";
                 header("Location: ./");
             } else {
+                $_SESSION['error'] = "Failed to updated category.";
                 echo "Error: Data not inserted";
             }
         } else {
@@ -69,15 +70,25 @@ if (isset($_POST['update'])) {
     }
 
     if (mysqli_query($conn, $sql)) {
+        $_SESSION['info'] = "Category updated successfully.";
         header("Location: ./");
     } else {
-        echo "Error: " . mysqli_error($conn);
+        $_SESSION['error'] = "Failed to updated category.";
+        // echo "Error: " . mysqli_error($conn);
     }
 }
 
 if (isset($_POST['delete'])) {
-    $id = mysqli_real_escape_string($conn, $_POST['categoryId']);
-    
+    $id = $_POST['categoryId'];
+    $sql = "DELETE FROM `categories` WHERE categoryId = '$id'";
+    if (mysqli_query($conn, $sql)) {
+        $_SESSION['info'] = "Category deleted successfully.";
+        header("Location: ./");
+    } else {
+        $_SESSION['error'] = "Failed to delete category.";
+        // echo "Error: " . mysqli_error($conn);
+    }
+
 }
 
 ?>
