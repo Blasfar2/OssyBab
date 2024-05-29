@@ -47,7 +47,7 @@
                    
                     $_SESSION['username']=$user["Username"];
                     $_SESSION['id']=$user["UserID"];
-                    $_SESSION['UserImage']=$user["UserImage"];
+                    $_SESSION['UserImage']="../../uploads/".$user["UserImage"];
                     if ($user["is_admin"]) {
                         header("Location: ../admin/dashboard/");
                     } else {

@@ -144,7 +144,8 @@ $adminId = $_SESSION['id'];
                                     <tbody>
                                         <?php
 
-                                        $sql = "SELECT * FROM users";
+                                        $sql = "SELECT * FROM users"; // all existing users
+                                        // $sql = "SELECT * FROM users where UserID != $adminId"; // excluding the admin (current logged in)
                                         $result = mysqli_query($conn, $sql);
                                         if (mysqli_num_rows($result) > 0) {
                                             $token = uniqid(); // Generate a unique token
@@ -158,8 +159,8 @@ $adminId = $_SESSION['id'];
                                                 echo "<td>" . ($row['archived'] == 0 ? 'Active' : 'Inactive') . "</td>";
                                                 echo "<td class='action-column' style='width: 15%;'>";
                                                 echo "<div class='actionBtns'>";
-                                                echo "<a href='view.php?token=" . $token . "&cat_id=" . $row['UserID'] . "' class='btn btn-sm btn-outline-success' name='view' style='width: 90%;'><i class='fa-regular fa-eye'></i>View more</a>";
-                                                // echo "<a href='edit.php?token=" . $token . "&cat_id=" . $row['UserID'] . "' class='btn btn-sm btn-outline-primary' style='width: 90%;'><i class='fa fa-edit'></i> Edit</a>";
+                                                echo "<a href='view.php?token=" . $token . "&customerId=" . $row['UserID'] . "' class='btn btn-sm btn-outline-success' name='view' style='width: 90%;'><i class='fa-regular fa-eye'></i>View more</a>";
+                                                // echo "<a href='edit.php?token=" . $token . "&customerId=" . $row['UserID'] . "' class='btn btn-sm btn-outline-primary' style='width: 90%;'><i class='fa fa-edit'></i> Edit</a>";
                                                 echo "</div>";
                                                 echo "</td>";
                                                 echo "</tr>";
