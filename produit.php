@@ -1,5 +1,20 @@
 <?php
     include ("./includes/connection.php");
+
+    if (isset($_GET['token']) && isset($_GET['cat_id'])) {
+            $cat_id = $_GET['cat_id'];
+    
+    
+    }elseif (isset($_GET['token']) && isset($_GET['Type_id'])) {
+            $Type_id = $_GET['Type_id'];
+            $cat_id = $_GET['cat_id'];
+    }else {
+        header("Location: ./");
+    }
+
+    
+
+
 ?>
 
 <!DOCTYPE html>
@@ -33,29 +48,44 @@
                 <h3 class="text-primary">Categorie</h3>
                 <div class="form-check">
                   <div class=" px-4">
-                    <input type="checkbox" class="form-check-input" name="Supermaker" id="Supermaker" value="checkedValue" checked>
-                    Supermaker <br>
-                    <input type="checkbox" class="form-check-input" name="Health" id="Health" value="checkedValue" >
-                    Health & Beauty <br>
-                    <input type="checkbox" class="form-check-input" name="Home" id="Home" value="checkedValue">
-                    Home & Office <br>
-                    <input type="checkbox" class="form-check-input" name="Appliance" id="Appliance" value="checkedValue" >
-                    Appliance <br>
-                    <input type="checkbox" class="form-check-input" name="Phone" id="Phone" value="checkedValue" checked>
-                    Phone & Tablets <br>
-                    <input type="checkbox" class="form-check-input" name="Computing" id="Computing" value="checkedValue" >
-                    Computing <br>
-                    <input type="checkbox" class="form-check-input" name="Electronics" id="Electronics" value="checkedValue" checked>
-                    Home & Office <br>
-                    <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
-                    Home & Office <br>
-                    <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue>
-                    Home & Office <br>
-                    <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
-                    Home & Office <br>
-                    <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
-                    Home & Office <br>
-                    
+
+                  <?php
+
+
+
+                        // Assuming you have fetched categories from the database and stored them in $categories array
+  
+                            // $sql = "SELECT DISTINCT pt.TypeName 
+                            //     FROM ProductTypes pt
+                            //     JOIN producttypecategories ptc ON pt.ProductTypeID = ptc.ProductTypeID
+                            //     JOIN Categories c ON ptc.CategoryID = c.CategoryID
+                            //     WHERE c.CategoryID = '$cat_id'";
+                        
+                        $sql = "SELECT * FROM productattributes where `ProductTypeID`= 4";
+
+
+                        $result = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+
+                                echo "<h4 class='text-primary'>".$row["AttributeName"]."</h4>" ;
+
+                                
+                            }
+                        }
+
+
+                        // if (mysqli_num_rows($result) > 0) {
+                        //     while ($row = mysqli_fetch_assoc($result)) {
+                        //         echo isset($cat_id)."<br>";
+                        //         echo isset($Type_id);
+                        //         echo "<input type='checkbox' class='form-check-input' name='".$row['TypeName']."' id='".$row['TypeName']."' value='TypeValue' checked>".$row['TypeName']."<br>";
+                        //     }
+                        // } else {
+                        //     echo "<li>No product types found.</li>";
+                        // }
+
+                    ?>
                   </div>
                 </div>
             </div>

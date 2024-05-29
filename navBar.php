@@ -1,4 +1,3 @@
-
 <style>
 
 @media all and (min-width: 992px) {
@@ -54,7 +53,7 @@
                     <button class="btn btn-light dropdown-toggle bg-white shadow-0" href="#" data-bs-toggle="dropdown" style="padding-bottom: 0.4rem;">  All  </button>
                     <ul class="dropdown-menu">
                         <?php
-                            $sql = "SELECT DISTINCT c.CategoryName, pt.TypeName 
+                            $sql = "SELECT DISTINCT c.CategoryName, pt.TypeName , c.CategoryID
                                     FROM ProductTypes pt
                                     JOIN producttypecategories ptc ON pt.ProductTypeID = ptc.ProductTypeID
                                     JOIN Categories c ON ptc.CategoryID = c.CategoryID  
@@ -74,11 +73,12 @@
                                         $currentCategory = $row['CategoryName'];
                                         
                                         // Start a new category
-                                        echo "<li><a class='dropdown-item' href='#'>" . htmlspecialchars($currentCategory) . "</a>";
+                                        echo "<li><a class='dropdown-item' href='produit.php?token=".$token."&cat_id=".$row['CategoryID'] ." '>" . htmlspecialchars($currentCategory) . "</a>";
                                         echo "<ul class='submenu dropdown-menu'>";
                                     }
                                     // List the type under the current category
-                                    echo "<li><a class='dropdown-item' href='#'>" . htmlspecialchars($row['TypeName']) . "</a></li>";
+                                    // echo "<li><a class='dropdown-item' href='       produit.php?token=".$token."&Type_id=".$row['TypeName'].",cat_id=".$row['CategoryID']." '            '>" . htmlspecialchars($row['TypeName']) . "</a></li>";
+                                    echo "<li><a class='dropdown-item' href='produit.php?token=".$token."&Type_id=".$row['TypeName']."'>" . htmlspecialchars($row['TypeName']) . "</a></li>";
                                 }
                                 // Close the last category's submenu
                                 if ($currentCategory !== '') {
@@ -87,27 +87,6 @@
                             }
                         ?>
                     </ul>
-
-
-
-
-                                    <button class="btn btn-light dropdown-toggle bg-white shadow-0" id="navbarDropdownMenuLink" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false" style="padding-bottom: 0.4rem;">
-                                        All
-                                    </button>
-                                    <ul class="dropdown-menu" size="2" aria-labelledby="navbarDropdownMenuLink">
-                                        <?php
-                                            $sql = "SELECT * FROM categories";
-                                            $result = mysqli_query($conn, $sql);
-                                            if (mysqli_num_rows($result) > 0) {
-                                                $token = uniqid(); // Generate a unique token
-                                                $_SESSION['token'] = $token;
-                                                while ($row = mysqli_fetch_assoc($result)) {
-                                                    echo "<li><a class='dropdown-item' href='./produit.php'>".$row['CategoryName']."</a></li> ";
-                                                }
-                                            }
-                                        ?>
-                                    </ul>
                     <input type="search" class="form-control" placeholder="Search products, brands and categories" aria-label="Search products, brands and catégorie" aria-describedby="button-addon2" />
                 </div>
                 <a class="text-white p-0" href="#" id="button-addon2"><i class="fas fa-search ps-3"></i></a>
