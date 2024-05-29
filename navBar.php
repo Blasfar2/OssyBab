@@ -1,3 +1,4 @@
+
 <style>
 
 @media all and (min-width: 992px) {
@@ -54,24 +55,31 @@
                         <ul class="dropdown-menu">
                         <?php
 
-                            $sql = "SELECT * FROM categories";
+                            $sql = "SELECT DISTINCT c.CategoryName , pt.TypeName 
+                                        FROM ProductTypes pt
+                                        JOIN producttypecategories ptc ON pt.ProductTypeID = ptc.ProductTypeID
+                                        JOIN Categories c ON ptc.CategoryID = c.CategoryID  
+                                        ORDER BY `c`.`CategoryName` ASC";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 $token = uniqid(); // Generate a unique token
                                 $_SESSION['token'] = $token;
+                                
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                    echo "<li><a class='dropdown-item' href='./produit.php'>".$row['CategoryName']."</a></li> ";
+
+                                    
+                                                                    
+
+                                         
                                 }
+                                echo"    <li><a class='dropdown-item' href='#'>Category</a>";
+                                echo"        <ul class='submenu dropdown-menu'> ";
+                                echo"            <li><a class='dropdown-item' href='#'>Type</a></li> ";
+                                
+                                echo"        </ul> ";
+                                echo"    </li> ";
+                                
                             };
-
-
-                            echo"    <li><a class='dropdown-item' href='#'> Dropdown item 2 &raquo; </a>  ";
-                            echo"        <ul class='submenu dropdown-menu'> ";
-                            echo"            <li><a class='dropdown-item' href='#'>Submenu item 1</a></li> ";
-                            echo"            <li><a class='dropdown-item' href='#'>Submenu item 2</a></li> ";
-                            echo"            <li><a class='dropdown-item' href='#'>Submenu item 3</a></li> ";
-                            echo"        </ul> ";
-                            echo"    </li> ";
                         ?>
                         </ul>
 

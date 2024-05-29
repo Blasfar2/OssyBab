@@ -106,9 +106,9 @@
     justify-content: flex-start;">
 
         <!-- ---------------------------- -->
-        <div class="p-2 m-3 rounded "style="width: 15rem; height:15rem ;line-height:2px; background-color:white ;box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;" >
-    
-                    <img src="./assets/img/samsang.jpg" style="width:100% ; height:59%;object-fit: contain;" class=" rounded">
+        <div class="p-2 my-3 mx-2 rounded "style="width: 15rem; height:15rem ;line-height:2px; background-color:white;position:relative ;box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;" >
+                        <p style="position:absolute ; right:9px; top:9px"class="bg-primary px-3 py-2 text-light rounded">50%</p>
+                        <img src="./assets/img/samsang.jpg" style="width:100% ; height:59%;object-fit: contain;" class=" rounded">
                         <p style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;" class="py-2">Samsang Galaxay note a 2 Gm35 dedede</p>
                         <p><span class="text-primary fw-bold">15Dhs</span> <s>20Dhs</s></p>
                         <div style="display: flex;justify-content: flex-end;gap: 5px;">
@@ -118,6 +118,19 @@
         
         </div>
         <!-- ---------------------------- -->
+        <!-- ---------------------------- -->
+        <div class="p-2 my-3 mx-2 rounded "style="width: 15rem; height:15rem ;line-height:2px; background-color:white;position:relative ;box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;" >
+                        <p style="position:absolute ; right:9px; top:9px"class="bg-primary px-3 py-2 text-light rounded">50%</p>
+                        <img src="./assets/img/samsang.jpg" style="width:100% ; height:59%;object-fit: contain;" class=" rounded">
+                        <p style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;" class="py-2">Samsang Galaxay note a 2 Gm35 dedede</p>
+                        <p><span class="text-primary fw-bold">15Dhs</span> <s>20Dhs</s></p>
+                        <div style="display: flex;justify-content: flex-end;gap: 5px;">
+                        <button class="btn btn-outline-primary"><i class="fa-solid fa-cart-shopping"></i></button>
+                        <button class="btn btn-outline-danger "><i class="fa-regular fa-heart"></i></button>
+                        </div>
+        
+        </div>
+        <!-- ---------------------------- -->   
     
     </div>
 </div>
