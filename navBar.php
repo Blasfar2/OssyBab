@@ -52,36 +52,42 @@
 
 
                     <button class="btn btn-light dropdown-toggle bg-white shadow-0" href="#" data-bs-toggle="dropdown" style="padding-bottom: 0.4rem;">  All  </button>
-                        <ul class="dropdown-menu">
+                    <ul class="dropdown-menu">
                         <?php
-
-                            $sql = "SELECT DISTINCT c.CategoryName , pt.TypeName 
-                                        FROM ProductTypes pt
-                                        JOIN producttypecategories ptc ON pt.ProductTypeID = ptc.ProductTypeID
-                                        JOIN Categories c ON ptc.CategoryID = c.CategoryID  
-                                        ORDER BY `c`.`CategoryName` ASC";
+                            $sql = "SELECT DISTINCT c.CategoryName, pt.TypeName 
+                                    FROM ProductTypes pt
+                                    JOIN producttypecategories ptc ON pt.ProductTypeID = ptc.ProductTypeID
+                                    JOIN Categories c ON ptc.CategoryID = c.CategoryID  
+                                    ORDER BY c.CategoryName ASC, pt.TypeName ASC";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 $token = uniqid(); // Generate a unique token
                                 $_SESSION['token'] = $token;
+                                $currentCategory = '';
                                 
                                 while ($row = mysqli_fetch_assoc($result)) {
-
-                                    
-                                                                    
-
-                                         
+                                    if ($row['CategoryName'] !== $currentCategory) {
+                                        if ($currentCategory !== '') {
+                                            // Close the previous category's submenu
+                                            echo "</ul></li>";
+                                        }
+                                        $currentCategory = $row['CategoryName'];
+                                        
+                                        // Start a new category
+                                        echo "<li><a class='dropdown-item' href='#'>" . htmlspecialchars($currentCategory) . "</a>";
+                                        echo "<ul class='submenu dropdown-menu'>";
+                                    }
+                                    // List the type under the current category
+                                    echo "<li><a class='dropdown-item' href='#'>" . htmlspecialchars($row['TypeName']) . "</a></li>";
                                 }
-                                echo"    <li><a class='dropdown-item' href='#'>Category</a>";
-                                echo"        <ul class='submenu dropdown-menu'> ";
-                                echo"            <li><a class='dropdown-item' href='#'>Type</a></li> ";
-                                
-                                echo"        </ul> ";
-                                echo"    </li> ";
-                                
-                            };
+                                // Close the last category's submenu
+                                if ($currentCategory !== '') {
+                                    echo "</ul></li>";
+                                }
+                            }
                         ?>
-                        </ul>
+                    </ul>
+
 
 
 
