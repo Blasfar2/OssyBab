@@ -162,6 +162,10 @@ $conn->close();
                 var href = $(this).attr('href');
                 $(this).attr('href', '../' + href);
             });
+            $('.profile-image img').each(function () {
+                var profile = $(this).attr('src');
+                $(this).attr('src', '../' + profile);
+            });
 
             $('.profile-link a').each(function () {
                 var href = $(this).attr('href');

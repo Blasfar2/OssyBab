@@ -84,6 +84,31 @@ $adminId = $_SESSION['id'];
 </head>
 
 <body>
+    <!-- Single Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="deleteModalLabel">Delete Category</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="deleteForm" action="process.php" method="post">
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete this category with ID: <span id="deleteProductId"></span>?
+                        </p>
+
+                        <input type="hidden" id="hiddenProductyId" name="ProductyId">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" form="deleteForm" class="btn btn-danger" name="delete">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- SIDEBAR -->
     <?php include ('../../includes/sidebar.php'); ?>
     <!-- /SIDEBAR -->
@@ -162,7 +187,8 @@ $adminId = $_SESSION['id'];
                                                 echo "<div class='actionBtns'>";
                                                 echo "<a href='view.php?token=" . $token . "&prod_id=" . $row['ProductID'] . "' class='btn btn-sm btn-outline-success' name='view' style='width: 90%;'><i class='fa-regular fa-eye'></i> View</a>";
                                                 echo "<a href='edit.php?token=" . $token . "&prod_id=" . $row['ProductID'] . "' class='btn btn-sm btn-outline-primary' style='width: 90%;'><i class='fa fa-edit'></i> Edit</a>";
-                                                echo "<a href='./' class='btn btn-sm btn-outline-danger' style='width: 90%;'><i class='fa fa-trash'></i> Delete</a>";
+                                                // echo "<a href='./' class='btn btn-sm btn-outline-danger' style='width: 90%;'><i class='fa fa-trash'></i> Delete</a>";
+                                                echo "<button type='button' class='btn btn-sm btn-outline-danger deleteBtn' data-bs-target='#deleteModal' data-product-id='" . $row['ProductID'] . "' style='width: 90%;'><i class='fa fa-trash'></i> Delete</button>";
                                                 echo "</div>";
                                                 echo "</td>";
                                                 echo "</tr>";
@@ -197,12 +223,40 @@ $adminId = $_SESSION['id'];
                 var href = $(this).attr('href');
                 $(this).attr('href', '../' + href);
             });
+            $('.profile-image img').each(function () {
+                var profile = $(this).attr('src');
+                $(this).attr('src', '../' + profile);
+            });
 
             $('.profile-link a').each(function () {
                 var href = $(this).attr('href');
                 $(this).attr('href', '../' + href);
             });
         });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var deleteModal = document.getElementById('deleteModal');
+            var confirmDelete = document.getElementById('confirmDelete');
+
+            // Event delegation to handle clicks on delete buttons
+            document.querySelector('.table-data').addEventListener('click', function (event) {
+                if (event.target.classList.contains('deleteBtn') || event.target.closest('.deleteBtn')) {
+                    var button = event.target.closest('.deleteBtn');
+                    var ProductyId = button.getAttribute('data-product-id');
+
+                    // Update the modal message with the Producty ID
+                    deleteProductId.textContent = ProductyId;
+
+                    // Update the hidden input value with the Producty ID
+                    hiddenProductyId.value = ProductyId;
+
+                    // Show the modal
+                    var bootstrapModal = new bootstrap.Modal(deleteModal);
+                    bootstrapModal.show();
+                }
+            });
+        });
+
     </script>
 </body>
 

@@ -186,6 +186,7 @@ $adminId = $_SESSION['id'];
     </section>
     <script src="../../assets/js/script.js"></script>
     <script>
+        
         $(document).ready(function () {
             // Function to preview image
             function previewImage(input) {
@@ -200,6 +201,20 @@ $adminId = $_SESSION['id'];
                 }
             }
 
+            $('.nav-list a').each(function () {
+                var href = $(this).attr('href');
+                $(this).attr('href', '../' + href);
+            });
+            $('.profile-image img').each(function () {
+                var profile = $(this).attr('src');
+                $(this).attr('src', '../' + profile);
+            });
+
+            $('.profile-link a').each(function () {
+                var href = $(this).attr('href');
+                $(this).attr('href', '../' + href);
+            });
+            
             // Trigger the function when a file is selected
             $('input[type="file"]').change(function () {
                 var file = this.files[0];
