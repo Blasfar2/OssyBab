@@ -53,7 +53,7 @@
                     <button class="btn btn-light dropdown-toggle bg-white shadow-0" href="#" data-bs-toggle="dropdown" style="padding-bottom: 0.4rem;">  All  </button>
                     <ul class="dropdown-menu">
                         <?php
-                            $sql = "SELECT DISTINCT c.CategoryName, pt.TypeName , c.CategoryID
+                            $sql = "SELECT DISTINCT c.CategoryName, pt.TypeName , c.CategoryID , pt.ProductTypeID
                                     FROM ProductTypes pt
                                     JOIN producttypecategories ptc ON pt.ProductTypeID = ptc.ProductTypeID
                                     JOIN Categories c ON ptc.CategoryID = c.CategoryID  
@@ -73,12 +73,12 @@
                                         $currentCategory = $row['CategoryName'];
                                         
                                         // Start a new category
-                                        echo "<li><a class='dropdown-item' href='produit.php?token=".$token."&cat_id=".$row['CategoryID'] ." '>" . htmlspecialchars($currentCategory) . "</a>";
+                                        echo "<li><a class='dropdown-item' href='produit.php?token=".$token."&CT_id=".$row['CategoryID'] ." '>" . htmlspecialchars($currentCategory) . "</a>";
                                         echo "<ul class='submenu dropdown-menu'>";
                                     }
                                     // List the type under the current category
                                     // echo "<li><a class='dropdown-item' href='       produit.php?token=".$token."&Type_id=".$row['TypeName'].",cat_id=".$row['CategoryID']." '            '>" . htmlspecialchars($row['TypeName']) . "</a></li>";
-                                    echo "<li><a class='dropdown-item' href='produit.php?token=".$token."&Type_id=".$row['TypeName']."'>" . htmlspecialchars($row['TypeName']) . "</a></li>";
+                                    echo "<li><a class='dropdown-item' href='produit.php?token=".$token."&PT_id=".$row['ProductTypeID']."'>" . htmlspecialchars($row['TypeName']) . "</a></li>";
                                 }
                                 // Close the last category's submenu
                                 if ($currentCategory !== '') {

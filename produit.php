@@ -1,13 +1,11 @@
 <?php
     include ("./includes/connection.php");
 
-    if (isset($_GET['token']) && isset($_GET['cat_id'])) {
-            $cat_id = $_GET['cat_id'];
-    
-    
-    }elseif (isset($_GET['token']) && isset($_GET['Type_id'])) {
-            $Type_id = $_GET['Type_id'];
-            $cat_id = $_GET['cat_id'];
+    if (isset($_GET['token']) && isset($_GET['PT_id'])) {
+            $PT_id = $_GET['PT_id'];
+    }elseif(isset($_GET['token']) && isset($_GET['CT_id'])){
+            $CT_id = $_GET['CT_id'];
+
     }else {
         header("Location: ./");
     }
@@ -60,26 +58,49 @@
                             //     JOIN producttypecategories ptc ON pt.ProductTypeID = ptc.ProductTypeID
                             //     JOIN Categories c ON ptc.CategoryID = c.CategoryID
                             //     WHERE c.CategoryID = '$cat_id'";
-                        
-                        $sql = "SELECT * FROM productattributes where `ProductTypeID`= 4";
+                        if (isset($PT_id)) {
+
+                            $sql = "SELECT AttributeName ,AttributeID FROM productattributes where `ProductTypeID`= $PT_id";
+                            $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+
+                                    echo "<h4 class='text-primary'>".$row["AttributeName"]."</h4>" ;
 
 
-                        $result = mysqli_query($conn, $sql);
-                        if (mysqli_num_rows($result) > 0) {
-                            while ($row = mysqli_fetch_assoc($result)) {
+                                    $sql = "SELECT * FROM productattributevalues WHERE `AttributeID` =$row['AttributeID']";
+                                    $result = mysqli_query($conn, $sql);
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while ($row = mysqli_fetch_assoc($result)) {    
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" disabled>
+                                        <label class="form-check-label" for="flexRadioDisabled">
+                                            Disabled radio
+                                        </label>
+                                    </div>}
 
-                                echo "<h4 class='text-primary'>".$row["AttributeName"]."</h4>" ;
+                            }   
 
                                 
                             }
-                        }
+                        }else{
+                            $sql = "SELECT `AttributeName`FROM productattributes LEFT OUTER JOIN producttypecategories ON productattributes.`ProductTypeID` = producttypecategories.`ProductTypeID`  WHERE `CategoryID` = $CT_id";
+                            $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                            echo "<h4 class='text-primary'>".$row["AttributeName"]."</h4>" ;}
+                                }
+                        }  
+
+                        
+                   
 
 
                         // if (mysqli_num_rows($result) > 0) {
                         //     while ($row = mysqli_fetch_assoc($result)) {
                         //         echo isset($cat_id)."<br>";
                         //         echo isset($Type_id);
-                        //         echo "<input type='checkbox' class='form-check-input' name='".$row['TypeName']."' id='".$row['TypeName']."' value='TypeValue' checked>".$row['TypeName']."<br>";
+                        //         a
                         //     }
                         // } else {
                         //     echo "<li>No product types found.</li>";
