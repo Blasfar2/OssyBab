@@ -67,22 +67,23 @@
 
                                     echo "<h4 class='text-primary'>".$row["AttributeName"]."</h4>" ;
 
+                                    // $Attribute_ID=$row['AttributeID'];
 
-                                    $sql = "SELECT * FROM productattributevalues WHERE `AttributeID` =$row['AttributeID']";
-                                    $result = mysqli_query($conn, $sql);
-                                    if (mysqli_num_rows($result) > 0) {
-                                        while ($row = mysqli_fetch_assoc($result)) {    
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" disabled>
-                                        <label class="form-check-label" for="flexRadioDisabled">
-                                            Disabled radio
-                                        </label>
-                                    </div>}
+                                    // $sql = "SELECT * FROM productattributevalues WHERE `AttributeID` = $Attribute_ID ";
+                                    // $result = mysqli_query($conn, $sql);
+                                    // if (mysqli_num_rows($result) > 0) {
+                                    //     while ($row = mysqli_fetch_assoc($result)) {    
+                                    // // <div class="form-check">
+                                    // //     <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" disabled>
+                                    // //     <label class="form-check-label" for="flexRadioDisabled">
+                                    // //         Disabled radio  
+                                    // //     </label>
+                                    // // </div>}
 
-                            }   
-
+                                    //     }   
+                                    // }
                                 
-                            }
+                                }
                         }else{
                             $sql = "SELECT `AttributeName`FROM productattributes LEFT OUTER JOIN producttypecategories ON productattributes.`ProductTypeID` = producttypecategories.`ProductTypeID`  WHERE `CategoryID` = $CT_id";
                             $result = mysqli_query($conn, $sql);
@@ -93,7 +94,7 @@
                         }  
 
                         
-                   
+                    }
 
 
                         // if (mysqli_num_rows($result) > 0) {
