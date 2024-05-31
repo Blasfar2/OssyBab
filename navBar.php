@@ -77,7 +77,7 @@
                                         echo "<ul class='submenu dropdown-menu'>";
                                     }
                                     // List the type under the current category
-                                    echo "<li><a class='dropdown-item' href='produit.php?token=".$token."&PT_id=".$row['ProductTypeID']."'>" . htmlspecialchars($row['TypeName']) . "</a></li>";
+                                    echo "<li><a class='dropdown-item' href='produit.php?token=".$token."&PT_id=".$row['ProductTypeID']."&CT_id=".$row['CategoryID']."'>" . htmlspecialchars($row['TypeName']) . "</a></li>";
                                 }
                                 // Close the last category's submenu
                                 if ($currentCategory !== '') {

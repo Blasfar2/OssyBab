@@ -1,7 +1,8 @@
 <?php
     include ("./includes/connection.php");
 
-    if (isset($_GET['token']) && isset($_GET['PT_id'])) {
+    if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id']) ) {
+            $CT_id = $_GET['CT_id'];
             $PT_id = $_GET['PT_id'];
     }elseif(isset($_GET['token']) && isset($_GET['CT_id'])){
             $CT_id = $_GET['CT_id'];
@@ -49,63 +50,68 @@
 
                   <?php
 
+                    if (isset($PT_id)) {
 
+                        $sql1 = "SELECT * 
+                        FROM producttypecategories 
+                        LEFT JOIN productattributes 
+                        ON producttypecategories.`ProductTypeID` = productattributes.`ProductTypeID`
+                        WHERE producttypecategories.`CategoryID` = $CT_id 
+                        AND producttypecategories.`ProductTypeID` = $PT_id";
 
-                        // Assuming you have fetched categories from the database and stored them in $categories array
-  
-                            // $sql = "SELECT DISTINCT pt.TypeName 
-                            //     FROM ProductTypes pt
-                            //     JOIN producttypecategories ptc ON pt.ProductTypeID = ptc.ProductTypeID
-                            //     JOIN Categories c ON ptc.CategoryID = c.CategoryID
-                            //     WHERE c.CategoryID = '$cat_id'";
-                        if (isset($PT_id)) {
+                        $result1 = mysqli_query($conn, $sql1);
+               
+                
+                        if ($result1 && mysqli_num_rows($result1) > 0) {
+                   
+                        while ($row1 = mysqli_fetch_assoc($result1)) {
+                            echo "<h2 class='text-primary'>".$row1["AttributeName"]."</h2>";
+               
+                       
+                            $Attribute_ID = $row1['AttributeID'];
+                            $dataType = 'Value'.ucwords($row1['DataType']);
+               
+                            $sql2 = "SELECT * FROM productattributevalues WHERE `AttributeID` = $Attribute_ID";
+               
 
-                            $sql = "SELECT AttributeName ,AttributeID FROM productattributes where `ProductTypeID`= $PT_id";
-                            $result = mysqli_query($conn, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                                while ($row = mysqli_fetch_assoc($result)) {
+                            $result2 = mysqli_query($conn, $sql2);
+               
+                        
+                            if ($result2 && mysqli_num_rows($result2) > 0) {
+                            
+                                while ($row2 = mysqli_fetch_assoc($result2)) {
+                               
+                                    if (isset($row2[$dataType])) {
+ 
+                                        echo"<div class='form-check'>";
+                                        echo    "<input class='form-check-input' type='checkbox' value=' id='".$Attribute_ID."'>";
+                                        echo    "<label class='form-check-label' for='flexCheckDefault'>";
+                                        echo    $row2[$dataType];
+                                        echo    "</label>";
+                                        echo "</div>";
 
-                                    echo "<h4 class='text-primary'>".$row["AttributeName"]."</h4>" ;
-
-                                    // $Attribute_ID=$row['AttributeID'];
-
-                                    // $sql = "SELECT * FROM productattributevalues WHERE `AttributeID` = $Attribute_ID ";
-                                    // $result = mysqli_query($conn, $sql);
-                                    // if (mysqli_num_rows($result) > 0) {
-                                    //     while ($row = mysqli_fetch_assoc($result)) {    
-                                    // // <div class="form-check">
-                                    // //     <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" disabled>
-                                    // //     <label class="form-check-label" for="flexRadioDisabled">
-                                    // //         Disabled radio  
-                                    // //     </label>
-                                    // // </div>}
-
-                                    //     }   
-                                    // }
-                                
+                                    } else {
+                                        echo "<p>No data, coming soon</p>";
+                                    }
                                 }
+                             }}}
+
                         }else{
-                            $sql = "SELECT `AttributeName`FROM productattributes LEFT OUTER JOIN producttypecategories ON productattributes.`ProductTypeID` = producttypecategories.`ProductTypeID`  WHERE `CategoryID` = $CT_id";
-                            $result = mysqli_query($conn, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                                while ($row = mysqli_fetch_assoc($result)) {
-                            echo "<h4 class='text-primary'>".$row["AttributeName"]."</h4>" ;}
-                                }
-                        }  
+                            $sql = "SELECT * 
+                                    FROM producttypecategories 
+                                    LEFT JOIN productattributes 
+                                    ON producttypecategories.`ProductTypeID` = productattributes.`ProductTypeID`
+                                    WHERE producttypecategories.`CategoryID` = $CT_id ";
 
+                                    $result = mysqli_query($conn, $sql);
+                                    if ($result && mysqli_num_rows($result) > 0) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+
+                                        echo "<h4 class='text-primary'>".$row["AttributeName"]."</h4>" ;
+                                        }  
+                                    }           
                         
                     }
-
-
-                        // if (mysqli_num_rows($result) > 0) {
-                        //     while ($row = mysqli_fetch_assoc($result)) {
-                        //         echo isset($cat_id)."<br>";
-                        //         echo isset($Type_id);
-                        //         a
-                        //     }
-                        // } else {
-                        //     echo "<li>No product types found.</li>";
-                        // }
 
                     ?>
                   </div>
