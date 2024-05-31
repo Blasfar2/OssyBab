@@ -34,131 +34,127 @@
 
     <?php include ('./navbar.php'); ?>
 
+
     <div class="row">
-    <div class="d-flex col-3 flex-column z-3 sticky-top" style="height:80vh ; top:10vh"> 
-            <div class="btn-group container align-items-center"style="height:5rem">
-                
-            <a class="btn btn-primary  " style="" href="#" role="button">Rest</a>
-            <a class="btn btn-primary  " href="#" role="button">Rest</a>
 
-            </div>        
+        <div class="row col-xl-3 col-md-9 mt-3 ">
+            <div class=" col  z-3 sticky-top"  > 
 
-            <div class="categorie mx-3 p-2 rounded" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;background-color:white;">
-                <h3 class="text-primary">Categorie</h3>
-                <div class="form-check">
-                  <div class=" px-4">
 
-                  <?php
+                    <div class="btn-group container align-items-center"style="">
+                        <a class="btn btn-primary " style="" href="#" role="button">Rest</a>
+                        <a class="btn btn-primary " href="#" role="button">Rest</a>
+                    </div>   
+                    
+                    
 
-                    if (isset($PT_id)) {
+                        <?php
 
-                        $sql1 = "SELECT * 
-                        FROM producttypecategories 
-                        LEFT JOIN productattributes 
-                        ON producttypecategories.`ProductTypeID` = productattributes.`ProductTypeID`
-                        WHERE producttypecategories.`CategoryID` = $CT_id 
-                        AND producttypecategories.`ProductTypeID` = $PT_id";
+                            if (isset($PT_id)) {
 
-                        $result1 = mysqli_query($conn, $sql1);
-               
-                
-                        if ($result1 && mysqli_num_rows($result1) > 0) {
-                   
-                        while ($row1 = mysqli_fetch_assoc($result1)) {
-                            echo "<h2 class='text-primary'>".$row1["AttributeName"]."</h2>";
-               
-                       
-                            $Attribute_ID = $row1['AttributeID'];
-                            $dataType = 'Value'.ucwords($row1['DataType']);
-               
-                            $sql2 = "SELECT * FROM productattributevalues WHERE `AttributeID` = $Attribute_ID";
-               
+                                $sql1 = "SELECT * 
+                                FROM producttypecategories 
+                                LEFT JOIN productattributes 
+                                ON producttypecategories.`ProductTypeID` = productattributes.`ProductTypeID`
+                                WHERE producttypecategories.`CategoryID` = $CT_id 
+                                AND producttypecategories.`ProductTypeID` = $PT_id";
 
-                            $result2 = mysqli_query($conn, $sql2);
-               
+                                $result1 = mysqli_query($conn, $sql1);
+                    
                         
-                            if ($result2 && mysqli_num_rows($result2) > 0) {
+                                if ($result1 && mysqli_num_rows($result1) > 0) {
+                        
+                                while ($row1 = mysqli_fetch_assoc($result1)) {
+                    
                             
-                                while ($row2 = mysqli_fetch_assoc($result2)) {
-                               
-                                    if (isset($row2[$dataType])) {
- 
-                                        echo"<div class='form-check'>";
-                                        echo    "<input class='form-check-input' type='checkbox' value=' id='".$Attribute_ID."'>";
-                                        echo    "<label class='form-check-label' for='flexCheckDefault'>";
-                                        echo    $row2[$dataType];
-                                        echo    "</label>";
-                                        echo "</div>";
+                                    $Attribute_ID = $row1['AttributeID'];
+                                    $dataType = 'Value'.ucwords($row1['DataType']);
+                    
+                                    $sql2 = "SELECT * FROM productattributevalues WHERE `AttributeID` = $Attribute_ID";
+                    
 
-                                    } else {
-                                        echo "<p>No data, coming soon</p>";
-                                    }
-                                }
-                             }}}
+                                    $result2 = mysqli_query($conn, $sql2);
+                    
+                                
+                                    if ($result2 && mysqli_num_rows($result2) > 0) {
+                                    
+                                        while ($row2 = mysqli_fetch_assoc($result2)) {
+                                    
+                                            if (isset($row2[$dataType])) {
 
-                        }else{
-                            $sql = "SELECT * 
-                                    FROM producttypecategories 
-                                    LEFT JOIN productattributes 
-                                    ON producttypecategories.`ProductTypeID` = productattributes.`ProductTypeID`
-                                    WHERE producttypecategories.`CategoryID` = $CT_id ";
 
-                                    $result = mysqli_query($conn, $sql);
-                                    if ($result && mysqli_num_rows($result) > 0) {
-                                        while ($row = mysqli_fetch_assoc($result)) {
+                                                echo"<div class='col m-3 p-3 rounded' style='box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;background-color:white;'>";
+                                                echo"<h3 class='text-primary'>".$row1["AttributeName"]."</h3>";
+                                                echo"<div class=' px-4'>";
 
-                                        echo "<h4 class='text-primary'>".$row["AttributeName"]."</h4>" ;
-                                        }  
-                                    }           
+                                                echo"<div class='form-check'>";
+                                                echo    "<input class='form-check-input' type='checkbox' value=' id='".$Attribute_ID."'>";
+                                                echo    "<label class='form-check-label' >";  //<--for='flexCheckDefault'
+                                                echo    $row2[$dataType];
+                                                echo    "</label>";
+                                                echo "</div>";
+                                                echo "</div></div>";
+
+                                            } 
+                                        }
+                                }}}
+
+                                }else{
+                                    $sql = "SELECT * 
+                                            FROM producttypecategories 
+                                            LEFT JOIN productattributes 
+                                            ON producttypecategories.`ProductTypeID` = productattributes.`ProductTypeID`
+                                            WHERE producttypecategories.`CategoryID` = $CT_id ";
+
+                                            $result = mysqli_query($conn, $sql);
+                                            if ($result && mysqli_num_rows($result) > 0) {
+                                                while ($row = mysqli_fetch_assoc($result)) {
+
+                                                echo "<h4 class='text-primary'>".$row["AttributeName"]."</h4>" ;
+                                                }  
+                                            }           
+                                
+                            }
+
+                        ?>
                         
-                    }
+                    
 
-                    ?>
-                  </div>
-                </div>
-            </div>
-            <div class="categorie mx-3 mt-3 p-2 rounded" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;background-color:white;">
-                <h3 class="text-primary">Prix</h3>
-                <div class="double-slider-box">
-                    <div class="range-slider">
-                        <span class="slider-track"></span>
-                        <input type="range" name="min-val" class="min-val" min="1000" max="12000" value="2000" oninput="slideMin()">
-                        <input type="range" name="max-val" class="max-val" min="1000" max="12000" value="8000" oninput="slideMax()">
-                        <div class="tooltip min-tooltip"></div>
-                        <div class="tooltip max-tooltip"></div>
-                    </div>
-                    <div class="input-box">
-                        <div class="min-box">
-                            <div class="input-wrap">
-                                <span class="input-addon">Dh</span>
-                                <input type="text" name="min-input" class="input-field min-input" onchange="setMinInput()">
+                    <div class="categorie mx-3 mt-3 p-2 rounded col" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;background-color:white;">
+                        <h3 class="text-primary">Prix</h3>
+                        <div class="double-slider-box">
+                            <div class="range-slider">
+                                <span class="slider-track"></span>
+                                <input type="range" name="min-val" class="min-val" min="1000" max="12000" value="2000" oninput="slideMin()">
+                                <input type="range" name="max-val" class="max-val" min="1000" max="12000" value="8000" oninput="slideMax()">
+                                <div class="tooltip min-tooltip"></div>
+                                <div class="tooltip max-tooltip"></div>
+                            </div>
+                            <div class="input-box">
+                                <div class="min-box">
+                                    <div class="input-wrap">
+                                        <span class="input-addon">Dh</span>
+                                        <input type="text" name="min-input" class="input-field min-input" onchange="setMinInput()">
+                                    </div>
+                                </div>
+                                <div class="max-box">
+                                    <div class="input-wrap">
+                                        <span class="input-addon">Dh</span>
+                                        <input type="text" name="max-input" class="input-field max-input" onchange="setMaxInput()">
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                        <div class="max-box">
-                            <div class="input-wrap">
-                                <span class="input-addon">Dh</span>
-                                <input type="text" name="max-input" class="input-field max-input" onchange="setMaxInput()">
-                            </div>
-                        </div>
-
                     </div>
-                </div>
             </div>
+        </div>
 
 
-        
-        
-        
-        
-    
-    
-    
-    
-    
-    
-    
-    </div>
-    <div class="newCard col-8 gap-2 h-100   " style="
+
+
+
+    <div class="newCard row col gap-2 col-md-9     " style="
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;">
@@ -192,7 +188,7 @@
     
     </div>
 </div>
-
+</div>
 
 
 
