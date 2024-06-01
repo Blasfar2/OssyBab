@@ -201,13 +201,19 @@ li {
 	font-weight: 700;
 }
 #content main .table-data .order table tr td .status.completed {
-	background: var(--blue);
+	background: #32CD32; /* Lime Green */
 }
-#content main .table-data .order table tr td .status.process {
-	background: var(--yellow);
+#content main .table-data .order table tr td .status.processing {
+	background: #4169E1; /* Royal Blue */
 }
 #content main .table-data .order table tr td .status.pending {
-	background: var(--orange);
+	background: #FFD700; /* Gold */
+}
+#content main .table-data .order table tr td .status.shipped {
+	background: #FFA500; /* Orange */
+}
+#content main .table-data .order table tr td .status.cancelled {
+	background:  #FF6347; /* Tomato Red */
 }
 
 

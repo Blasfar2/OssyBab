@@ -1,5 +1,6 @@
 <?php
 require_once '../includes/session_test.php';
+include ("../../includes/connection.php");
 $adminId = $_SESSION['id'];
 
 ?>
@@ -10,7 +11,6 @@ $adminId = $_SESSION['id'];
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard</title>
   <!-- Boxicons -->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -20,14 +20,29 @@ $adminId = $_SESSION['id'];
   <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="../assets/css/nav_sidebar.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    crossorigin="anonymous" />
 
 
   <!-- <script src ="assets/js/bootstrap.min.js"></script> -->
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
 
+  <style>
+    .actionBtns {
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: row;
+      gap: 15px;
+      align-items: center;
+    }
 
+    .status_filter {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+  </style>
 
 </head>
 
@@ -98,103 +113,54 @@ $adminId = $_SESSION['id'];
             <div class="card">
               <div class="card-body">
                 <table class="table table-bordered" id="OrderTable">
-                  <colgroup>
-                    <!-- 	<col width="10%">
-                    <col width="10%">
-                    <col width="10%">
-                    <col width="10%">
-                    <col width="20%">
-                    <col width="10%"> -->
-                  </colgroup>
                   <thead>
                     <tr>
-                      <th>User</th>
-                      <th>Date Order</th>
-                      <th>Status</th>
+                      <th>Order ID</th>
+                      <th style='width: 25%;'>
+                        <span>Date Order</span>
+                      </th>
+                      <th style='width: 25%;'>
+                        <span>Status: </span>
+                      </th>
                       <th>Ammount</th>
                       <th>Action</th>
-
                     </tr>
+
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>2011-04-25</td>
-                      <td><span class="status completed">Completed</span></td>
-                      <td>$320,800</td>
-                      <td>
-                        <button class='btn btn-sm btn-outline-primary edit_student' data-toggle='modal'
-                          data-target='#edit$id' type='button'><i class='fa fa-edit'></i> Edit</button>
-                      </td>
-
-
-                    </tr>
-                    <tr>
-                      <td>Garrett Winters</td>
-
-                      <td>2011-07-25</td>
-                      <td><span class="status pending">Pending</span></td>
-                      <td>$170,750</td>
-                      <td>
-                        <button class='btn btn-sm btn-outline-primary edit_student' data-toggle='modal'
-                          data-target='#edit$id' type='button'><i class='fa fa-edit'></i> Edit</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Ashton Cox</td>
-
-                      <td>2009-01-12</td>
-                      <td><span class="status process">Process</span></td>
-                      <td>$86,000</td>
-                      <td>
-                        <button class='btn btn-sm btn-outline-primary edit_student' data-toggle='modal'
-                          data-target='#edit$id' type='button'><i class='fa fa-edit'></i> Edit</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Ashton Cox</td>
-
-                      <td>2009-01-12</td>
-                      <td><span class="status pending">Pending</span></td>
-                      <td>$86,000</td>
-                      <td>
-                        <button class='btn btn-sm btn-outline-primary edit_student' data-toggle='modal'
-                          data-target='#edit$id' type='button'><i class='fa fa-edit'></i> Edit</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Ashton Cox</td>
-
-                      <td>2009-01-12</td>
-                      <td><span class="status completed">Completed</span></td>
-                      <td>$86,000</td>
-                      <td>
-                        <button class='btn btn-sm btn-outline-primary edit_student' data-toggle='modal'
-                          data-target='#edit$id' type='button'><i class='fa fa-edit'></i> Edit</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Ashton Cox</td>
-
-                      <td>2009-01-12</td>
-                      <td><span class="status completed">Completed</span></td>
-                      <td>$86,000</td>
-                      <td>
-                        <button class='btn btn-sm btn-outline-primary edit_student' data-toggle='modal'
-                          data-target='#edit$id' type='button'><i class='fa fa-edit'></i> Edit</button>
-                      </td>
-                    </tr>
-
+                    <?php
+                    $sql = "SELECT * FROM orders where Status = 'pending'";
+                    $result = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                      $token = uniqid(); // Generate a unique token
+                      $_SESSION['token'] = $token;
+                      while ($row = mysqli_fetch_assoc($result)) {
+                        $orderDateTime = $row['OrderDate'];
+                        $dateAndTime = explode(" ", $orderDateTime);
+                        $date = $dateAndTime[0]; // Date component
+                        $time = $dateAndTime[1]; // Time component
+                        echo "<tr>";
+                        echo "<td style='text-align: center;'>" . $row['OrderID'] . "</td>";
+                        echo "<td>" . $date . "</td>";
+                        echo "<td> <span class='status " . $row['Status'] . "'>" . $row['Status'] . "</span></td>";
+                        echo "<td>" . $row['TotalAmount'] . " DH</td>";
+                        echo "<td class='action-column' style='width: 15%;'>";
+                        echo "<div class='actionBtns'>";
+                        echo "<a href='../orders/view.php?token=" . $token . "&order_id=" . $row['OrderID'] . "' class='btn btn-sm btn-outline-success' name='view' ><i class='fa-regular fa-eye'></i> View</a>";
+                        echo "<a href='../orders/edit.php?token=" . $token . "&order_id=" . $row['OrderID'] . "' class='btn btn-sm btn-outline-primary' ><i class='fa fa-edit'></i> Edit</a>";
+                        echo "</div>";
+                        echo "</td>";
+                        echo "</tr>";
+                      }
+                    }
+                    ?>
                   </tbody>
-
                 </table>
-                </table>
-
               </div>
             </div>
           </div>
-
         </div>
+      </div>
     </main>
     <!-- MAIN -->
   </section>
@@ -207,9 +173,9 @@ $adminId = $_SESSION['id'];
   </script>
 
   <script>
-    $(document).ready(function () {
-      $('#myTable').DataTable();
-    });
+    // $(document).ready(function () {
+    //   $('#myTable').DataTable();
+    // });
   </script>
 
   <script src="../assets/js/script.js"></script>

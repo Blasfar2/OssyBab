@@ -6,9 +6,10 @@ $adminId = $_SESSION['id'];
 if (isset($_GET['token']) && isset($_GET['cat_id'])) {
     if ($_GET['token'] === $_SESSION['token']) {
         $cat_id = $_GET['cat_id'];
-
+        $_SESSION['token']='';
+    } else {
+        $cat_id = null;
     }
-
 } else {
     header("Location: ./");
 }
