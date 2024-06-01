@@ -43,79 +43,88 @@
 
                     <div class="btn-group container align-items-center"style="">
                         <a class="btn btn-primary " style="" href="#" role="button">Rest</a>
-                        <a class="btn btn-primary " href="#" role="button">Rest</a>
+                        <a class="btn btn-primary " href="#" role="button">Sumbit</a>
                     </div>   
                     
                     
 
-                        <?php
+                    <?php
 
-                            if (isset($PT_id)) {
+                        if (isset($PT_id)) {
 
-                                $sql1 = "SELECT * 
-                                FROM producttypecategories 
-                                LEFT JOIN productattributes 
-                                ON producttypecategories.`ProductTypeID` = productattributes.`ProductTypeID`
-                                WHERE producttypecategories.`CategoryID` = $CT_id 
-                                AND producttypecategories.`ProductTypeID` = $PT_id";
+                            $sql1 = "SELECT * 
+                            FROM producttypecategories 
+                            LEFT JOIN productattributes 
+                            ON producttypecategories.`ProductTypeID` = productattributes.`ProductTypeID`
+                            WHERE producttypecategories.`CategoryID` = $CT_id 
+                            AND producttypecategories.`ProductTypeID` = $PT_id";
 
-                                $result1 = mysqli_query($conn, $sql1);
+                            $result1 = mysqli_query($conn, $sql1);
                     
                         
-                                if ($result1 && mysqli_num_rows($result1) > 0) {
+                            if ($result1 && mysqli_num_rows($result1) > 0) {
                         
                                 while ($row1 = mysqli_fetch_assoc($result1)) {
                     
-                            
                                     $Attribute_ID = $row1['AttributeID'];
                                     $dataType = 'Value'.ucwords($row1['DataType']);
                     
                                     $sql2 = "SELECT * FROM productattributevalues WHERE `AttributeID` = $Attribute_ID";
-                    
-
                                     $result2 = mysqli_query($conn, $sql2);
+
+                                    echo"<div class='col m-4 p-3 rounded' style='box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;background-color:white;'>";
+                                    echo"<h3 class='text-primary'>".$row1["AttributeName"]."</h3>";
                     
                                 
                                     if ($result2 && mysqli_num_rows($result2) > 0) {
-                                    
                                         while ($row2 = mysqli_fetch_assoc($result2)) {
-                                    
                                             if (isset($row2[$dataType])) {
 
-
-                                                echo"<div class='col m-3 p-3 rounded' style='box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;background-color:white;'>";
-                                                echo"<h3 class='text-primary'>".$row1["AttributeName"]."</h3>";
-                                                echo"<div class=' px-4'>";
-
                                                 echo"<div class='form-check'>";
-                                                echo    "<input class='form-check-input' type='checkbox' value=' id='".$Attribute_ID."'>";
+                                                echo    "<input class='form-check-input' type='checkbox' value='".$Attribute_ID."' name='".$Attribute_ID."'>";
                                                 echo    "<label class='form-check-label' >";  //<--for='flexCheckDefault'
                                                 echo    $row2[$dataType];
                                                 echo    "</label>";
                                                 echo "</div>";
-                                                echo "</div></div>";
-
+                                                
                                             } 
                                         }
-                                }}}
-
-                                }else{
-                                    $sql = "SELECT * 
-                                            FROM producttypecategories 
-                                            LEFT JOIN productattributes 
-                                            ON producttypecategories.`ProductTypeID` = productattributes.`ProductTypeID`
-                                            WHERE producttypecategories.`CategoryID` = $CT_id ";
-
-                                            $result = mysqli_query($conn, $sql);
-                                            if ($result && mysqli_num_rows($result) > 0) {
-                                                while ($row = mysqli_fetch_assoc($result)) {
-
-                                                echo "<h4 class='text-primary'>".$row["AttributeName"]."</h4>" ;
-                                                }  
-                                            }           
-                                
+                                    }else{echo "<p>No Data , coming soon</p>";}
+                                echo "</div>";}
                             }
+                        }else{
+                            $sql1 = "SELECT * 
+                            FROM producttypecategories 
+                            LEFT JOIN productattributes 
+                            ON producttypecategories.`ProductTypeID` = productattributes.`ProductTypeID`
+                            WHERE producttypecategories.`CategoryID` = $CT_id ";
+                            $result1 = mysqli_query($conn, $sql1);
 
+                                if ($result1 && mysqli_num_rows($result1) > 0) {
+                                    while ($row1 = mysqli_fetch_assoc($result1)) {
+                                        $Attribute_ID = $row1['AttributeID'];
+                                        $dataType = 'Value'.ucwords($row1['DataType']);
+                                        $sql2 = "SELECT * FROM productattributevalues WHERE `AttributeID` = $Attribute_ID";
+                                        $result2 = mysqli_query($conn, $sql2);
+                                        echo"<div class='col m-4 p-3 rounded' style='box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;background-color:white;'>";
+                                        echo"<h3 class='text-primary'>".$row1["AttributeName"]."</h3>";
+                                        if ($result2 && mysqli_num_rows($result2) > 0) {
+                                            while ($row2 = mysqli_fetch_assoc($result2)) {
+                                                if (isset($row2[$dataType])) {
+                                                    echo"<div class='form-check'>";
+                                                    echo    "<input class='form-check-input' type='checkbox' value='".$Attribute_ID."' name='".$Attribute_ID."'>";
+                                                    echo    "<label class='form-check-label' >";  //<--for='flexCheckDefault'
+                                                    echo    $row2[$dataType];
+                                                    echo    "</label>";
+                                                    echo "</div>"; 
+                                                } 
+                                            }
+                                        }else{echo "<p>No Data , coming soon</p>";}
+                                    echo "</div>";
+                                    }
+                                }
+
+                        }                  
                         ?>
                         
                     
