@@ -82,6 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order_id'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/nav_sidebar.css" />
+
     <link rel="stylesheet" href="pdf_styles.css" />
     <link rel="stylesheet" href="modal_style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -94,6 +95,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order_id'])) {
     <style>
         ul {
             padding-left: 0rem;
+        }
+
+        .status.completed {
+            color: #32CD32;
+            /* Lime Green */
+        }
+
+        .status.processing {
+            color: #4169E1;
+            /* Royal Blue */
+        }
+
+        .status.pending {
+            color: #FFD700;
+            /* Gold */
+        }
+
+        .status.shipped {
+            color: #FFA500;
+            /* Orange */
+        }
+
+        .status.cancelled {
+            color: #FF6347;
+            /* Tomato Red */
         }
 
         .invoice {
@@ -276,16 +302,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order_id'])) {
                                                                 if ($order_info) {
                                                                     echo "<li><span class='text-bold'>ID:</span> " . $order_id . "</li>";
                                                                     echo "<li><span class='text-bold'>Issue Date:</span>" . $order_info["OrderDate"] . "</li>";
-                                                                    echo "<li><span class='text-bold'>Status: </span>";
-                                                                    echo "  <form action='' method='post' class='selectBox' >
+                                                                    echo "<li><form action='' method='post' class='selectBox' style='display: flex;align-items: center;'>";
+                                                                    echo "  <span class='text-bold'>Status: </span>
                                                                     <input type='hidden' name='order_id' value='" . $order_id . "'>
                                                                     <select name='status' class='form-control' onchange=\"openConfirmationModal('{$order_info['OrderID']}', '{$order_info['Status']}', this.value)\">";
 
-                                                                    echo "<option value='pending' " . ($order_info['Status'] == 'pending' ? 'selected' : '') . ">Pending</option>";
-                                                                    echo "<option value='processing' " . ($order_info['Status'] == 'processing' ? 'selected' : '') . ">Processing</option>";
-                                                                    echo "<option value='shipped' " . ($order_info['Status'] == 'shipped' ? 'selected' : '') . ">Shipped</option>";
-                                                                    echo "<option value='cancelled' " . ($order_info['Status'] == 'cancelled' ? 'selected' : '') . ">Cancelled</option>";
-                                                                    echo "<option value='completed' " . ($order_info['Status'] == 'completed' ? 'selected' : '') . ">Completed</option>";
+                                                                    echo "<option class='status pending' value='pending' " . ($order_info['Status'] == 'pending' ? 'selected' : '') . ">Pending</option>";
+                                                                    echo "<option class='status processing' value='processing' " . ($order_info['Status'] == 'processing' ? 'selected' : '') . ">Processing</option>";
+                                                                    echo "<option class='status shipped' value='shipped' " . ($order_info['Status'] == 'shipped' ? 'selected' : '') . ">Shipped</option>";
+                                                                    echo "<option class='status cancelled' value='cancelled' " . ($order_info['Status'] == 'cancelled' ? 'selected' : '') . ">Cancelled</option>";
+                                                                    echo "<option class='status completed' value='completed' " . ($order_info['Status'] == 'completed' ? 'selected' : '') . ">Completed</option>";
                                                                     echo " </form></select>";
                                                                     echo "</li>";
                                                                 }
