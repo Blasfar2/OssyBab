@@ -16,6 +16,8 @@ if (isset($_POST['create'])) {
     $numRows = mysqli_num_rows($result);
     if ($numRows > 0) {
         echo "Category exists";
+        $_SESSION['error'] = "Category exists";
+        header("Location: ./");
         exit;
     } else {
 
@@ -27,6 +29,7 @@ if (isset($_POST['create'])) {
                 header("Location: ./");
             } else {
                 $_SESSION['error'] = "Failed to updated category.";
+                header("Location: ./");
                 echo "Error: Data not inserted";
             }
         } else {
@@ -74,6 +77,7 @@ if (isset($_POST['update'])) {
         header("Location: ./");
     } else {
         $_SESSION['error'] = "Failed to updated category.";
+        header("Location: ./");
         // echo "Error: " . mysqli_error($conn);
     }
 }
