@@ -231,11 +231,12 @@ if (isset($_GET['token']) && isset($_GET['customerId'])) {
                                                                     $orderIds[] = $rowOrderIds['OrderID'];
                                                                 }
                                                             }
-                                                            
+                                                            $token = uniqid(); // Generate a unique token
+                                                            $_SESSION['token'] = $token;
                                                             if (count($orderIds) > 0) {
                                                                 echo "<ul class='list'>";
                                                                 foreach ($orderIds as $orderId) {
-                                                                    echo "<li><strong><a href='../orders/view.php?id=" . $orderId . "'>Order ID: " . $orderId . "</a></strong></li>";
+                                                                    echo "<li><strong><a href='../orders/view.php?token=" . $token . "&order_id=" . $orderId . "'>Order ID: " . $orderId . "</a></strong></li>";
                                                                 }
                                                                 echo "</ul>";
                                                             } else {

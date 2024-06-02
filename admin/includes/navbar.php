@@ -1,9 +1,9 @@
 <!-- NAVBAR -->
 <nav>
-  <a href="#" class="nav-link">
+  <!-- <a href="#" class="nav-link">
     <i class="bx bxs-bell icon"></i>
     <span class="badge">5</span>
-  </a>
+  </a> -->
   <span class="divider"></span>
 
   <!-- Profile dorpdown menu -->

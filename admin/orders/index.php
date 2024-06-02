@@ -141,7 +141,7 @@ if (mysqli_num_rows($result) > 0) {
                                                 echo "<td class='action-column' style='width: 15%;'>";
                                                 echo "<div class='actionBtns'>";
                                                 echo "<a href='view.php?token=" . $token . "&order_id=" . $row['OrderID'] . "' class='btn btn-sm btn-outline-success' name='view' ><i class='fa-regular fa-eye'></i> View</a>";
-                                                echo "<a href='edit.php?token=" . $token . "&order_id=" . $row['OrderID'] . "' class='btn btn-sm btn-outline-primary' ><i class='fa fa-edit'></i> Edit</a>";
+                                                // echo "<a href='edit.php?token=" . $token . "&order_id=" . $row['OrderID'] . "' class='btn btn-sm btn-outline-primary' ><i class='fa fa-edit'></i> Edit</a>";
                                                 echo "</div>";
                                                 echo "</td>";
                                                 echo "</tr>";
