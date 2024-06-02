@@ -29,6 +29,8 @@ if (isset($_POST['Generate'])) {
         }
 
         echo "Data inserted successfully!";
+    $_SESSION['info'] = "Product Type is added successfully.";
+
     } else {
         echo "Error: " . $conn->error;
     }
@@ -111,10 +113,23 @@ if (isset($_POST['Update'])) {
     }
 
     // Redirect to a success page or display a success message
+    $_SESSION['info'] = "Product Type is Updated successfully.";
     header("Location: ./");
     exit();
 }
 
+if (isset($_POST['delete'])) {
+    $id = $_POST['product_type_id'];
+    $sql = "UPDATE `producttypes` SET IsDeleted = 1 WHERE ProductTypeID = '$id'";
+    if (mysqli_query($conn, $sql)) {
+        $_SESSION['info'] = "Product Type is deleted successfully.";
+        header("Location: ./");
+    } else {
+        $_SESSION['error'] = "Failed to delete Product Type.";
+        // echo "Error: " . mysqli_error($conn);
+    }
+
+}
 
 // Close database connection
 mysqli_close($conn);

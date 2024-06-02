@@ -245,7 +245,7 @@ $adminId = $_SESSION['id'];
                 var bsAlert = new bootstrap.Alert(infoAlert);
                 bsAlert.close();
             }
-        }, 2500);
+        }, 1500);
 
         // Automatically dismiss the error alert after 3 seconds
         setTimeout(function () {
@@ -254,7 +254,7 @@ $adminId = $_SESSION['id'];
                 var bsAlert = new bootstrap.Alert(errorAlert);
                 bsAlert.close();
             }
-        }, 2500);
+        }, 1500);
 
         document.addEventListener('DOMContentLoaded', function () {
             var deleteModal = document.getElementById('deleteModal');

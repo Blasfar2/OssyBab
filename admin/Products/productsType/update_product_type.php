@@ -117,10 +117,7 @@ if ($productTypeId) {
                                 <table>
                                     <tr>
                                         <td>
-                                            <input type="hidden" id="type-id" name="type_id"
-                                                value="<?= $productTypeId ?>">
-                                        </td>
-                                        <td>
+                                            <input type="hidden" id="type-id" name="type_id" value="<?= $productTypeId ?>">
                                             <label>Available Category</label>
                                         </td>
                                         <td>
@@ -137,36 +134,37 @@ if ($productTypeId) {
 
                                     </tr>
                                     <tr>
-    <td>
-        <ul style="list-style: none;display: flex;flex-direction: column;align-items: flex-start; font-size: 18px;">
-            <?php
-            // Assuming you have fetched categories from the database and stored them in $categories array
-            $sql = "SELECT * FROM categories";
-            $result = mysqli_query($conn, $sql);
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    // Check if the category should be pre-checked
-                    $categoryID = $row['CategoryID'];
-                    // $productTypeID = /* Your product type ID here */;
-                    $checkQuery = "SELECT COUNT(*) as count FROM producttypecategories WHERE CategoryID = $categoryID AND ProductTypeID = $productTypeId";
-                    $checkResult = mysqli_query($conn, $checkQuery);
-                    $isChecked = (mysqli_fetch_assoc($checkResult)['count'] > 0) ? 'checked' : '';
+                                        <td>
+                                            <ul
+                                                style="list-style: none;display: flex;flex-direction: column;align-items: flex-start; font-size: 18px;">
+                                                <?php
+                                                // Assuming you have fetched categories from the database and stored them in $categories array
+                                                $sql = "SELECT * FROM categories";
+                                                $result = mysqli_query($conn, $sql);
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                        // Check if the category should be pre-checked
+                                                        $categoryID = $row['CategoryID'];
+                                                        // $productTypeID = /* Your product type ID here */;
+                                                        $checkQuery = "SELECT COUNT(*) as count FROM producttypecategories WHERE CategoryID = $categoryID AND ProductTypeID = $productTypeId";
+                                                        $checkResult = mysqli_query($conn, $checkQuery);
+                                                        $isChecked = (mysqli_fetch_assoc($checkResult)['count'] > 0) ? 'checked' : '';
 
-                    echo '<li style="padding:5px;">';
-                    echo '<input type="checkbox" id="category_' . $row['CategoryID'] . '" name="category[]" value="' . $row['CategoryID'] . '" ' . $isChecked . '>';
-                    echo '<label for="category_' . $row['CategoryID'] . '" style="margin-left: 5px;">' . $row['CategoryName'] . '</label>';
-                    echo '</li>';
-                }
-            } else {
-                echo "<li>No categories found.</li>";
-            }
-            ?>
-        </ul>
-    </td>
-    <td colspan="5">
-        <div id="inputs-container"></div>
-    </td>
-</tr>
+                                                        echo '<li style="padding:5px;">';
+                                                        echo '<input type="checkbox" id="category_' . $row['CategoryID'] . '" name="category[]" value="' . $row['CategoryID'] . '" ' . $isChecked . '>';
+                                                        echo '<label for="category_' . $row['CategoryID'] . '" style="margin-left: 5px;">' . $row['CategoryName'] . '</label>';
+                                                        echo '</li>';
+                                                    }
+                                                } else {
+                                                    echo "<li>No categories found.</li>";
+                                                }
+                                                ?>
+                                            </ul>
+                                        </td>
+                                        <td colspan="5">
+                                            <div id="inputs-container"></div>
+                                        </td>
+                                    </tr>
 
 
                                     <tr>
@@ -215,10 +213,9 @@ if ($productTypeId) {
                 <div class="input-group" id="input-group-${index}">
                     <table >
                         <tr>
-                            <td>
-                                <input type="hidden" id="input-id-${index}" name="inputs[${index}][attribute_id]" value="${id_attr}">
-                            </td>
+                          
                             <td style="width:8%;">
+                            <input type="hidden" id="input-id-${index}" name="inputs[${index}][attribute_id]" value="${id_attr}">
                                 <label for="input-${index}">Input ${index}</label>
                             </td>
                             <td style="width:30%;">

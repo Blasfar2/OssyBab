@@ -268,19 +268,24 @@ if (isset($_GET['prod_id'])) {
                                             $resultAttributes = mysqli_query($conn, $sqlAttributes);
                                             while ($rowAttribute = mysqli_fetch_assoc($resultAttributes)) {
                                                 echo "<li>" . $rowAttribute['AttributeName'] . ": <span>";
-                                                if ($rowAttribute['ValueString'] !== null) {
+                                            
+                                                if ($rowAttribute['ValueString'] !== null && $rowAttribute['ValueString'] !== '') {
                                                     echo $rowAttribute['ValueString'];
-                                                } elseif ($rowAttribute['ValueInteger'] !== null) {
+                                                } elseif ($rowAttribute['ValueInteger'] !== null && $rowAttribute['ValueInteger'] !== '') {
                                                     echo $rowAttribute['ValueInteger'];
-                                                } elseif ($rowAttribute['ValueDecimal'] !== null) {
+                                                } elseif ($rowAttribute['ValueDecimal'] !== null && $rowAttribute['ValueDecimal'] !== '') {
                                                     echo $rowAttribute['ValueDecimal'];
                                                 } elseif ($rowAttribute['ValueBoolean'] !== null) {
                                                     echo $rowAttribute['ValueBoolean'] ? 'True' : 'False';
-                                                } elseif ($rowAttribute['ValueDate'] !== null) {
+                                                } elseif ($rowAttribute['ValueDate'] !== null && $rowAttribute['ValueDate'] !== '') {
                                                     echo $rowAttribute['ValueDate'];
+                                                } else {
+                                                    echo "-----";
                                                 }
+                                            
                                                 echo "</span></li>";
                                             }
+                                            
                                             ?>
                                         </ul>
                                     </div>

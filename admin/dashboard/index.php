@@ -66,17 +66,22 @@ $adminId = $_SESSION['id'];
             <li>
               <a href="#">Dashboard</a>
             </li>
-            <!-- <li><i class="bx bx-chevron-right"></i></li>
-              <li>
-                <a class="active" href="#">Home</a>
-              </li> -->
           </ul>
         </div>
-        <!-- <a href="#" class="btn-download">
-            <i class="bx bxs-cloud-download"></i>
-            <span class="text">Download PDF</span>
-          </a> -->
       </div>
+      <?php
+
+$sql = "SELECT COUNT(*) AS total_users FROM users WHERE archived = 0";
+
+$result = mysqli_query($conn, $sql);
+if ($result) {
+    $row = mysqli_fetch_assoc($result);
+    $total_users = $row['total_users'];
+} else {
+    echo "Error executing query: " . mysqli_error($connection);
+}
+
+?>
 
       <ul class="box-info">
         <li class="li-item">
@@ -89,8 +94,8 @@ $adminId = $_SESSION['id'];
         <li class="li-item">
           <i class="bx bxs-group"></i>
           <span class="text">
-            <h3>2834</h3>
-            <p>Visitors</p>
+            <h3><?php echo $total_users; ?></h3>
+            <p>Customers</p>
           </span>
         </li>
         <li class="li-item">
