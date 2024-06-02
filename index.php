@@ -133,6 +133,7 @@
                 $token = uniqid(); // Generate a unique token
                 $_SESSION['token'] = $token;
                 while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<a href='produit.php?token=".$token."&CT_id=".$row['CategoryID'] ." ' class='text-decoration-none'>";
                     echo "<div class='col mt-3 card-zoom'>";
                     echo "<div class='card text-center border-primary' style='width: 18rem;'>";
                     echo "<div class='card-body'>";
@@ -141,6 +142,7 @@
                     echo "<img src='./uploads/".$row['CategoryImage']."' class='card-img-bottom'>";
                     echo "</div>";
                     echo "</div>";
+                    echo "</a>";
                 }
             }
 

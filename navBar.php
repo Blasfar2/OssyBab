@@ -50,7 +50,8 @@
                 <div class="input-group">
 
 
-                    <button class="btn btn-light dropdown-toggle bg-white shadow-0" href="#" data-bs-toggle="dropdown" style="padding-bottom: 0.4rem;">  All  </button>
+                    <button class='btn btn-light bg-white shadow-0' href='produit.php' style='padding-bottom: 0.4rem;'><a href='produit.php'>  All </a> </button>
+                    <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"></button>
                     <ul class="dropdown-menu">
                         <?php
                             $sql = "SELECT DISTINCT c.CategoryName, pt.TypeName , c.CategoryID , pt.ProductTypeID
