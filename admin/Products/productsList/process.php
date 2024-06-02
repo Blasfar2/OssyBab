@@ -50,9 +50,12 @@ if (isset($_POST['create'])) {
                     }
                 }
             }
+            $_SESSION['info'] = "The Product has been added successfully!";
             header("Location: ./");
         } else {
-            echo "Error: Data not inserted into products table: " . mysqli_error($conn);
+            $_SESSION['error'] = "Failed to updated product.";
+            header("Location: ./");
+            // echo "Error: Data not inserted into products table: " . mysqli_error($conn);
         }
     } else {
         echo "Error uploading file";
@@ -135,10 +138,26 @@ if (isset($_POST['update'])) {
                 }
             }
         }
+        $_SESSION['info'] = "The Product has been updated successfully!";
         header("Location: ./");
     } else {
-        echo "Error: Data not updated in products table: " . mysqli_error($conn);
+        $_SESSION['error'] = "Failed to updated product.";
+        header("Location: ./");
+        // echo "Error: Data not updated in products table: " . mysqli_error($conn);
     }
+}
+
+if (isset($_POST['delete'])) {
+    $id = $_POST['ProductyId'];
+    $sql = "UPDATE `products` SET IsDeleted = 1 WHERE ProductID = '$id'";
+    if (mysqli_query($conn, $sql)) {
+        $_SESSION['info'] = "Product deleted successfully.";
+        header("Location: ./");
+    } else {
+        $_SESSION['error'] = "Failed to delete Product.";
+        // echo "Error: " . mysqli_error($conn);
+    }
+
 }
 
 ?>

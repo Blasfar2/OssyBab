@@ -83,6 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order_id'])) {
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/nav_sidebar.css" />
     <link rel="stylesheet" href="pdf_styles.css" />
+    <link rel="stylesheet" href="modal_style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -97,7 +98,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order_id'])) {
 
         .invoice {
             max-width: 80%;
-
         }
 
         .pdf_container {
@@ -136,6 +136,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order_id'])) {
         </div>
     </div>
 
+    <div class="modal fade " id="productModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="productModalLabel" aria-hidden="true">
+        <!-- <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true"> -->
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="productModalLabel">Product Details</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="productDetails">
+                        <!-- Product details will be loaded here -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <!-- SIDEBAR -->
     <?php include ('../includes/sidebar.php'); ?>
@@ -150,7 +172,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order_id'])) {
         <main>
             <div class="head-title">
                 <div class="left">
-                    <h1>View Orders</h1>
+
+                    <h1>
+                        View Orders
+                    </h1>
                     <ul class="dreadleft">
                         <li>
                             <a class="active" href="../dashboard/">Dashboard</a>
@@ -217,6 +242,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order_id'])) {
                                                 <div style="padding-bottom: 10px;">
                                                     <div class="text-center">
                                                         <h1>OussyBadr</h1>
+
                                                     </div>
                                                 </div>
                                                 <div class="hr"></div>
@@ -284,18 +310,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order_id'])) {
                                                         <tbody>
                                                             <?php
                                                             if ($order_details_result && mysqli_num_rows($order_details_result) > 0) {
-                                                                $totalAmount = 0;
+                                                                // $totalAmount = 0;
                                                                 while ($order_item = mysqli_fetch_assoc($order_details_result)) {
                                                                     $amount = $order_item["Quantity"] * $order_item["UnitPrice"];
-                                                                    $totalAmount += $amount;
+                                                                    // $totalAmount += $amount;
                                                                     echo "<tr>";
-                                                                    echo "<td>" . $order_item["ProductID"] . "</td>";
+                                                                    echo "<td><a href='#' onclick='openModal(" . $order_item["ProductID"] . ")'>" . $order_item["ProductID"] . "</a></td>";
+
                                                                     echo "<td>" . $order_item["Name"] . "</td>";
                                                                     echo "<td>" . $order_item["UnitPrice"] . " DH</td>";
                                                                     echo "<td>" . $order_item["Quantity"] . "</td>";
                                                                     echo "<td class='text-end'>" . $amount . " DH</td>";
                                                                     echo "</tr>";
                                                                 }
+                                                                ?>
+
+                                                                <?php
                                                                 echo "</tbody>";
                                                                 echo "</table>";
 
@@ -303,7 +333,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order_id'])) {
                                                                 echo "<div class='invoice-body-bottom'>";
                                                                 echo "<div class='invoice-body-info-item'>";
                                                                 echo "<div class='info-item-td text-end text-bold'>Total:</div>";
-                                                                echo "<div class='info-item-td text-end'>" . $totalAmount . " DH</div>";
+                                                                echo "<div class='info-item-td text-end'>" . $order_info["TotalAmount"] . " DH</div>";
                                                                 echo "</div>";
                                                                 echo "</div>";
                                                             } else {
@@ -343,6 +373,60 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order_id'])) {
 
                 document.querySelector('select[name="status"]').value = currentStatus;
             });
+        }
+
+        // Function to fetch and display product details
+        function fetchProductDetails(productId) {
+            $.ajax({
+                url: 'fetch_product_details.php',
+                type: 'GET',
+                data: { productId: productId },
+                dataType: 'json',
+                success: function (response) {
+                    // Construct HTML to display product details
+                    var html = '<div class="card-wrapper">';
+                    html += '<div class="cardy">';
+                    html += '<div class="product-imgs">';
+                    html += '<div class="img-display">';
+                    html += '<div class="img-showcase">';
+                    html += '<img src="../../uploads/' + response.productImage + '" alt="' + response.productName + '">';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '<div class="product-content">';
+                    html += '<h2 class="product-title">' + response.productName + '</h2>';
+                    html += '<div class="product-price">';
+                    html += '<p>ID: <span>' + response.productId + '</span></p>';
+                    html += '<p>Price: <span>' + response.productPrice + ' DH</span></p>';
+                    html += '<p>Qty Stock: <span>' + response.productStock + '</span></p>';
+                    html += '</div>';
+                    html += '<div class="product-detail">';
+                    html += '<h2>About this item:</h2>';
+                    html += '<p>' + (response.productDescription ? response.productDescription : 'No description found.') + '</p>';
+                    // html += '<h3>Product Attributes:</h3>';
+                    html += '<ul>';
+                    $.each(response.attributes, function (index, attribute) {
+                        html += '<li>' + attribute.attributeName + ': <span>' + attribute.attributeValue + '</span></li>';
+                    });
+                    html += '</ul>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+
+                    // Display product details in the modal
+                    $('#productDetails').html(html);
+                },
+                error: function (xhr, status, error) {
+                    // Display error message if AJAX request fails
+                    $('#productDetails').html('<p>Error fetching product details.</p>');
+                }
+            });
+        }
+
+        function openModal(productId) {
+            fetchProductDetails(productId);
+            $('#productModal').modal('show');
         }
         setTimeout(function () {
             var infoAlert = document.getElementById('infoAlert');

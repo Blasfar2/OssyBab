@@ -14,7 +14,9 @@ $adminId = $_SESSION['id'];
     <title>Products</title>
     <!-- Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap.min.css" /> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css" />
 
     <!-- <link rel="stylesheet" href="../../assets/css/style.css" /> -->
@@ -22,10 +24,16 @@ $adminId = $_SESSION['id'];
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         crossorigin="anonymous" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
 
     <style>
+         ul {
+            padding-left: 0rem;
+        }
         .table-data {
             display: flex;
             flex-wrap: wrap;
@@ -89,12 +97,12 @@ $adminId = $_SESSION['id'];
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="deleteModalLabel">Delete Category</h1>
+                    <h1 class="modal-title fs-5" id="deleteModalLabel">Delete Product</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form id="deleteForm" action="process.php" method="post">
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this category with ID: <span id="deleteProductId"></span>?
+                        <p>Are you sure you want to delete this Product with ID: <span id="deleteProductId"></span>?
                         </p>
 
                         <input type="hidden" id="hiddenProductyId" name="ProductyId">
@@ -154,6 +162,32 @@ $adminId = $_SESSION['id'];
                         <div class="card">
                             <div class="card-body">
 
+                            <?php
+                                if (isset($_SESSION['info'])) {
+                                    ?>
+                                    <div id="infoAlert" class="alert alert-success alert-dismissible fade show"
+                                        role="alert">
+                                        <?php echo $_SESSION['info']; ?>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <?php
+                                    unset($_SESSION['info']);
+                                }
+
+                                if (isset($_SESSION['error'])) {
+                                    ?>
+                                    <div id="errorAlert" class="alert alert-danger alert-dismissible fade show"
+                                        role="alert">
+                                        <?php echo $_SESSION['error']; ?>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <?php
+                                    unset($_SESSION['error']);
+                                }
+
+                                ?>
 
                                 <table class="table table-bordered" id="OrderTable">
                                     <thead>
@@ -170,7 +204,7 @@ $adminId = $_SESSION['id'];
                                     <tbody>
                                         <?php
 
-                                        $sql = "SELECT * FROM products";
+                                        $sql = "SELECT * FROM products where IsDeleted = 0";
                                         $result = mysqli_query($conn, $sql);
                                         if (mysqli_num_rows($result) > 0) {
                                             $token = uniqid(); // Generate a unique token
@@ -233,6 +267,23 @@ $adminId = $_SESSION['id'];
                 $(this).attr('href', '../' + href);
             });
         });
+
+        setTimeout(function () {
+            var infoAlert = document.getElementById('infoAlert');
+            if (infoAlert) {
+                var bsAlert = new bootstrap.Alert(infoAlert);
+                bsAlert.close();
+            }
+        }, 1500);
+
+        // Automatically dismiss the error alert after 3 seconds
+        setTimeout(function () {
+            var errorAlert = document.getElementById('errorAlert');
+            if (errorAlert) {
+                var bsAlert = new bootstrap.Alert(errorAlert);
+                bsAlert.close();
+            }
+        }, 1500);
 
         document.addEventListener('DOMContentLoaded', function () {
             var deleteModal = document.getElementById('deleteModal');
