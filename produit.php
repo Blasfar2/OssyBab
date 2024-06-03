@@ -6,6 +6,8 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
     $PT_id = $_GET['PT_id'];
 } elseif (isset($_GET['token']) && isset($_GET['CT_id'])) {
     $CT_id = $_GET['CT_id'];
+}else{
+    
 }
 // else {
 //     header("Location: ./");
@@ -102,7 +104,7 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
 
 
 
-                } else {
+                }elseif(isset($CT_id)) {
                     $sql1 = "SELECT * 
                             FROM producttypecategories 
                             LEFT JOIN productattributes 
@@ -127,6 +129,46 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
                                         echo $row2[$dataType];
                                         echo "</label>";
                                         echo "</div>";
+                                    }
+                                }
+                            } else {
+                                echo "<p>No Data , coming soon</p>";
+                            }
+                            echo "</div>";
+                        }
+                    }
+
+                }else{
+                    $sql1 = "SELECT * FROM productattributes";
+
+                    $result1 = mysqli_query($conn, $sql1);
+
+
+                    if ($result1 && mysqli_num_rows($result1) > 0) {
+
+                        while ($row1 = mysqli_fetch_assoc($result1)) {
+
+                            $Attribute_ID = $row1['AttributeID'];
+                            $dataType = 'Value' . ucwords($row1['DataType']);
+
+                            $sql2 = "SELECT * FROM productattributevalues WHERE `AttributeID` = $Attribute_ID";
+                            $result2 = mysqli_query($conn, $sql2);
+
+                            echo "<div class='col m-4 p-3 rounded' style='box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;background-color:white; '>";
+                            echo "<h3 class='text-primary'>" . $row1["AttributeName"] . "</h3>";
+
+
+                            if ($result2 && mysqli_num_rows($result2) > 0) {
+                                while ($row2 = mysqli_fetch_assoc($result2)) {
+                                    if (isset($row2[$dataType])) {
+
+                                        echo "<div class='form-check'>";
+                                        echo "<input class='form-check-input' type='checkbox' value='" . $Attribute_ID . "' name='" . $Attribute_ID . "'>";
+                                        echo "<label class='form-check-label' >";  //<--for='flexCheckDefault'
+                                        echo $row2[$dataType];
+                                        echo "</label>";
+                                        echo "</div>";
+
                                     }
                                 }
                             } else {
@@ -268,38 +310,44 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
                     }
                 }
             } else {
-                $sql1 = "SELECT * 
-            FROM producttypecategories 
-            LEFT JOIN productattributes 
-            ON producttypecategories.`ProductTypeID` = productattributes.`ProductTypeID`";
-                $result1 = mysqli_query($conn, $sql1);
+                $sql = "SELECT `Name` ,`ProductID`, `Price` , `ProductImage` , `CategoryID`
+                    FROM products 
+                    LEFT JOIN producttypecategories 
+                    ON products.`ProductTypeID`=producttypecategories.`ProductTypeID` ";
 
-                if ($result1 && mysqli_num_rows($result1) > 0) {
-                    while ($row1 = mysqli_fetch_assoc($result1)) {
-                        $Attribute_ID = $row1['AttributeID'];
-                        $dataType = 'Value' . ucwords($row1['DataType']);
-                        $sql2 = "SELECT * FROM productattributevalues WHERE `AttributeID` = $Attribute_ID";
-                        $result2 = mysqli_query($conn, $sql2);
-                        echo "<div class='col m-4 p-3 rounded' style='box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;background-color:white;'>";
-                        echo "<h3 class='text-primary'>" . $row1["AttributeName"] . "</h3>";
-                        if ($result2 && mysqli_num_rows($result2) > 0) {
-                            while ($row2 = mysqli_fetch_assoc($result2)) {
-                                if (isset($row2[$dataType])) {
-                                    echo "<div class='form-check'>";
-                                    echo "<input class='form-check-input' type='checkbox' value='" . $Attribute_ID . "' name='" . $Attribute_ID . "'>";
-                                    echo "<label class='form-check-label' >";  //<--for='flexCheckDefault'
-                                    echo $row2[$dataType];
-                                    echo "</label>";
-                                    echo "</div>";
-                                }
-                            }
+                $result = mysqli_query($conn, $sql);
+                if ($result && mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<div class='p-2 my-3 mx-2 rounded 'style='width: 15rem; height:15rem ;line-height:2px; background-color:white;position:relative ;box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;' >";
+
+
+
+
+                        $sql1 = "SELECT `ProductID` , `AttributeName` , `ValueInteger`   FROM productattributevalues left JOIN productattributes on productattributevalues.`AttributeID` = productattributes.`AttributeID` WHERE `ProductID`=" . $row['ProductID'] . " AND `AttributeName` = 'sold'";
+                        $result1 = mysqli_query($conn, $sql1);
+                        if ($result1 && mysqli_num_rows($result1) > 0) {
+                            $row1 = mysqli_fetch_assoc($result1);
+                            echo "<p style='position:absolute ; right:9px; top:9px'class='bg-primary px-3 py-2 text-light rounded'>" . $row1['ValueInteger'] . "%</p>";
+                            echo "<img src='./uploads/" . $row['ProductImage'] . "' style='width:100% ; height:59%;object-fit: contain;' class=' rounded'>";
+                            echo "<p style='white-space: nowrap;overflow: hidden; text-overflow: ellipsis;' class='py-2'>" . $row['Name'] . "</p>";
+                            echo "<p><span class='text-primary fw-bold'>" . $row['Price'] - ($row['Price'] * $row1['ValueInteger'] / 100) . "Dhs </span> <s>" . $row['Price'] . "Dhs</s></p>";
                         } else {
-                            echo "<p>No Data , coming soon</p>";
+                            echo "<img src='./uploads/" . $row['ProductImage'] . "' style='width:100% ; height:59%;object-fit: contain;' class=' rounded'>";
+                            echo "<p style='white-space: nowrap;overflow: hidden; text-overflow: ellipsis;' class='py-2'>" . $row['Name'] . "</p>";
+                            echo "<p><b>" . $row['Price'] . "Dhs</b></p>";
                         }
-                        echo "</div>";
+
+
+                        echo "    <div style='display: flex;justify-content: flex-end;gap: 5px;'>";
+                        echo "        <button class='btn btn-outline-primary'><i class='fa-solid fa-cart-shopping'></i></button>";
+                        echo "        <button class='btn btn-outline-danger '><i class='fa-regular fa-heart'></i></button>";
+                        echo "    </div>";
+                        echo "</div>  ";
+
+
                     }
                 }
-
+                
             }
 
 
