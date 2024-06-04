@@ -44,12 +44,47 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
     <div class="row">
 
         <div class="row col-xl-3 col-md-9 mt-3 ">
+
+            
             <div class=" col  z-3 sticky-top">
 
 
                 <div class="btn-group container align-items-center" style="">
                     <a class="btn btn-primary " style="" href="#" role="button">Rest</a>
                     <a class="btn btn-primary " href="#" role="button">Sumbit</a>
+                </div>
+
+                                <div class="categorie mx-3 mt-3 p-2 rounded col"
+                    style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;background-color:white;">
+                    <h3 class="text-primary">Prix</h3>
+                    <div class="double-slider-box">
+                        <div class="range-slider">
+                            <span class="slider-track"></span>
+                            <input type="range" name="min-val" class="min-val" min="1000" max="12000" value="2000"
+                                oninput="slideMin()">
+                            <input type="range" name="max-val" class="max-val" min="1000" max="12000" value="8000"
+                                oninput="slideMax()">
+                            <div class="tooltip min-tooltip"></div>
+                            <div class="tooltip max-tooltip"></div>
+                        </div>
+                        <div class="input-box">
+                            <div class="min-box">
+                                <div class="input-wrap">
+                                    <span class="input-addon">Dh</span>
+                                    <input type="text" name="min-input" class="input-field min-input"
+                                        onchange="setMinInput()">
+                                </div>
+                            </div>
+                            <div class="max-box">
+                                <div class="input-wrap">
+                                    <span class="input-addon">Dh</span>
+                                    <input type="text" name="max-input" class="input-field max-input"
+                                        onchange="setMaxInput()">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
 
 
@@ -183,38 +218,7 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
 
 
 
-                <div class="categorie mx-3 mt-3 p-2 rounded col"
-                    style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;background-color:white;">
-                    <h3 class="text-primary">Prix</h3>
-                    <div class="double-slider-box">
-                        <div class="range-slider">
-                            <span class="slider-track"></span>
-                            <input type="range" name="min-val" class="min-val" min="1000" max="12000" value="2000"
-                                oninput="slideMin()">
-                            <input type="range" name="max-val" class="max-val" min="1000" max="12000" value="8000"
-                                oninput="slideMax()">
-                            <div class="tooltip min-tooltip"></div>
-                            <div class="tooltip max-tooltip"></div>
-                        </div>
-                        <div class="input-box">
-                            <div class="min-box">
-                                <div class="input-wrap">
-                                    <span class="input-addon">Dh</span>
-                                    <input type="text" name="min-input" class="input-field min-input"
-                                        onchange="setMinInput()">
-                                </div>
-                            </div>
-                            <div class="max-box">
-                                <div class="input-wrap">
-                                    <span class="input-addon">Dh</span>
-                                    <input type="text" name="max-input" class="input-field max-input"
-                                        onchange="setMaxInput()">
-                                </div>
-                            </div>
 
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -310,10 +314,8 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
                     }
                 }
             } else {
-                $sql = "SELECT `Name` ,`ProductID`, `Price` , `ProductImage` , `CategoryID`
-                    FROM products 
-                    LEFT JOIN producttypecategories 
-                    ON products.`ProductTypeID`=producttypecategories.`ProductTypeID` ";
+                $sql = "SELECT *
+                    FROM products";
 
                 $result = mysqli_query($conn, $sql);
                 if ($result && mysqli_num_rows($result) > 0) {
@@ -358,7 +360,7 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
             <!-- ---------------------------- -->
 
         </div>
-    </div>
+        </div>
     </div>
 
 

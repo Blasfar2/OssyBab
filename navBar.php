@@ -41,6 +41,7 @@
 </style>
 
 
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-3 sticky-top">
     <div class="container" style="">
         <a class="navbar-brand madimi " href="./index.php">OssyBab</a>
@@ -95,7 +96,7 @@
                         }
                         ?>
                     </ul>
-                    <input type="search" class="form-control" placeholder="Search products, brands and categories"
+                    <input type="search" class="form-control" id="searchInput" placeholder="Search products, brands and categories"
                         aria-label="Search products, brands and catégorie" aria-describedby="button-addon2" />
                 </div>
                 <a class="text-white p-0" href="#" id="button-addon2"><i class="fas fa-search ps-3"></i></a>
@@ -112,15 +113,7 @@
                     </button>
                 </li>
                 <li class="nav-item" style="width: 100px;;">
-                    <div class="container">
-                        <div id="user-info" class="d-flex align-items-center btn btn-primary  gap-1 p-0">
-                            <img id="user-image" src="">
-                            <span id="user-name"></span>
-                        </div>
-                        <form action="login/">
-                            <button id="sign-in-btn" class="btn btn-primary sign-in-btn">Sign In</button>
-                        </form>
-                    </div>
+                        sing in
                 </li>
             </ul>
         </div>
