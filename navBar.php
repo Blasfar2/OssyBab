@@ -56,8 +56,8 @@
                 <div class="input-group">
 
 
-                    <button class='btn btn-light bg-white shadow-0' href='produit.php'
-                        style='padding-bottom: 0.4rem;'><a href='produit.php'> All </a> </button>
+                    <button class='btn bg-white shadow-0' href='produit.php'
+                        style='padding-bottom: 0.4rem;'><a href='produit.php' class='text-decoration-none text-dark'> All </a> </button>
                     <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split"
                         data-bs-toggle="dropdown" aria-expanded="false"></button>
                     <ul class="dropdown-menu">
