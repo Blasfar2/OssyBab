@@ -54,7 +54,7 @@
                         // $_SESSION['user']="yes";
                         $_SESSION['username']=$user["Username"];
                         $_SESSION['id']=$user["UserID"];
-                        header("Location: ../index.php");
+                        header("Location: ../client/index.php");
                     }
                     
                     

@@ -3,8 +3,6 @@ require_once '../includes/session_test.php';
 include ("../includes/connection.php");
 $adminId = $_SESSION['id'];
 
-
-
 ?>
 
 
@@ -35,7 +33,7 @@ $adminId = $_SESSION['id'];
 
   <!-- NavBar -->
 
-  <?php include ('../navbar.php'); ?>
+  <?php include ('../client/navbar.php'); ?>
 
 
 
