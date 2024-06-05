@@ -117,11 +117,11 @@
                 </li>
                 <li class="nav-item" style="width: 100px;;">
 
-                <div class="profile-menu1">
-        <!-- <img src=" <?php echo $user['profile_image']; ?>" alt="Profile Image" id="profile-img"> -->
-        <img src="../uploads/66578cc311bc7_4e1d9222-059b-4b0a-a820-7b9a7f6e84a0.png" alt="Profile Image" id="profile-img">
-        <div class="dropdown-menu" id="dropdown-menu">
-            <a href="profile.php"><i class="bx bxs-user-circle icon"></i> Profile</a>
+                <div class="profile-menu">
+                    
+            <img src=" ../uploads/<?php echo $_SESSION['UserImage']; ?>" alt="Profile Image" id="profile-img">
+            <div class="dropdown-menu" id="dropdown-menu">
+            <a href="./profile/"><i class="bx bxs-user-circle icon"></i> Profile</a>
             <a href="logout.php"><i class="bx bxs-log-out-circle"></i> Logout</a>
         </div>
     </div>
@@ -131,7 +131,7 @@
         </div>
     </div>
 </nav>
-
+<script src="script.js"></script>
 <script type="text/javascript">
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -182,4 +182,3 @@
     });
 
 </script>
-<script src="script.js"></script>

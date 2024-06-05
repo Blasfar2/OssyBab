@@ -113,7 +113,7 @@
                     </button>
                 </li>
                 <li class="nav-item" style="width: 100px;;">
-                        <<a class="btn btn-primary " href="./login/index.php" role="button">Sign in</a>
+                        <a class="btn btn-primary " href="./login/index.php" role="button">Sign in</a>
                 </li>
             </ul>
         </div>

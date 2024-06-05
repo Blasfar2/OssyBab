@@ -53,6 +53,7 @@
                     } else {
                         // $_SESSION['user']="yes";
                         $_SESSION['username']=$user["Username"];
+                        $_SESSION['UserImage']=$user["UserImage"];
                         $_SESSION['id']=$user["UserID"];
                         header("Location: ../client/index.php");
                     }
