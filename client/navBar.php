@@ -47,7 +47,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-3 sticky-top">
     <div class="container" style="">
-        <a class="navbar-brand madimi " href="../client/index.php">OssyBab</a>
+        <a class="navbar-brand madimi " href="../index.php">OssyBab</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
