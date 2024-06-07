@@ -1,7 +1,7 @@
 // script.js
 document.addEventListener('DOMContentLoaded', function () {
-    const profileImg = document.getElementById('profile-img');
-    const dropdownMenu = document.getElementById('dropdown-menu');
+    const profileImg = document.getElementById('profile-img1');
+    const dropdownMenu = document.getElementById('dropdown-menu1');
 
     profileImg.addEventListener('click', function () {
         dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';

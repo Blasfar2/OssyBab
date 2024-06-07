@@ -40,14 +40,12 @@
     }
 </style>
 
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    crossorigin="anonymous" />
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-3 sticky-top">
     <div class="container" style="">
-        <a class="navbar-brand madimi " href="../index.php">OssyBab</a>
+        <a class="navbar-brand madimi " href="/phjp/ossyBab/client/index.php">OssyBab</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -117,7 +115,7 @@
                 </li>
                 <li class="nav-item" style="width: 100px;;">
 
-                <div class="profile-menu">
+                <div class="profile-menu1">
                     
             <img src=" ../uploads/<?php echo $_SESSION['UserImage']; ?>" alt="Profile Image" id="profile-img">
             <div class="dropdown-menu" id="dropdown-menu">
