@@ -45,7 +45,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-3 sticky-top">
     <div class="container" style="">
-        <a class="navbar-brand madimi " href="/phjp/ossyBab/client/index.php">OssyBab</a>
+        <a class="navbar-brand madimi " href="../../../../phjp/Ossybab/client/index.php">OssyBab</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,8 +58,8 @@
                 <div class="input-group">
 
 
-                    <button class='btn bg-white shadow-0' href='produit.php'
-                        style='padding-bottom: 0.4rem;'><a href='produit.php' class='text-decoration-none text-dark'> All </a> </button>
+                    <button class='btn bg-white shadow-0' href='../../../../phjp/Ossybab/client/produit.php'
+                        style='padding-bottom: 0.4rem;'><a href='../../../../phjp/Ossybab/client/produit.php' class='text-decoration-none text-dark'> All </a> </button>
                     <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split"
                         data-bs-toggle="dropdown" aria-expanded="false"></button>
                     <ul class="dropdown-menu">
@@ -84,11 +84,11 @@
                                     $currentCategory = $row['CategoryName'];
 
                                     // Start a new category
-                                    echo "<li><a class='dropdown-item' href='produit.php?token=" . $token . "&CT_id=" . $row['CategoryID'] . " '>" . htmlspecialchars($currentCategory) . "</a>";
+                                    echo "<li><a class='dropdown-item' href='../../../../phjp/Ossybab/client/produit.php?token=" . $token . "&CT_id=" . $row['CategoryID'] . " '>" . htmlspecialchars($currentCategory) . "</a>";
                                     echo "<ul class='submenu dropdown-menu'>";
                                 }
                                 // List the type under the current category
-                                echo "<li><a class='dropdown-item' href='produit.php?token=" . $token . "&PT_id=" . $row['ProductTypeID'] . "&CT_id=" . $row['CategoryID'] . "'>" . htmlspecialchars($row['TypeName']) . "</a></li>";
+                                echo "<li><a class='dropdown-item' href='../../../../phjp/Ossybab/client/produit.php?token=" . $token . "&PT_id=" . $row['ProductTypeID'] . "&CT_id=" . $row['CategoryID'] . "'>" . htmlspecialchars($row['TypeName']) . "</a></li>";
                             }
                             // Close the last category's submenu
                             if ($currentCategory !== '') {
@@ -117,10 +117,10 @@
 
                 <div class="profile-menu1">
                     
-            <img src=" ../uploads/<?php echo $_SESSION['UserImage']; ?>" alt="Profile Image" id="profile-img">
-            <div class="dropdown-menu" id="dropdown-menu">
-            <a href="./profile/"><i class="bx bxs-user-circle icon"></i> Profile</a>
-            <a href="logout.php"><i class="bx bxs-log-out-circle"></i> Logout</a>
+            <img src="../../../../phjp/Ossybab/uploads/<?php echo $_SESSION['UserImage']; ?>" alt="Profile Image" id="profile-img1">
+            <div class="dropdown-menu1" id="dropdown-menu1" style="width:8rem">
+            <a href="../../../../phjp/Ossybab/client/profile/"><i class="bx bxs-user-circle icon"></i> Profile</a>
+            <a href="../../../../phjp/Ossybab/client/logout.php"><i class="bx bxs-log-out-circle"></i> Logout</a>
         </div>
     </div>
 
@@ -129,7 +129,7 @@
         </div>
     </div>
 </nav>
-<script src="script.js"></script>
+
 <script type="text/javascript">
 
     document.addEventListener("DOMContentLoaded", function () {
