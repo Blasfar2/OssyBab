@@ -8,14 +8,39 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
     $PT_id = $_GET['PT_id'];
 } elseif (isset($_GET['token']) && isset($_GET['CT_id'])) {
     $CT_id = $_GET['CT_id'];
-}else{
-    
+} else {
+
 }
 // else {
 //     header("Location: ./");
 // }
 
+if (isset($_POST['add_to_wishlist'])) {
+    $wishlistUserID = $_POST['wishlist_user_id'];
+    $wishlistProductID = $_POST['wishlist_product_id'];
 
+    $check_sql = "SELECT WishlistItemID FROM wishlistitems WHERE UserID = '$wishlistUserID' AND ProductID = '$wishlistProductID'";
+    $result = $conn->query($check_sql);
+
+    if ($result->num_rows > 0) {
+        $delete_sql = "DELETE FROM wishlistitems WHERE UserID = '$wishlistUserID' AND ProductID = '$wishlistProductID'";
+        if ($conn->query($delete_sql) === TRUE) {
+            $_SESSION['info'] = "Item removed from wishlist successfully";
+            header("Location: produit.php");
+        } else {
+            $_SESSION['error'] = "Error deleting record: " . $conn->error;
+        }
+    } else {
+        $insert_sql = "INSERT INTO wishlistitems (UserID, ProductID) VALUES ('$wishlistUserID', '$wishlistProductID')";
+        if ($conn->query($insert_sql) === TRUE) {
+            $_SESSION['info'] = "Item added to wishlist successfully";
+            header("Location: produit.php");
+        } else {
+            $_SESSION['error'] = "Error inserting record: " . $conn->error;
+        }
+    }
+
+}
 
 
 ?>
@@ -32,15 +57,15 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    crossorigin="anonymous" />
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        crossorigin="anonymous" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- <link rel="stylesheet" href="../assets/css/styles.css"> -->
 
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
@@ -60,7 +85,7 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
 
         <div class="row col-xl-3 col-md-9 mt-3 ">
 
-            
+
             <div class=" col  z-3 sticky-top">
 
 
@@ -69,7 +94,7 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
                     <a class="btn btn-primary " href="#" role="button">Sumbit</a>
                 </div>
 
-                                <div class="categorie mx-3 mt-3 p-2 rounded col"
+                <div class="categorie mx-3 mt-3 p-2 rounded col"
                     style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;background-color:white;">
                     <h3 class="text-primary">Prix</h3>
                     <div class="double-slider-box">
@@ -154,7 +179,7 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
 
 
 
-                }elseif(isset($CT_id)) {
+                } elseif (isset($CT_id)) {
                     $sql1 = "SELECT * 
                             FROM producttypecategories 
                             LEFT JOIN productattributes 
@@ -188,7 +213,7 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
                         }
                     }
 
-                }else{
+                } else {
                     $sql1 = "SELECT * FROM productattributes";
 
                     $result1 = mysqli_query($conn, $sql1);
@@ -241,8 +266,9 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
 
 
 
-        <div class="newCard row col gap-2 col-md-9" style="display: flex;flex-wrap: wrap;justify-content: flex-start;align-content: flex-start;">
-
+        <div class="newCard row col gap-2 col-md-9"
+            style="display: flex;flex-wrap: wrap;justify-content: flex-start;align-content: flex-start;">
+     
             <!-- ---------------------------- -->
 
             <?php
@@ -278,7 +304,11 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
 
                         echo "    <div style='display: flex;justify-content: flex-end;gap: 5px;'>";
                         echo "        <button class='btn btn-outline-primary'><i class='fa-solid fa-cart-shopping'></i></button>";
-                        echo "        <button class='btn btn-outline-danger '><i class='fa-regular fa-heart'></i></button>";
+                        echo "       <form method='post'>";
+                        echo "          <input type='hidden' name='wishlist_product_id' value='" . $row['ProductID'] . "'>";
+                        echo "          <input type='hidden' name='wishlist_user_id' value='" . $adminId . "'>";
+                        echo "          <button class='btn btn-outline-danger' name='add_to_wishlist' id='favorite'><i class='fa-regular fa-heart'></i></button>";
+                        echo "        </form>";
                         echo "    </div>";
                         echo "</div>  ";
 
@@ -321,7 +351,11 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
 
                         echo "    <div style='display: flex;justify-content: flex-end;gap: 5px;'>";
                         echo "        <button class='btn btn-outline-primary'><i class='fa-solid fa-cart-shopping'></i></button>";
-                        echo "        <button class='btn btn-outline-danger '><i class='fa-regular fa-heart'></i></button>";
+                        echo "       <form method='post'>";
+                        echo "          <input type='hidden' name='wishlist_product_id' value='" . $row['ProductID'] . "'>";
+                        echo "          <input type='hidden' name='wishlist_user_id' value='" . $adminId . "'>";
+                        echo "          <button class='btn btn-outline-danger' name='add_to_wishlist' id='favorite'><i class='fa-regular fa-heart'></i></button>";
+                        echo "        </form>";
                         echo "    </div>";
                         echo "</div>  ";
 
@@ -329,8 +363,7 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
                     }
                 }
             } else {
-                $sql = "SELECT *
-                    FROM products";
+                $sql = "SELECT * FROM products";
 
                 $result = mysqli_query($conn, $sql);
                 if ($result && mysqli_num_rows($result) > 0) {
@@ -357,14 +390,18 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
 
                         echo "    <div style='display: flex;justify-content: flex-end;gap: 5px;'>";
                         echo "        <button class='btn btn-outline-primary'><i class='fa-solid fa-cart-shopping'></i></button>";
-                        echo "        <button class='btn btn-outline-danger '><i class='fa-regular fa-heart'></i></button>";
+                        echo "       <form method='post'>";
+                        echo "          <input type='hidden' name='wishlist_product_id' value='" . $row['ProductID'] . "'>";
+                        echo "          <input type='hidden' name='wishlist_user_id' value='" . $adminId . "'>";
+                        echo "          <button class='btn btn-outline-danger' name='add_to_wishlist' id='favorite'><i class='fa-regular fa-heart'></i></button>";
+                        echo "        </form>";
                         echo "    </div>";
                         echo "</div>  ";
 
 
                     }
                 }
-                
+
             }
 
 
@@ -373,7 +410,7 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
             <!-- ---------------------------- -->
 
         </div>
-        </div>
+    </div>
     </div>
 
 

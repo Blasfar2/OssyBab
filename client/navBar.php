@@ -122,6 +122,7 @@
                             id="profile-img1">
                         <div class="dropdown-menu1" id="dropdown-menu1" style="width:8rem">
                             <a href="profile/"><i class="bx bxs-user-circle icon"></i> Profile</a>
+                            <a href="wishlist.php"><i class="bx bxs-user-circle icon"></i> wishlist</a>
                             <a href="logout.php"><i class="bx bxs-log-out-circle"></i> Logout</a>
                         </div>
                     </div>

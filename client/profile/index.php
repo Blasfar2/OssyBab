@@ -427,7 +427,7 @@ $adminId = $_SESSION['id'];
 
             $('#cancelButton, #cancelModalImg').click(function () {
                 $('input[type="file"]').val('');
-                $('#imgPreview').attr('src', '../../../../phjp/Ossybab/assets/img/profile.jpg');
+                $('#imgPreview').attr('src', '../../assets/img/profile.jpg');
                 $('#cancelButton').hide();
                 $('#confirmButton').hide();
             });
