@@ -22,19 +22,19 @@ $adminId = $_SESSION['id'];
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" />
     <!-- --------------------------------------------- -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    crossorigin="anonymous" />
+        crossorigin="anonymous" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    
+
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <!-- <link rel="stylesheet" href="../../assets/css/styles.css"> -->
     <link rel="stylesheet" href="../../assets/css/range.css">
     <link rel="stylesheet" href="../style.css">
-    
+
 
 
     <style>
@@ -122,7 +122,7 @@ $adminId = $_SESSION['id'];
 
 <body>
 
-<?php include ('../navbar.php'); ?>
+    <?php include ('../navbar.php'); ?>
     <!-- Modal -->
     <div class="modal fade" id="deleteAccountModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
@@ -213,14 +213,14 @@ $adminId = $_SESSION['id'];
                                 <div class="card-header">Profile Picture</div>
 
                                 <div class="card-body text-center">
-                                   
+
                                     <img id="imgPreview" class="img-account-profile rounded-circle mb-2"
                                         src="../../uploads/<?php echo $userData['UserImage']; ?>" alt />
                                     <div class="small font-italic text-muted mb-4">
                                         JPG or PNG no larger than 5 MB
                                     </div>
                                     <form action="process.php" method="post" enctype="multipart/form-data">
-                                    <input type="hidden" id="imagePreviewInput" name="imagePreview">
+                                        <input type="hidden" id="imagePreviewInput" name="imagePreview">
                                         <input type="hidden" name="userId" value="<?php echo $userData['UserID']; ?>">
                                         <input type="hidden" name="oldImage" value="<?php echo $userData['UserImage']; ?>">
                                         <input type="file" name="userImage" class="userImg form-control">
@@ -398,7 +398,7 @@ $adminId = $_SESSION['id'];
     <script src="../../assets/JS/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
     <script type="text/javascript" src="../../assets/JS/bootstrap.bundle.js"></script>
-  <script type="text/javascript" src="../script.js"></script>
+    <script type="text/javascript" src="../script.js"></script>
     <script>
         $(document).ready(function () {
             $('input[type="file"]').change(function () {
@@ -410,6 +410,16 @@ $adminId = $_SESSION['id'];
                     $('#confirmButton').hide();
                 }
             });
+
+            $('#navBarHome').each(function () {
+                var href = $(this).attr('href');
+                $(this).attr('href', '../' + href);
+            });
+            $('.profile-menu1 img').each(function () {
+                var src = $(this).attr('src');
+                $(this).attr('src', '../' + src);
+            });
+            
 
             $('#cancelButton, #cancelModalImg').click(function () {
                 $('input[type="file"]').val('');
@@ -491,13 +501,7 @@ $adminId = $_SESSION['id'];
             // $("#imagePreviewInput").val(filename);
         }
 
-        $(document).ready(function () {
-            $('#navBarHome a').each(function () {
-                var href = $(this).attr('href');
-                $(this).attr('href', '../' + href);
-            });
-          
-        });
+
 
     </script>
     <script>
