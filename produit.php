@@ -439,7 +439,7 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
 
 
 
-    <!-- <div class="offcanvas offcanvas-end" data-bs-scroll="false" tabindex="-1" id="Id2"
+    <div class="offcanvas offcanvas-end" data-bs-scroll="false" tabindex="-1" id="Id2"
         aria-labelledby="staticBackdropLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="staticBackdropLabel">Cart</h5>
@@ -499,7 +499,7 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
 
 
 
-    </div> -->
+    </div>
 
 
     <!--
