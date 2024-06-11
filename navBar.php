@@ -103,7 +103,7 @@
             </form>
 
             <ul class="navbar-nav ms-3 align-items-center">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <button class="nav-link d-flex align-items-center me-3 position-relative" type="button"
                         data-bs-toggle="offcanvas" data-bs-target="#Id2" aria-controls="Id2">
                         <i class="fa fa-cart-shopping pe-2 "></i>Cart
@@ -111,7 +111,7 @@
                             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger s-2">
                             2
                     </button>
-                </li>
+                </li> -->
                 <li class="nav-item" style="width: 100px;;">
                         <a class="btn btn-primary " href="./login/index.php" role="button">Sign in</a>
                 </li>

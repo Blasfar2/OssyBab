@@ -34,7 +34,7 @@ include ("./includes/connection.php");
 
 
 
-  <!-- it offCavans is HIDEEN !!!! -->
+  <!-- it offCavans is HIDEEN !!!!
   <div class="offcanvas offcanvas-end" data-bs-scroll="false" tabindex="-1" id="Id2"
     aria-labelledby="staticBackdropLabel">
     <div class="offcanvas-header">
@@ -85,7 +85,7 @@ include ("./includes/connection.php");
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
   <!-- Ads Image -->
