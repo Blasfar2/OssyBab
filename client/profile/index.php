@@ -415,6 +415,10 @@ $adminId = $_SESSION['id'];
                 var href = $(this).attr('href');
                 $(this).attr('href', '../' + href);
             });
+            $('#dropdown-menu1 a').each(function () {
+                var href = $(this).attr('href');
+                $(this).attr('href', '../' + href);
+            });
             $('.profile-menu1 img').each(function () {
                 var src = $(this).attr('src');
                 $(this).attr('src', '../' + src);
