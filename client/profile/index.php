@@ -2,7 +2,7 @@
 require_once '../../includes/session_test.php';
 include ("../../includes/connection.php");
 $adminId = $_SESSION['id'];
-
+include ("../proccess.php");
 ?>
 
 <!DOCTYPE html>

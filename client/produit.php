@@ -6,83 +6,17 @@ $adminId = $_SESSION['id'];
 if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
     $CT_id = $_GET['CT_id'];
     $PT_id = $_GET['PT_id'];
-} elseif (isset($_GET['token']) && isset($_GET['CT_id'])) {
-    $CT_id = $_GET['CT_id'];
-} else {
-
-}
-// else {
-//     header("Location: ./");
-// }
-
-if (isset($_POST['add_to_wishlist'])) {
-    $wishlistUserID = $_POST['wishlist_user_id'];
-    $wishlistProductID = $_POST['wishlist_product_id'];
-
-    $check_sql = "SELECT WishlistItemID FROM wishlistitems WHERE UserID = '$wishlistUserID' AND ProductID = '$wishlistProductID'";
-    $result = $conn->query($check_sql);
-
-    if ($result->num_rows > 0) {
-        $delete_sql = "DELETE FROM wishlistitems WHERE UserID = '$wishlistUserID' AND ProductID = '$wishlistProductID'";
-        if ($conn->query($delete_sql) === TRUE) {
-            $_SESSION['info'] = "Item removed from wishlist successfully";
-            header("Location: produit.php");
+    } elseif (isset($_GET['token']) && isset($_GET['CT_id'])) {
+        $CT_id = $_GET['CT_id'];
         } else {
-            $_SESSION['error'] = "Error deleting record: " . $conn->error;
+            
         }
-    } else {
-        $insert_sql = "INSERT INTO wishlistitems (UserID, ProductID) VALUES ('$wishlistUserID', '$wishlistProductID')";
-        if ($conn->query($insert_sql) === TRUE) {
-            $_SESSION['info'] = "Item added to wishlist successfully";
-            header("Location: produit.php");
-        } else {
-            $_SESSION['error'] = "Error inserting record: " . $conn->error;
-        }
-    }
-
-}
-if (isset($_POST['add_to_buy'])) {
-    $buyUserID = $_POST['buy_user_id'];
-    $buyProductID = $_POST['buy_product_id'];
-    $check_sql = "SELECT CartItemID, Quantity FROM cartitems WHERE UserID = '$buyUserID' AND ProductID = '$buyProductID'";
-    $result = $conn->query($check_sql);
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $quantity = $row['Quantity'] + 1; 
-        $update_sql = "UPDATE cartitems SET Quantity = $quantity WHERE UserID = '$buyUserID' AND ProductID = '$buyProductID'";
-        if ($conn->query($update_sql) === TRUE) {
-            $_SESSION['info'] = "Item quantity updated successfully";
-            header("Location: produit.php");
-        } else {
-            $_SESSION['error'] = "Error updating record: " . $conn->error;
-        }
-    } else {
-        $insert_sql = "INSERT INTO cartitems (UserID, ProductID, Quantity) VALUES ('$buyUserID', '$buyProductID', 1)";
-        if ($conn->query($insert_sql) === TRUE) {
-            $_SESSION['info'] = "Item added to buy successfully";
-            header("Location: produit.php");
-        } else {
-            $_SESSION['error'] = "Error inserting record: " . $conn->error;
-        }
-    }
-}
-
-if (isset($_POST['deletCart'])) {
-    $deletCart_UserID = $_POST['deletCart_user_id'];
-    $deletCart_ProductID = $_POST['deletcart_product_id'];
-
-    $delete_sql = "DELETE FROM cartitems WHERE UserID = '$deletCart_UserID' AND ProductID = '$deletCart_ProductID'";
-
-    if ($conn->query($delete_sql)  === TRUE) {
-        $_SESSION['info'] = "Item removed from cart successfully";
-        header("Location: produit.php");
-        exit;
-    } else {
-        $_SESSION['error'] = "Error deleting record: " . $conn->error;
-    }
-}
-
+        // else {
+            //     header("Location: ./");
+            // }
+            
+            
+include ("proccess.php");
 
 ?>
 

@@ -2,7 +2,7 @@
 require_once '../includes/session_test.php';
 include ("../includes/connection.php");
 $adminId = $_SESSION['id'];
-
+include ("proccess.php");
 ?>
 
 
@@ -45,7 +45,7 @@ $adminId = $_SESSION['id'];
   <?php include ('../client/navbar.php'); ?>
 
 
-<?php include ('./offcanvas/index.php');?>
+  <?php include ('./offcanvas/index.php'); ?>
   <!-- it offCavans is HIDEEN !!!! -->
   <!-- <div class="offcanvas offcanvas-end" data-bs-scroll="false" tabindex="-1" id="Id2"
     aria-labelledby="staticBackdropLabel">
@@ -315,7 +315,7 @@ $adminId = $_SESSION['id'];
   <script type="text/javascript" src="../assets/JS/script.js"></script>
   <script type="text/javascript" src="script.js"></script>
 
-      <!-- script offcanvas -->
+  <!-- script offcanvas -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
   <script src="offcanvas/scripts.js"></script>
 
