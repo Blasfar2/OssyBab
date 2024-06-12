@@ -83,6 +83,7 @@ if (isset($_POST['deletCart'])) {
     }
 }
 
+
 ?>
 
 <!DOCTYPE html>

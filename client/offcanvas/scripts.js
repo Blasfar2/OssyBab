@@ -1,23 +1,33 @@
 function changeQuantity(button, amount) {
     let quantityElement = button.parentElement.querySelector('.quantity');
+    let me = button.parentElement.querySelector('#new_quantity_input');
+
     let quantity = parseInt(quantityElement.textContent) + amount;
     if (quantity < 1) {
         quantity = 1;
     }
     quantityElement.textContent = quantity;
+    me.value = quantity;
 
     updateTotal();
+
+    // Submit the form after a delay of 1 second
+    setTimeout(() => {
+        button.closest('form').submit();
+    }, 1000);
 }
 
 function updateTotal() {
     let total = 0;
     let cartItems = document.querySelectorAll('.cart-item');
     cartItems.forEach(item => {
-        let price = parseFloat(item.getAttribute('data-price')); // Parse as float instead of integer
+        let price = parseFloat(item.getAttribute('data-price'));
         let quantity = parseInt(item.querySelector('.quantity').textContent);
         total += price * quantity;
+        
     });
-    document.getElementById('total-price').textContent = total.toFixed(2); // Ensure two decimal places
+    document.getElementById('total-price').textContent = total;
+    // No need to update the hidden input field 'new_quantity' here
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
