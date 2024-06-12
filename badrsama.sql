@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 12 juin 2024 à 19:47
+-- Généré le : mer. 12 juin 2024 à 23:44
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -53,16 +53,15 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`CategoryID`, `CategoryName`, `Description`, `CategoryImage`) VALUES
-(1, 'Foods', 'For you and your family and me', '664f3b1e92bd3_IMG_7832.jpg'),
-(2, 'Supermaker', 'Supermaker', '664dec97816e2_664dc70608734_superMaker.jpg'),
-(3, 'Health & Beauty', 'Health & Beauty', '664dcbbbc148a_Health & Beauty.jpg'),
-(4, 'Home & Office', 'Home & Office', '664dcbdb47b9f_Home & Office.jpg'),
-(5, 'Appliance', 'Appliance', '664f388454ffb_fY0wJ-QaIKghQ87Qs9ufsshTAws.png'),
-(6, 'Phone & Tablets', 'Phone & Tablets', '664dcc2944b3f_Phone & Tablets.jpg'),
-(8, 'Electronics', 'Electronics', '664dcc632d7d8_Electronics.jpg'),
-(9, 'Fashion', 'Fashion', '664dcc8d6da6d_Fashion.jpg'),
-(10, 'Baby Products', 'Baby Products', '664dd311b5355_jomjakkapat-parrueng-qaUMOLJwb48-unsplash.jpg'),
-(11, 'carte graphic', 'qsdfghyjkl', '66531ff8ea484_8083c857-f3ca-48a8-97cd-ace3b8666886.png');
+(2, 'Supermaker', 'Discover the freshest produce and a wide variety of organic options at our supermarket. Your one-stop shop for quality groceries at unbeatable prices.', '664dec97816e2_664dc70608734_superMaker.jpg'),
+(3, 'Health & Beauty', 'Rejuvenate your skin with our all-natural skincare line, packed with vitamins and antioxidants to keep you glowing all day long.', '664dcbbbc148a_Health & Beauty.jpg'),
+(4, 'Home & Office', 'Transform your workspace with our ergonomic office chairs, designed for maximum comfort and productivity. Style meets function with our sleek designs.', '664dcbdb47b9f_Home & Office.jpg'),
+(5, 'Appliance', 'Upgrade your kitchen with our state-of-the-art blender, featuring multiple speed settings and a durable stainless steel blade for effortless blending.', '664f388454ffb_fY0wJ-QaIKghQ87Qs9ufsshTAws.png'),
+(6, 'Phone & Tablets', 'Stay connected with our latest smartphone, boasting a stunning display, powerful processor, and long-lasting battery life. Your perfect tech companion.', '664dcc2944b3f_Phone & Tablets.jpg'),
+(8, 'Electronics', 'Experience cinematic sound with our premium wireless headphones, offering crystal-clear audio and noise-cancellation for an immersive listening experience.', '664dcc632d7d8_Electronics.jpg'),
+(9, 'Fashion', 'Step out in style with our new summer collection, featuring trendy designs and vibrant colors. From casual wear to elegant outfits, we have something for every occasion.', '664dcc8d6da6d_Fashion.jpg'),
+(10, 'Baby Products', 'Ensure your baby\'s comfort with our ultra-soft, hypoallergenic diapers, designed to keep your little one dry and happy all day long.', '664dd311b5355_jomjakkapat-parrueng-qaUMOLJwb48-unsplash.jpg'),
+(14, 'Toys & Games', 'Unlock a world of fun and creativity with our latest building block set! Perfect for kids and adults alike, this set promotes problem-solving skills and endless hours of imaginative play. Safe, durable, and colorful – the ultimate addition to your toy collection.', '666a032323cea_1660896887938.jpeg');
 
 -- --------------------------------------------------------
 
@@ -150,32 +149,26 @@ CREATE TABLE `productattributes` (
 --
 
 INSERT INTO `productattributes` (`AttributeID`, `ProductTypeID`, `AttributeName`, `DataType`) VALUES
-(10, 1, '1', 'integer'),
-(12, 1, '5 dfgh', 'date'),
-(53, 2, 'lovr', 'string'),
-(54, 2, 'dq', 'decimal'),
-(61, 2, 'qsc', 'string'),
-(62, 2, 'ssqqdds', 'decimal'),
-(64, 2, 'lazaza', 'string'),
-(66, 1, 'love', 'string'),
-(67, 3, 'Int', 'integer'),
-(68, 3, 'deci', 'decimal'),
-(69, 3, 'booo', 'boolean'),
-(70, 3, 'date', 'date'),
-(71, 3, 'String', 'string'),
-(72, 4, 'dsqdsq', 'string'),
-(74, 4, 'er', 'date'),
-(75, 5, 'sgdsf', 'date'),
-(76, 5, 'qfsqfq', 'integer'),
-(77, 5, 'qsf', 'date'),
-(78, 1, 'xwwxf', 'boolean'),
-(79, 6, 'str', 'string'),
-(80, 6, 'int', 'integer'),
-(81, 6, 'deci', 'decimal'),
-(82, 6, 'bool', 'boolean'),
-(83, 6, 'date', 'date'),
-(84, 7, 'fd', 'string'),
-(85, 4, 'he', 'string');
+(97, 9, 'name', 'string'),
+(98, 9, 'Color', 'string'),
+(99, 9, 'Style', 'string'),
+(100, 9, 'Material', 'string'),
+(101, 9, 'Occasion', 'string'),
+(102, 9, 'Mosaic Material', 'string'),
+(103, 9, 'Plating', 'string'),
+(104, 9, 'Holiday', 'string'),
+(106, 10, 'Color', 'string'),
+(107, 10, 'Applicable Age Group', 'string'),
+(108, 10, 'Material', 'string'),
+(109, 10, 'Reusability', 'string'),
+(110, 10, 'Style', 'string'),
+(111, 10, 'Major Material', 'string'),
+(113, 10, 'Theme', 'string'),
+(114, 11, 'name', 'string'),
+(115, 11, 'Shoe Size', 'string'),
+(116, 11, 'Color', 'string'),
+(117, 11, 'Pattern', 'string'),
+(118, 11, 'Upper Material', 'string');
 
 -- --------------------------------------------------------
 
@@ -199,69 +192,111 @@ CREATE TABLE `productattributevalues` (
 --
 
 INSERT INTO `productattributevalues` (`AttributeValueID`, `ProductID`, `AttributeID`, `ValueString`, `ValueInteger`, `ValueDecimal`, `ValueBoolean`, `ValueDate`) VALUES
-(4, 5, 75, NULL, NULL, NULL, NULL, '2024-05-08'),
-(5, 5, 76, NULL, 2, NULL, NULL, NULL),
-(6, 5, 77, NULL, NULL, NULL, NULL, '2024-06-09'),
-(7, 6, 72, 'fjhgfdsgh', NULL, NULL, NULL, NULL),
-(8, 6, 74, NULL, NULL, NULL, NULL, '2024-06-01'),
-(9, 7, 67, NULL, 111, NULL, NULL, NULL),
-(10, 7, 68, NULL, 222, NULL, NULL, NULL),
-(11, 7, 70, NULL, NULL, NULL, NULL, '2024-05-30'),
-(12, 7, 71, 'DEZA', NULL, NULL, NULL, NULL),
-(13, 8, 67, NULL, 15, NULL, NULL, NULL),
-(14, 8, 68, NULL, NULL, 0.09, NULL, NULL),
-(15, 8, 69, 'on', NULL, NULL, 0, NULL),
-(16, 8, 70, NULL, NULL, NULL, NULL, '2024-05-01'),
-(17, 8, 71, 'abc', NULL, NULL, NULL, NULL),
-(18, 9, 67, NULL, 10, NULL, NULL, NULL),
-(19, 9, 68, NULL, NULL, 43.00, NULL, NULL),
-(20, 9, 69, NULL, NULL, NULL, 1, NULL),
-(21, 9, 70, NULL, NULL, NULL, NULL, '2024-05-25'),
-(22, 9, 71, 'DSGxwv', NULL, NULL, NULL, NULL),
-(23, 10, 67, NULL, 21, NULL, NULL, NULL),
-(24, 10, 68, NULL, 2147483647, NULL, NULL, NULL),
-(25, 10, 69, NULL, NULL, NULL, 0, NULL),
-(26, 10, 70, NULL, NULL, NULL, NULL, '2024-05-19'),
-(27, 10, 71, '', NULL, NULL, NULL, NULL),
-(28, 11, 67, NULL, 1234, NULL, NULL, NULL),
-(29, 11, 68, NULL, NULL, 0.22, NULL, NULL),
-(30, 11, 69, NULL, NULL, NULL, 0, NULL),
-(31, 11, 70, NULL, NULL, NULL, NULL, '2024-05-24'),
-(32, 11, 71, 'eeeerrr', NULL, NULL, NULL, NULL),
-(33, 12, 67, NULL, 1234, NULL, NULL, NULL),
-(34, 12, 68, NULL, 32333, NULL, NULL, NULL),
-(35, 12, 69, NULL, NULL, NULL, 1, NULL),
-(36, 12, 70, NULL, NULL, NULL, NULL, '2024-05-06'),
-(37, 12, 71, 'EZER', NULL, NULL, NULL, NULL),
-(38, 13, 67, NULL, 90, NULL, NULL, NULL),
-(39, 13, 68, NULL, NULL, 34.00, NULL, NULL),
-(40, 13, 69, NULL, NULL, NULL, 1, NULL),
-(41, 13, 70, NULL, NULL, NULL, NULL, '2024-05-27'),
-(42, 13, 71, NULL, 22, NULL, NULL, NULL),
-(43, 14, 67, NULL, 12, NULL, NULL, NULL),
-(44, 14, 68, NULL, NULL, 122.55, NULL, NULL),
-(45, 14, 69, NULL, NULL, NULL, 1, NULL),
-(46, 14, 70, NULL, NULL, NULL, NULL, '2024-05-27'),
-(47, 14, 71, 'DSF', NULL, NULL, NULL, NULL),
-(48, 8, 72, 'sdfg', NULL, NULL, NULL, NULL),
-(49, 8, 74, NULL, NULL, NULL, NULL, '2024-05-27'),
-(50, 1, 72, 'test 1', NULL, NULL, NULL, NULL),
-(51, 1, 74, NULL, NULL, NULL, NULL, '2034-04-28'),
-(52, 1, 75, NULL, NULL, NULL, NULL, '2024-05-01'),
-(53, 1, 76, NULL, 235, NULL, NULL, NULL),
-(54, 1, 77, NULL, NULL, NULL, NULL, '2024-05-12'),
-(55, 3, 10, NULL, NULL, NULL, 1, NULL),
-(56, 3, 12, NULL, NULL, NULL, NULL, '2024-05-27'),
-(57, 3, 66, 'BB', NULL, NULL, NULL, '0000-00-00'),
-(58, 3, 78, NULL, NULL, NULL, 0, NULL),
-(59, 2, 72, 'dddd', NULL, NULL, NULL, NULL),
-(60, 2, 74, '', NULL, NULL, NULL, NULL),
-(61, 4, 67, NULL, 3, NULL, NULL, NULL),
-(62, 4, 68, NULL, NULL, 4.00, NULL, NULL),
-(63, 4, 69, NULL, NULL, NULL, 1, NULL),
-(64, 4, 70, NULL, NULL, NULL, NULL, '2024-05-24'),
-(65, 4, 71, 'dsfxghjk', NULL, NULL, NULL, NULL),
-(66, 1, 85, '', NULL, NULL, NULL, NULL);
+(67, 15, 88, 'Men\'s Jewelry', NULL, NULL, NULL, NULL),
+(68, 15, 89, 'white', NULL, NULL, NULL, NULL),
+(69, 15, 90, 'Cute', NULL, NULL, NULL, NULL),
+(70, 15, 91, 'Plastic', NULL, NULL, NULL, NULL),
+(71, 15, 92, 'Gift-giving Occasion', NULL, NULL, NULL, NULL),
+(72, 15, 93, 'Rhinestones', NULL, NULL, NULL, NULL),
+(73, 15, 94, 'Silver Plated', NULL, NULL, NULL, NULL),
+(74, 15, 95, 'Campus Related', NULL, NULL, NULL, NULL),
+(75, 15, 96, NULL, NULL, 70.00, NULL, NULL),
+(76, 15, 97, 'Men\'s Jewelry', NULL, NULL, NULL, NULL),
+(77, 15, 98, 'white', NULL, NULL, NULL, NULL),
+(78, 15, 99, 'Plastic', NULL, NULL, NULL, NULL),
+(79, 15, 100, 'Vacation Occasion', NULL, NULL, NULL, NULL),
+(80, 15, 101, 'Gift-giving Occasion', NULL, NULL, NULL, NULL),
+(81, 15, 102, 'Imitation Pearl', NULL, NULL, NULL, NULL),
+(82, 15, 103, 'Silver Plated', NULL, NULL, NULL, NULL),
+(83, 15, 104, 'Spring Festival', NULL, NULL, NULL, NULL),
+(84, 16, 106, 'white', NULL, NULL, NULL, NULL),
+(85, 16, 107, '14+', NULL, NULL, NULL, NULL),
+(86, 16, 108, 'Plastic', NULL, NULL, NULL, NULL),
+(87, 16, 109, 'Reusable', NULL, NULL, NULL, NULL),
+(88, 16, 110, 'Casual', NULL, NULL, NULL, NULL),
+(89, 16, 111, 'Latex', NULL, NULL, NULL, NULL),
+(90, 16, 113, 'Vehicles', NULL, NULL, NULL, NULL),
+(91, 17, 106, 'yellow', NULL, NULL, NULL, NULL),
+(92, 17, 107, '12 years old (not included) - 14 years old (included)', NULL, NULL, NULL, NULL),
+(93, 17, 108, 'Plastic', NULL, NULL, NULL, NULL),
+(94, 17, 109, 'Single Use', NULL, NULL, NULL, NULL),
+(95, 17, 110, 'Simple', NULL, NULL, NULL, NULL),
+(96, 17, 111, 'PP', NULL, NULL, NULL, NULL),
+(97, 17, 113, 'Vehicles', NULL, NULL, NULL, NULL),
+(98, 18, 97, 'Women\'s Jewelry', NULL, NULL, NULL, NULL),
+(99, 18, 98, 'white', NULL, NULL, NULL, NULL),
+(100, 18, 99, 'Vintage', NULL, NULL, NULL, NULL),
+(101, 18, 100, 'Acrylic', NULL, NULL, NULL, NULL),
+(102, 18, 101, 'Wedding Occasion', NULL, NULL, NULL, NULL),
+(103, 18, 102, 'moissanite', NULL, NULL, NULL, NULL),
+(104, 18, 103, '14K Gold Plated', NULL, NULL, NULL, NULL),
+(105, 18, 104, 'Valentine\'s Day', NULL, NULL, NULL, NULL),
+(106, 19, 97, 'Women\'s Glasses', NULL, NULL, NULL, NULL),
+(107, 19, 98, 'yellow', NULL, NULL, NULL, NULL),
+(108, 19, 99, 'Elegant', NULL, NULL, NULL, NULL),
+(109, 19, 100, '925 Silver', NULL, NULL, NULL, NULL),
+(110, 19, 101, 'Celebrate The Festival', NULL, NULL, NULL, NULL),
+(111, 19, 102, 'Synthetic Gems', NULL, NULL, NULL, NULL),
+(112, 19, 103, '925 Silver Plated', NULL, NULL, NULL, NULL),
+(113, 19, 104, 'Valentine\'s Day', NULL, NULL, NULL, NULL),
+(114, 20, 97, 'Women\'s Jewelry', NULL, NULL, NULL, NULL),
+(115, 20, 98, 'white', NULL, NULL, NULL, NULL),
+(116, 20, 99, 'Vintage', NULL, NULL, NULL, NULL),
+(117, 20, 100, 'Acrylic', NULL, NULL, NULL, NULL),
+(118, 20, 101, 'Celebrate The Festival', NULL, NULL, NULL, NULL),
+(119, 20, 102, 'Zircon', NULL, NULL, NULL, NULL),
+(120, 20, 103, 'Antique Silver Plated', NULL, NULL, NULL, NULL),
+(121, 20, 104, 'Valentine\'s Day', NULL, NULL, NULL, NULL),
+(122, 21, 97, 'Women\'s Jewelry', NULL, NULL, NULL, NULL),
+(123, 21, 98, 'white', NULL, NULL, NULL, NULL),
+(124, 21, 99, 'Vintage', NULL, NULL, NULL, NULL),
+(125, 21, 100, '925 Silver', NULL, NULL, NULL, NULL),
+(126, 21, 101, 'Celebrate The Festival', NULL, NULL, NULL, NULL),
+(127, 21, 102, 'moissanite', NULL, NULL, NULL, NULL),
+(128, 21, 103, 'Platinum Plated', NULL, NULL, NULL, NULL),
+(129, 21, 104, 'Valentine\'s Day', NULL, NULL, NULL, NULL),
+(130, 22, 97, 'Women\'s Jewelry', NULL, NULL, NULL, NULL),
+(131, 22, 98, 'red', NULL, NULL, NULL, NULL),
+(132, 22, 99, 'Plastic', NULL, NULL, NULL, NULL),
+(133, 22, 100, '925 Silver', NULL, NULL, NULL, NULL),
+(134, 22, 101, 'Celebrate The Festival', NULL, NULL, NULL, NULL),
+(135, 22, 102, 'Synthetic Gems', NULL, NULL, NULL, NULL),
+(136, 22, 103, 'Antique Silver Plated', NULL, NULL, NULL, NULL),
+(137, 22, 104, 'Valentine\'s Day', NULL, NULL, NULL, NULL),
+(138, 23, 97, 'Women\'s Jewelry', NULL, NULL, NULL, NULL),
+(139, 23, 98, 'yellow', NULL, NULL, NULL, NULL),
+(140, 23, 99, 'Elegant', NULL, NULL, NULL, NULL),
+(141, 23, 100, '925 Silver', NULL, NULL, NULL, NULL),
+(142, 23, 101, 'Wedding Occasion', NULL, NULL, NULL, NULL),
+(143, 23, 102, 'moissanite', NULL, NULL, NULL, NULL),
+(144, 23, 103, '925 Silver Plated', NULL, NULL, NULL, NULL),
+(145, 23, 104, 'Spring Festival', NULL, NULL, NULL, NULL),
+(146, 24, 97, 'Women\'s Jewelry', NULL, NULL, NULL, NULL),
+(147, 24, 98, 'white', NULL, NULL, NULL, NULL),
+(148, 24, 99, 'Elegant', NULL, NULL, NULL, NULL),
+(149, 24, 100, 'Polyester', NULL, NULL, NULL, NULL),
+(150, 24, 101, 'Party Occasion', NULL, NULL, NULL, NULL),
+(151, 24, 102, 'Weekend Casual', NULL, NULL, NULL, NULL),
+(152, 24, 103, 'Imitation Pearl', NULL, NULL, NULL, NULL),
+(153, 24, 104, 'Silver Plated', NULL, NULL, NULL, NULL),
+(154, 25, 97, 'Women\'s Jewelry', NULL, NULL, NULL, NULL),
+(155, 25, 98, 'white', NULL, NULL, NULL, NULL),
+(156, 25, 99, 'Elegant', NULL, NULL, NULL, NULL),
+(157, 25, 100, 'Polyester', NULL, NULL, NULL, NULL),
+(158, 25, 101, 'Gift-giving Occasion', NULL, NULL, NULL, NULL),
+(159, 25, 102, 'moissanite', NULL, NULL, NULL, NULL),
+(160, 25, 103, 'Platinum Plated', NULL, NULL, NULL, NULL),
+(161, 25, 104, 'Spring Festival', NULL, NULL, NULL, NULL),
+(162, 26, 114, 'Women\'s Pumps', NULL, NULL, NULL, NULL),
+(163, 26, 115, NULL, 30, NULL, NULL, NULL),
+(164, 26, 116, 'pink', NULL, NULL, NULL, NULL),
+(165, 26, 117, 'Flowers', NULL, NULL, NULL, NULL),
+(166, 26, 118, 'Denim', NULL, NULL, NULL, NULL),
+(167, 27, 114, 'Women\'s Pumps', NULL, NULL, NULL, NULL),
+(168, 27, 115, NULL, 31, NULL, NULL, NULL),
+(169, 27, 116, 'white', NULL, NULL, NULL, NULL),
+(170, 27, 117, 'Plaid', NULL, NULL, NULL, NULL),
+(171, 27, 118, 'Bovine Leather', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -287,20 +322,19 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`ProductID`, `Name`, `Description`, `Price`, `Stock`, `ProductImage`, `ProductTypeID`, `CreatedAt`, `UpdatedAt`, `IsDeleted`) VALUES
-(1, 'AZZA', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo eveniet veniam tempora fuga tenetur placeat sapiente architecto illum soluta consequuntur, aspernatur quidem at sequi ipsa!', 234.00, 26, '6653c1451219f_IMG_7830.jpg', 4, '2024-05-26 23:09:57', '2024-06-02 11:47:01', 0),
-(2, 'qqsssqsqs', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo eveniet veniam tempora fuga tenetur placeat sapiente architecto illum soluta consequuntur, aspernatur quidem at sequi ipsa!', 0.41, 21, '6654eb803dd40_profil.png', 4, '2024-05-26 23:45:09', '2024-06-02 11:18:30', 0),
-(3, 'qqsssqsqs', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo eveniet veniam tempora fuga tenetur placeat sapiente architecto illum soluta consequuntur, aspernatur quidem at sequi ipsa!', 0.32, 20, '6653cb7aaecd7_a4b524ee-6492-493b-adf8-4fc850079bbb.jpeg', 1, '2024-05-26 23:53:30', '2024-06-02 11:18:30', 0),
-(4, 'qqsssqsqs', NULL, 0.32, 20, '6653ccfe8b837_a4b524ee-6492-493b-adf8-4fc850079bbb.jpeg', 3, '2024-05-26 23:59:58', '2024-06-02 11:28:53', 0),
-(5, 'dwfd', 'sfdsfsfs', 0.01, 1, '6653ce0696b99_4e1d9222-059b-4b0a-a820-7b9a7f6e84a0.png', 5, '2024-05-27 00:04:22', '2024-05-27 00:04:22', 0),
-(6, 'zae', 'aezaz', 0.03, 1, '6653cf521023b_IMG_7830.jpg', 4, '2024-05-27 00:09:54', '2024-05-27 00:09:54', 0),
-(7, 'sqdq', 'dqsdqq', 0.05, 4, '66542781c936e_Greenskull_apartment_micro_black_hole_in_the_center_of_the_room_dd3f62e5-c060-435d-a2c8-4ccfaa11c84f.png', 3, '2024-05-27 06:26:09', '2024-05-27 06:26:09', 0),
-(8, 'aaaaaaaaaaaaaa', 'bbbbbbbb', 0.14, 15, '6654b97bbdba1_face.png', 4, '2024-05-27 16:48:59', '2024-05-27 20:28:29', 0),
-(9, 'lasr', 'kjgfd', 0.01, 1, '6654ebad366b3_IMG_7832.jpg', 3, '2024-05-27 17:10:51', '2024-05-27 20:23:09', 0),
-(10, 're', 'ze', 0.01, 1, '6654c8daadebb_Amidst the tranquil (1).jpg', 3, '2024-05-27 17:54:34', '2024-05-27 17:54:34', 0),
-(11, 'sssssss', 'ssss', 0.03, 5, '6654c947ca394_Amidst the tranquil (1).jpg', 3, '2024-05-27 17:56:23', '2024-05-27 17:56:23', 0),
-(12, 'sfsfq', 'dq', 2.00, 12, '6654cb3aa529c_IMG_7830.jpg', 3, '2024-05-27 18:04:42', '2024-05-27 18:04:42', 0),
-(13, 'last', 'zaz', 100.00, 5, '6654d0dc949d1_IMG_7832.jpg', 3, '2024-05-27 18:28:44', '2024-05-27 18:28:44', 0),
-(14, 'SQ', 'SDQ', 0.01, 1, '6654d16d5a256_IMG_7830.jpg', 3, '2024-05-27 18:31:09', '2024-05-27 18:31:09', 0);
+(15, 'Luxury Shiny Rhinestone Tennis Bracelet Stretch Hand Jewelry For Women Men Daily Wear', 'Plating: Silver Plated Mosaic Material: Rhinestones', 10.00, 10, '6669ecf1b50a1_4305114ee122b84578f93dd0bcd99f94.jpg', 9, '2024-06-12 18:46:09', '2024-06-12 20:03:49', 0),
+(16, ' Mini Alloy Car ', '.', 150.00, 1, '666a09b6f2cff_toyVericles.jpg', 10, '2024-06-12 20:48:54', '2024-06-12 20:53:37', 0),
+(17, 'Car Steering Toys Steering Wheel Toy Car Mainan Baby Steering Toys Kids Baby ', 'Toys Steering Wheel Kids', 50.00, 5, '666a0c6958ced_1687249779889-ccbcf50a2eca4201b0b9d5577a639439-goods.jpeg', 10, '2024-06-12 21:00:25', '2024-06-12 21:00:25', 0),
+(18, 'Delicate Rhinestone Alloy Butterfly Necklace Elegant Neck Jewelry Ornament ', 'Accessories Gift', 20.00, 50, '666a0d1a17942_6ebf1d42263f982a631cb34e1527cbe9.jpg', 9, '2024-06-12 21:03:22', '2024-06-12 21:03:22', 0),
+(19, '7pcs/Set Fashion Trend Simple Art Design Ring Retro Palace Light', 'Luxury Snake Geometric Rhinestone Green Alloy Personality Cool Style Ring Cover For Female', 100.00, 5, '666a0d80c30fd_eb158e6ae9de3d3cc6339f29acc59247.jpg', 9, '2024-06-12 21:05:04', '2024-06-12 21:05:04', 0),
+(20, 'Shiny Butterfly Thin Tennis Bracelet Elegant Hand', 'Chain Jewelry Decoration For Women', 30.00, 2, '666a0f84e6906_4eeed5d6b04a0b072863cae616c5f7bb.jpg', 9, '2024-06-12 21:13:40', '2024-06-12 21:13:40', 0),
+(21, 'Elegant 4-Piece Jewelry Set, Rhinestone Studded Necklace, Ring and Earrings', ' Simplistic Design, Ideal for Daily Wear, Vacation Style, Minimalist Fashion', 24.00, 1, '666a0fdec37d7_e561324f-fb41-4d5b-a608-a3b271e5008c.jpg', 9, '2024-06-12 21:15:10', '2024-06-12 21:15:10', 0),
+(22, 'Creative Design Red Love Heart Inlaid Zircon Ring', 'For Women Daily Casual Jewelry Wedding Engagement Accessories Anniversary Gift', 80.00, 5, '666a101150c45_001dc6aa19f9aa3f232323c79c16bd60.jpg', 9, '2024-06-12 21:16:01', '2024-06-12 21:16:01', 0),
+(23, 'Golden 26 Letters Rings For Women Zircon Rhinestone Studded', 'Open Adjustable Rings Jewelry Accessory Gifts', 50.00, 3, '666a106e0eb8c_9081bf49-8f5a-4da4-9a68-0c43683e196d_1340x1340.jpeg', 9, '2024-06-12 21:17:34', '2024-06-12 21:17:34', 0),
+(24, 'Love Heart Open Ring 2pcs', 'Set Personality Design Ring Temperament Jewelry', 13.00, 10, '666a10d6f415d_9aa530e0cbbb1314f04122e245e567c6.jpg', 9, '2024-06-12 21:19:19', '2024-06-12 21:19:19', 0),
+(25, '2 Pcs Of Sun And Moon Charm Bracelets Set Alloy Jewelry Simple', 'Creative Design Ladies Friendship Blessing Card Adjustable Jewelry Accessory', 11.00, 5, '666a110f4c168_339f3a88-046b-4eeb-8ae9-988cd29507d4.jpg', 9, '2024-06-12 21:20:15', '2024-06-12 21:20:15', 0),
+(26, 'Summer Linen Sole Slides', 'Casual Open Toe Slip On Shoes, Comfortable Indoor Home Slides', 45.00, 10, '666a12a349aae_b6dc4734-5cd6-4c81-b17c-9ba4daf1d15a.jpg', 11, '2024-06-12 21:26:59', '2024-06-12 21:26:59', 0),
+(27, 'Simple Summer Slippers', ' Casual Open Toe Slip On Shoes, Comfortable Indoor Home Slippers', 100.00, 1, '666a12f730e23_43a12bce-e57c-4efe-af28-b6c1712c7566.jpg', 11, '2024-06-12 21:28:23', '2024-06-12 21:28:23', 0);
 
 -- --------------------------------------------------------
 
@@ -318,18 +352,12 @@ CREATE TABLE `producttypecategories` (
 --
 
 INSERT INTO `producttypecategories` (`ProductTypeID`, `CategoryID`) VALUES
-(1, 9),
-(1, 10),
-(2, 4),
-(3, 1),
-(3, 5),
-(4, 2),
-(4, 5),
-(5, 1),
-(5, 2),
-(5, 3),
-(5, 5),
-(6, 1);
+(9, 9),
+(10, 10),
+(10, 14),
+(11, 3),
+(11, 4),
+(11, 9);
 
 -- --------------------------------------------------------
 
@@ -348,12 +376,9 @@ CREATE TABLE `producttypes` (
 --
 
 INSERT INTO `producttypes` (`ProductTypeID`, `TypeName`, `IsDeleted`) VALUES
-(1, 'test', 0),
-(2, 'yutre', 0),
-(3, 'eee', 0),
-(4, 'bvc', 0),
-(5, 'test here', 0),
-(6, 'love and care', 1);
+(9, 'jewelry stand', 0),
+(10, 'necklace organizer', 0),
+(11, 'Women Shoes', 0);
 
 -- --------------------------------------------------------
 
@@ -401,15 +426,6 @@ CREATE TABLE `wishlistitems` (
   `ProductID` int(11) DEFAULT NULL,
   `AddedAt` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Déchargement des données de la table `wishlistitems`
---
-
-INSERT INTO `wishlistitems` (`WishlistItemID`, `UserID`, `ProductID`, `AddedAt`) VALUES
-(1, 2, 2, '2024-06-11 21:46:36'),
-(6, 5, 13, '2024-06-11 22:13:15'),
-(21, 5, 9, '2024-06-11 22:46:10');
 
 --
 -- Index pour les tables déchargées
@@ -513,13 +529,13 @@ ALTER TABLE `wishlistitems`
 -- AUTO_INCREMENT pour la table `cartitems`
 --
 ALTER TABLE `cartitems`
-  MODIFY `CartItemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `CartItemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT pour la table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT pour la table `orderdetails`
@@ -543,25 +559,25 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT pour la table `productattributes`
 --
 ALTER TABLE `productattributes`
-  MODIFY `AttributeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `AttributeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 
 --
 -- AUTO_INCREMENT pour la table `productattributevalues`
 --
 ALTER TABLE `productattributevalues`
-  MODIFY `AttributeValueID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `AttributeValueID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
 
 --
 -- AUTO_INCREMENT pour la table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT pour la table `producttypes`
 --
 ALTER TABLE `producttypes`
-  MODIFY `ProductTypeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ProductTypeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT pour la table `users`
@@ -606,37 +622,11 @@ ALTER TABLE `payments`
   ADD CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `orders` (`OrderID`);
 
 --
--- Contraintes pour la table `productattributes`
---
-ALTER TABLE `productattributes`
-  ADD CONSTRAINT `productattributes_ibfk_1` FOREIGN KEY (`ProductTypeID`) REFERENCES `producttypes` (`ProductTypeID`);
-
---
 -- Contraintes pour la table `productattributevalues`
 --
 ALTER TABLE `productattributevalues`
   ADD CONSTRAINT `productattributevalues_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`),
   ADD CONSTRAINT `productattributevalues_ibfk_2` FOREIGN KEY (`AttributeID`) REFERENCES `productattributes` (`AttributeID`);
-
---
--- Contraintes pour la table `products`
---
-ALTER TABLE `products`
-  ADD CONSTRAINT `fk_ProductTypeID` FOREIGN KEY (`ProductTypeID`) REFERENCES `producttypes` (`ProductTypeID`) ON DELETE SET NULL;
-
---
--- Contraintes pour la table `producttypecategories`
---
-ALTER TABLE `producttypecategories`
-  ADD CONSTRAINT `producttypecategories_ibfk_1` FOREIGN KEY (`ProductTypeID`) REFERENCES `producttypes` (`ProductTypeID`),
-  ADD CONSTRAINT `producttypecategories_ibfk_2` FOREIGN KEY (`CategoryID`) REFERENCES `categories` (`CategoryID`);
-
---
--- Contraintes pour la table `wishlistitems`
---
-ALTER TABLE `wishlistitems`
-  ADD CONSTRAINT `wishlistitems_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`),
-  ADD CONSTRAINT `wishlistitems_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
