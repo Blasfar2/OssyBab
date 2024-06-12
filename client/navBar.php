@@ -40,12 +40,18 @@
     }
 </style>
 
-
+<?php 
+    $sql5="SELECT count(*)as totalItem FROM cartitems  WHERE `UserID`=$adminId GROUP BY `UserID`";
+    $result5 = mysqli_query($conn, $sql5);
+    if (mysqli_num_rows($result5) > 0) {
+        $row5 = mysqli_fetch_assoc($result5);
+    }
+?>
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-3 sticky-top">
     <div class="container" style="">
-        <a class="navbar-brand madimi " id="navBarHome" href="index.php">OssyBab</a>
+        <a class="navbar-brand madimi " id="navBarHome" href="./">OssyBab</a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,9 +115,11 @@
                     <button class="nav-link d-flex align-items-center me-3 position-relative" type="button"
                         data-bs-toggle="offcanvas" data-bs-target="#Id2" aria-controls="Id2">
                         <i class="fa fa-cart-shopping pe-2 "></i>Cart
-                        <span
-                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger s-2">
-                            2
+                        <?php
+
+                        if(isset($row5['totalItem'])){
+                        echo "<span class='position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger s-2'>".$row5['totalItem'];}
+                        ?>
                     </button>
                 </li>
                 <li class="nav-item" style="width: 100px;;">
