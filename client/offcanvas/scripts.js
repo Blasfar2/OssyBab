@@ -21,7 +21,8 @@ function updateTotal() {
         total += price * quantity;
         
     });
-    document.getElementById('total-price').textContent = total;
+    let formattedTotal = total.toFixed(2);
+    document.getElementById('total-price').textContent = formattedTotal;
     // No need to update the hidden input field 'new_quantity' here
 }
 
