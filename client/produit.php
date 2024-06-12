@@ -41,6 +41,32 @@ if (isset($_POST['add_to_wishlist'])) {
     }
 
 }
+if (isset($_POST['add_to_buy'])) {
+    $buyUserID = $_POST['buy_user_id'];
+    $buyProductID = $_POST['buy_product_id'];
+
+    $check_sql = "SELECT CartItemID FROM cartitems WHERE UserID = '$buyUserID' AND ProductID = '$buyProductID'";
+    $result = $conn->query($check_sql);
+
+    if ($result->num_rows > 0) {
+        $delete_sql = "DELETE FROM cartitems WHERE UserID = '$buyUserID' AND ProductID = '$buyProductID'";
+        if ($conn->query($delete_sql) === TRUE) {
+            $_SESSION['info'] = "Item removed from buy successfully";
+            header("Location: produit.php");
+        } else {
+            $_SESSION['error'] = "Error deleting record: " . $conn->error;
+        }
+    } else {
+        $insert_sql = "INSERT INTO cartitems (UserID, ProductID ,Quantity) VALUES ('$buyUserID', '$buyProductID','1')";
+        if ($conn->query($insert_sql) === TRUE) {
+            $_SESSION['info'] = "Item added to buy successfully";
+            header("Location: produit.php");
+        } else {
+            $_SESSION['error'] = "Error inserting record: " . $conn->error;
+        }
+    }
+
+}
 
 
 ?>
@@ -74,11 +100,17 @@ if (isset($_POST['add_to_wishlist'])) {
     <link rel="stylesheet" href="../assets/css/range.css">
     <link rel="stylesheet" href="style.css">
 
+      <!-- STYLE OFFCANVAS -->
+  <link rel="stylesheet" href="./offcanvas/styles.css">
+
 </head>
 
 <body style="background-color:#f5f5f5">
 
     <?php include ('navbar.php'); ?>
+
+
+    <?php include ('./offcanvas/index.php');?>
 
 
     <div class="row">
@@ -303,7 +335,11 @@ if (isset($_POST['add_to_wishlist'])) {
 
 
                         echo "    <div style='display: flex;justify-content: flex-end;gap: 5px;'>";
-                        echo "        <button class='btn btn-outline-primary'><i class='fa-solid fa-cart-shopping'></i></button>";
+                        echo "       <form method='post'>";
+                        echo "          <input type='hidden' name='buy_product_id' value='" . $row['ProductID'] . "'>";
+                        echo "          <input type='hidden' name='buy_user_id' value='" . $adminId . "'>";
+                        echo "        <button class='btn btn-outline-primary' name='add_to_buy'><i class='fa-solid fa-cart-shopping'></i></button>";
+                        echo "        </form>";                        
                         echo "       <form method='post'>";
                         echo "          <input type='hidden' name='wishlist_product_id' value='" . $row['ProductID'] . "'>";
                         echo "          <input type='hidden' name='wishlist_user_id' value='" . $adminId . "'>";
@@ -350,7 +386,11 @@ if (isset($_POST['add_to_wishlist'])) {
 
 
                         echo "    <div style='display: flex;justify-content: flex-end;gap: 5px;'>";
-                        echo "        <button class='btn btn-outline-primary'><i class='fa-solid fa-cart-shopping'></i></button>";
+                        echo "       <form method='post'>";
+                        echo "          <input type='hidden' name='buy_product_id' value='" . $row['ProductID'] . "'>";
+                        echo "          <input type='hidden' name='buy_user_id' value='" . $adminId . "'>";
+                        echo "        <button class='btn btn-outline-primary' name='add_to_buy'><i class='fa-solid fa-cart-shopping'></i></button>";
+                        echo "        </form>";                        
                         echo "       <form method='post'>";
                         echo "          <input type='hidden' name='wishlist_product_id' value='" . $row['ProductID'] . "'>";
                         echo "          <input type='hidden' name='wishlist_user_id' value='" . $adminId . "'>";
@@ -389,7 +429,11 @@ if (isset($_POST['add_to_wishlist'])) {
 
 
                         echo "    <div style='display: flex;justify-content: flex-end;gap: 5px;'>";
-                        echo "        <button class='btn btn-outline-primary'><i class='fa-solid fa-cart-shopping'></i></button>";
+                        echo "       <form method='post'>";
+                        echo "          <input type='hidden' name='buy_product_id' value='" . $row['ProductID'] . "'>";
+                        echo "          <input type='hidden' name='buy_user_id' value='" . $adminId . "'>";
+                        echo "        <button class='btn btn-outline-primary' name='add_to_buy'><i class='fa-solid fa-cart-shopping'></i></button>";
+                        echo "        </form>";
                         echo "       <form method='post'>";
                         echo "          <input type='hidden' name='wishlist_product_id' value='" . $row['ProductID'] . "'>";
                         echo "          <input type='hidden' name='wishlist_user_id' value='" . $adminId . "'>";
@@ -476,6 +520,10 @@ if (isset($_POST['add_to_wishlist'])) {
 
 
     </div>
+
+          <!-- script offcanvas -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="offcanvas/scripts.js"></script>
 
 
     <script type="text/javascript" src="../assets/JS/bootstrap.bundle.js"></script>

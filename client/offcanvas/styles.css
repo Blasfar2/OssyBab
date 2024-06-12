@@ -1,0 +1,30 @@
+.cart-item {
+    display: flex;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.cart-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.quantity-button {
+    margin: 0 5px;
+}
+
+.delete-button {
+    margin-left: 10px;
+}
+
+.sticky-bottom {
+    position: sticky;
+    bottom: 0;
+    background: white;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    text-align: center;
+}

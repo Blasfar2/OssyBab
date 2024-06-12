@@ -31,6 +31,10 @@ $adminId = $_SESSION['id'];
   <link rel="stylesheet" href="../assets/css/footer.css">
   <link rel="stylesheet" href="../assets/css/range.css">
   <link rel="stylesheet" href="style.css">
+
+  <!-- STYLE OFFCANVAS -->
+  <link rel="stylesheet" href="./offcanvas/styles.css">
+
 </head>
 
 <body>
@@ -41,9 +45,9 @@ $adminId = $_SESSION['id'];
   <?php include ('../client/navbar.php'); ?>
 
 
-
+<?php include ('./offcanvas/index.php');?>
   <!-- it offCavans is HIDEEN !!!! -->
-  <div class="offcanvas offcanvas-end" data-bs-scroll="false" tabindex="-1" id="Id2"
+  <!-- <div class="offcanvas offcanvas-end" data-bs-scroll="false" tabindex="-1" id="Id2"
     aria-labelledby="staticBackdropLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="staticBackdropLabel">
@@ -93,7 +97,8 @@ $adminId = $_SESSION['id'];
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+
 
 
   <!-- Ads Image -->
@@ -309,6 +314,11 @@ $adminId = $_SESSION['id'];
   <script type="text/javascript" src="../assets/JS/bootstrap.bundle.js"></script>
   <script type="text/javascript" src="../assets/JS/script.js"></script>
   <script type="text/javascript" src="script.js"></script>
+
+      <!-- script offcanvas -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="offcanvas/scripts.js"></script>
+
   <script>
     const toastTrigger = document.getElementById('liveToastBtn')
     const toastLiveExample = document.getElementById('liveToast')
