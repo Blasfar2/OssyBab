@@ -8,18 +8,18 @@ function changeQuantity(button, amount) {
 
     updateTotal();
 }
+
 function updateTotal() {
     let total = 0;
     let cartItems = document.querySelectorAll('.cart-item');
     cartItems.forEach(item => {
-        let price = parseInt(item.getAttribute('data-price'));
+        let price = parseFloat(item.getAttribute('data-price')); // Parse as float instead of integer
         let quantity = parseInt(item.querySelector('.quantity').textContent);
         total += price * quantity;
     });
-    document.getElementById('total-price').textContent = total;
+    document.getElementById('total-price').textContent = total.toFixed(2); // Ensure two decimal places
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
     updateTotal(); // Ensure the total is correct on page load
 });
-
