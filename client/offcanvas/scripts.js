@@ -10,11 +10,6 @@ function changeQuantity(button, amount) {
     me.value = quantity;
 
     updateTotal();
-
-    // Submit the form after a delay of 1 second
-    setTimeout(() => {
-        button.closest('form').submit();
-    }, 1000);
 }
 
 function updateTotal() {
