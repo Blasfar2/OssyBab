@@ -88,7 +88,6 @@ if (isset($_POST['buyAllinCart'])) {
     $result = $conn->query($check_sql);
 
     if ($result->num_rows > 0) {
-        // Calculate total amount
         $totalAmount = 0;
         $items = []; // Store fetched rows in an array
 
@@ -96,24 +95,20 @@ if (isset($_POST['buyAllinCart'])) {
             $quantity = $row['Quantity'];
             $unitPrice = $row['Price'];
             $totalAmount += $quantity * $unitPrice;
-            $items[] = $row; // Store fetched row in the array
+            $items[] = $row; 
         }
         $insert_order_sql = "INSERT INTO orders (UserID, TotalAmount) VALUES ('$buyUserID', '$totalAmount')";
         if ($conn->query($insert_order_sql)) {
-            // Get the ID of the last inserted order
             $orderID = $conn->insert_id;
 
-            // Loop through the stored rows to insert into orderdetails
             foreach ($items as $item) {
                 $quantity = $item['Quantity'];
                 $unitPrice = $item['Price'];
                 $productID = $item['ProductID'];
 
-                // Insert each product into the order details table with the order ID
                 $insert_item_sql = "INSERT INTO orderdetails (OrderID, ProductID, Quantity, UnitPrice) 
                                     VALUES ('$orderID', '$productID', '$quantity', '$unitPrice')";
                 if (!$conn->query($insert_item_sql)) {
-                    // If any query fails, display error and exit
                     $_SESSION['error'] = "Error inserting order details: " . $conn->error;
                     header("Location: produit.php");
                     exit;
@@ -122,23 +117,19 @@ if (isset($_POST['buyAllinCart'])) {
             // Clear the cart for the user
             $clear_cart_sql = "DELETE FROM cartitems WHERE UserID = '$buyUserID'";
             if (!$conn->query($clear_cart_sql)) {
-                // If delete query fails, display error and exit
                 $_SESSION['error'] = "Error clearing cart: " . $conn->error;
                 header("Location: produit.php");
                 exit;
             }
-            // All products inserted successfully, redirect with success message
             $_SESSION['info'] = "Items added to buy successfully";
             header("Location: produit.php");
             exit;
         } else {
-            // If inserting order fails, display error and exit
             $_SESSION['error'] = "Error inserting order: " . $conn->error;
             header("Location: produit.php");
             exit;
         }
     } else {
-        // No items in the cart, display error and exit
         $_SESSION['error'] = "No items in the cart";
         header("Location: produit.php");
         exit;
