@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 27 mai 2024 à 15:08
+-- Généré le : mer. 12 juin 2024 à 19:47
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -59,7 +59,6 @@ INSERT INTO `categories` (`CategoryID`, `CategoryName`, `Description`, `Category
 (4, 'Home & Office', 'Home & Office', '664dcbdb47b9f_Home & Office.jpg'),
 (5, 'Appliance', 'Appliance', '664f388454ffb_fY0wJ-QaIKghQ87Qs9ufsshTAws.png'),
 (6, 'Phone & Tablets', 'Phone & Tablets', '664dcc2944b3f_Phone & Tablets.jpg'),
-(7, 'Computing', 'Computing', '664dcc41469ea_Computing.jpg'),
 (8, 'Electronics', 'Electronics', '664dcc632d7d8_Electronics.jpg'),
 (9, 'Fashion', 'Fashion', '664dcc8d6da6d_Fashion.jpg'),
 (10, 'Baby Products', 'Baby Products', '664dd311b5355_jomjakkapat-parrueng-qaUMOLJwb48-unsplash.jpg'),
@@ -79,6 +78,15 @@ CREATE TABLE `orderdetails` (
   `UnitPrice` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Déchargement des données de la table `orderdetails`
+--
+
+INSERT INTO `orderdetails` (`OrderDetailID`, `OrderID`, `ProductID`, `Quantity`, `UnitPrice`) VALUES
+(1, 3, 1, 2, 12.00),
+(2, 3, 2, 3, 332.00),
+(3, 3, 4, 1, 22.00);
+
 -- --------------------------------------------------------
 
 --
@@ -90,10 +98,23 @@ CREATE TABLE `orders` (
   `UserID` int(11) DEFAULT NULL,
   `OrderDate` timestamp NOT NULL DEFAULT current_timestamp(),
   `TotalAmount` decimal(10,2) NOT NULL,
-  `Status` enum('pending','processing','completed','shipped','cancelled') NOT NULL,
+  `Status` enum('pending','processing','completed','shipped','cancelled') NOT NULL DEFAULT 'pending',
   `ShippingAddress` varchar(255) DEFAULT NULL,
   `BillingAddress` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Déchargement des données de la table `orders`
+--
+
+INSERT INTO `orders` (`OrderID`, `UserID`, `OrderDate`, `TotalAmount`, `Status`, `ShippingAddress`, `BillingAddress`) VALUES
+(1, 1, '2024-05-29 22:19:15', 250.00, 'pending', 'ddvgsgds', 'gdsgsd'),
+(2, 1, '2024-05-29 22:20:01', 78787.00, 'cancelled', '3212315', '654ds654s64f6s4fs54fs64f'),
+(3, 1, '2024-05-30 21:40:02', 54.00, 'shipped', '4545', '4545'),
+(4, 1, '2024-05-30 21:40:02', 4545.00, 'completed', NULL, NULL),
+(5, 2, '2024-06-01 10:16:01', 250.00, 'shipped', NULL, NULL),
+(6, 2, '2024-06-01 10:16:01', 4545.00, 'processing', NULL, NULL),
+(7, 4, '2024-06-01 10:16:01', 5454.00, 'pending', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -152,7 +173,9 @@ INSERT INTO `productattributes` (`AttributeID`, `ProductTypeID`, `AttributeName`
 (80, 6, 'int', 'integer'),
 (81, 6, 'deci', 'decimal'),
 (82, 6, 'bool', 'boolean'),
-(83, 6, 'date', 'date');
+(83, 6, 'date', 'date'),
+(84, 7, 'fd', 'string'),
+(85, 4, 'he', 'string');
 
 -- --------------------------------------------------------
 
@@ -179,12 +202,66 @@ INSERT INTO `productattributevalues` (`AttributeValueID`, `ProductID`, `Attribut
 (4, 5, 75, NULL, NULL, NULL, NULL, '2024-05-08'),
 (5, 5, 76, NULL, 2, NULL, NULL, NULL),
 (6, 5, 77, NULL, NULL, NULL, NULL, '2024-06-09'),
-(7, 6, 72, 'fjhgfdsgh,jgfdhj', NULL, NULL, NULL, NULL),
+(7, 6, 72, 'fjhgfdsgh', NULL, NULL, NULL, NULL),
 (8, 6, 74, NULL, NULL, NULL, NULL, '2024-06-01'),
 (9, 7, 67, NULL, 111, NULL, NULL, NULL),
 (10, 7, 68, NULL, 222, NULL, NULL, NULL),
 (11, 7, 70, NULL, NULL, NULL, NULL, '2024-05-30'),
-(12, 7, 71, 'DEZA', NULL, NULL, NULL, NULL);
+(12, 7, 71, 'DEZA', NULL, NULL, NULL, NULL),
+(13, 8, 67, NULL, 15, NULL, NULL, NULL),
+(14, 8, 68, NULL, NULL, 0.09, NULL, NULL),
+(15, 8, 69, 'on', NULL, NULL, 0, NULL),
+(16, 8, 70, NULL, NULL, NULL, NULL, '2024-05-01'),
+(17, 8, 71, 'abc', NULL, NULL, NULL, NULL),
+(18, 9, 67, NULL, 10, NULL, NULL, NULL),
+(19, 9, 68, NULL, NULL, 43.00, NULL, NULL),
+(20, 9, 69, NULL, NULL, NULL, 1, NULL),
+(21, 9, 70, NULL, NULL, NULL, NULL, '2024-05-25'),
+(22, 9, 71, 'DSGxwv', NULL, NULL, NULL, NULL),
+(23, 10, 67, NULL, 21, NULL, NULL, NULL),
+(24, 10, 68, NULL, 2147483647, NULL, NULL, NULL),
+(25, 10, 69, NULL, NULL, NULL, 0, NULL),
+(26, 10, 70, NULL, NULL, NULL, NULL, '2024-05-19'),
+(27, 10, 71, '', NULL, NULL, NULL, NULL),
+(28, 11, 67, NULL, 1234, NULL, NULL, NULL),
+(29, 11, 68, NULL, NULL, 0.22, NULL, NULL),
+(30, 11, 69, NULL, NULL, NULL, 0, NULL),
+(31, 11, 70, NULL, NULL, NULL, NULL, '2024-05-24'),
+(32, 11, 71, 'eeeerrr', NULL, NULL, NULL, NULL),
+(33, 12, 67, NULL, 1234, NULL, NULL, NULL),
+(34, 12, 68, NULL, 32333, NULL, NULL, NULL),
+(35, 12, 69, NULL, NULL, NULL, 1, NULL),
+(36, 12, 70, NULL, NULL, NULL, NULL, '2024-05-06'),
+(37, 12, 71, 'EZER', NULL, NULL, NULL, NULL),
+(38, 13, 67, NULL, 90, NULL, NULL, NULL),
+(39, 13, 68, NULL, NULL, 34.00, NULL, NULL),
+(40, 13, 69, NULL, NULL, NULL, 1, NULL),
+(41, 13, 70, NULL, NULL, NULL, NULL, '2024-05-27'),
+(42, 13, 71, NULL, 22, NULL, NULL, NULL),
+(43, 14, 67, NULL, 12, NULL, NULL, NULL),
+(44, 14, 68, NULL, NULL, 122.55, NULL, NULL),
+(45, 14, 69, NULL, NULL, NULL, 1, NULL),
+(46, 14, 70, NULL, NULL, NULL, NULL, '2024-05-27'),
+(47, 14, 71, 'DSF', NULL, NULL, NULL, NULL),
+(48, 8, 72, 'sdfg', NULL, NULL, NULL, NULL),
+(49, 8, 74, NULL, NULL, NULL, NULL, '2024-05-27'),
+(50, 1, 72, 'test 1', NULL, NULL, NULL, NULL),
+(51, 1, 74, NULL, NULL, NULL, NULL, '2034-04-28'),
+(52, 1, 75, NULL, NULL, NULL, NULL, '2024-05-01'),
+(53, 1, 76, NULL, 235, NULL, NULL, NULL),
+(54, 1, 77, NULL, NULL, NULL, NULL, '2024-05-12'),
+(55, 3, 10, NULL, NULL, NULL, 1, NULL),
+(56, 3, 12, NULL, NULL, NULL, NULL, '2024-05-27'),
+(57, 3, 66, 'BB', NULL, NULL, NULL, '0000-00-00'),
+(58, 3, 78, NULL, NULL, NULL, 0, NULL),
+(59, 2, 72, 'dddd', NULL, NULL, NULL, NULL),
+(60, 2, 74, '', NULL, NULL, NULL, NULL),
+(61, 4, 67, NULL, 3, NULL, NULL, NULL),
+(62, 4, 68, NULL, NULL, 4.00, NULL, NULL),
+(63, 4, 69, NULL, NULL, NULL, 1, NULL),
+(64, 4, 70, NULL, NULL, NULL, NULL, '2024-05-24'),
+(65, 4, 71, 'dsfxghjk', NULL, NULL, NULL, NULL),
+(66, 1, 85, '', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -210,13 +287,20 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`ProductID`, `Name`, `Description`, `Price`, `Stock`, `ProductImage`, `ProductTypeID`, `CreatedAt`, `UpdatedAt`, `IsDeleted`) VALUES
-(1, '1312', '123456', 234.00, 26, '6653c1451219f_IMG_7830.jpg', 6, '2024-05-26 23:09:57', '2024-05-26 23:09:57', 0),
-(2, 'qqsssqsqs', 'dfgh;,nbvc', 0.32, 20, '6653c985c83b2_a4b524ee-6492-493b-adf8-4fc850079bbb.jpeg', 1, '2024-05-26 23:45:09', '2024-05-26 23:45:09', 0),
-(3, 'qqsssqsqs', 'dfgh;,nbvc', 0.32, 20, '6653cb7aaecd7_a4b524ee-6492-493b-adf8-4fc850079bbb.jpeg', 1, '2024-05-26 23:53:30', '2024-05-26 23:53:30', 0),
-(4, 'qqsssqsqs', 'dfgh;,nbvc', 0.32, 20, '6653ccfe8b837_a4b524ee-6492-493b-adf8-4fc850079bbb.jpeg', 1, '2024-05-26 23:59:58', '2024-05-26 23:59:58', 0),
+(1, 'AZZA', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo eveniet veniam tempora fuga tenetur placeat sapiente architecto illum soluta consequuntur, aspernatur quidem at sequi ipsa!', 234.00, 26, '6653c1451219f_IMG_7830.jpg', 4, '2024-05-26 23:09:57', '2024-06-02 11:47:01', 0),
+(2, 'qqsssqsqs', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo eveniet veniam tempora fuga tenetur placeat sapiente architecto illum soluta consequuntur, aspernatur quidem at sequi ipsa!', 0.41, 21, '6654eb803dd40_profil.png', 4, '2024-05-26 23:45:09', '2024-06-02 11:18:30', 0),
+(3, 'qqsssqsqs', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo eveniet veniam tempora fuga tenetur placeat sapiente architecto illum soluta consequuntur, aspernatur quidem at sequi ipsa!', 0.32, 20, '6653cb7aaecd7_a4b524ee-6492-493b-adf8-4fc850079bbb.jpeg', 1, '2024-05-26 23:53:30', '2024-06-02 11:18:30', 0),
+(4, 'qqsssqsqs', NULL, 0.32, 20, '6653ccfe8b837_a4b524ee-6492-493b-adf8-4fc850079bbb.jpeg', 3, '2024-05-26 23:59:58', '2024-06-02 11:28:53', 0),
 (5, 'dwfd', 'sfdsfsfs', 0.01, 1, '6653ce0696b99_4e1d9222-059b-4b0a-a820-7b9a7f6e84a0.png', 5, '2024-05-27 00:04:22', '2024-05-27 00:04:22', 0),
 (6, 'zae', 'aezaz', 0.03, 1, '6653cf521023b_IMG_7830.jpg', 4, '2024-05-27 00:09:54', '2024-05-27 00:09:54', 0),
-(7, 'sqdq', 'dqsdqq', 0.05, 4, '66542781c936e_Greenskull_apartment_micro_black_hole_in_the_center_of_the_room_dd3f62e5-c060-435d-a2c8-4ccfaa11c84f.png', 3, '2024-05-27 06:26:09', '2024-05-27 06:26:09', 0);
+(7, 'sqdq', 'dqsdqq', 0.05, 4, '66542781c936e_Greenskull_apartment_micro_black_hole_in_the_center_of_the_room_dd3f62e5-c060-435d-a2c8-4ccfaa11c84f.png', 3, '2024-05-27 06:26:09', '2024-05-27 06:26:09', 0),
+(8, 'aaaaaaaaaaaaaa', 'bbbbbbbb', 0.14, 15, '6654b97bbdba1_face.png', 4, '2024-05-27 16:48:59', '2024-05-27 20:28:29', 0),
+(9, 'lasr', 'kjgfd', 0.01, 1, '6654ebad366b3_IMG_7832.jpg', 3, '2024-05-27 17:10:51', '2024-05-27 20:23:09', 0),
+(10, 're', 'ze', 0.01, 1, '6654c8daadebb_Amidst the tranquil (1).jpg', 3, '2024-05-27 17:54:34', '2024-05-27 17:54:34', 0),
+(11, 'sssssss', 'ssss', 0.03, 5, '6654c947ca394_Amidst the tranquil (1).jpg', 3, '2024-05-27 17:56:23', '2024-05-27 17:56:23', 0),
+(12, 'sfsfq', 'dq', 2.00, 12, '6654cb3aa529c_IMG_7830.jpg', 3, '2024-05-27 18:04:42', '2024-05-27 18:04:42', 0),
+(13, 'last', 'zaz', 100.00, 5, '6654d0dc949d1_IMG_7832.jpg', 3, '2024-05-27 18:28:44', '2024-05-27 18:28:44', 0),
+(14, 'SQ', 'SDQ', 0.01, 1, '6654d16d5a256_IMG_7830.jpg', 3, '2024-05-27 18:31:09', '2024-05-27 18:31:09', 0);
 
 -- --------------------------------------------------------
 
@@ -234,7 +318,6 @@ CREATE TABLE `producttypecategories` (
 --
 
 INSERT INTO `producttypecategories` (`ProductTypeID`, `CategoryID`) VALUES
-(1, 7),
 (1, 9),
 (1, 10),
 (2, 4),
@@ -245,7 +328,8 @@ INSERT INTO `producttypecategories` (`ProductTypeID`, `CategoryID`) VALUES
 (5, 1),
 (5, 2),
 (5, 3),
-(5, 5);
+(5, 5),
+(6, 1);
 
 -- --------------------------------------------------------
 
@@ -255,20 +339,21 @@ INSERT INTO `producttypecategories` (`ProductTypeID`, `CategoryID`) VALUES
 
 CREATE TABLE `producttypes` (
   `ProductTypeID` int(11) NOT NULL,
-  `TypeName` varchar(100) NOT NULL
+  `TypeName` varchar(100) NOT NULL,
+  `IsDeleted` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Déchargement des données de la table `producttypes`
 --
 
-INSERT INTO `producttypes` (`ProductTypeID`, `TypeName`) VALUES
-(4, 'bvc'),
-(3, 'eee'),
-(6, 'love and care'),
-(1, 'test'),
-(5, 'test here'),
-(2, 'yutre');
+INSERT INTO `producttypes` (`ProductTypeID`, `TypeName`, `IsDeleted`) VALUES
+(1, 'test', 0),
+(2, 'yutre', 0),
+(3, 'eee', 0),
+(4, 'bvc', 0),
+(5, 'test here', 0),
+(6, 'love and care', 1);
 
 -- --------------------------------------------------------
 
@@ -288,7 +373,7 @@ CREATE TABLE `users` (
   `ZipCode` varchar(20) DEFAULT NULL,
   `PhoneNumber` varchar(20) DEFAULT NULL,
   `is_admin` tinyint(1) DEFAULT 0,
-  `UserImage` text NOT NULL,
+  `UserImage` text NOT NULL DEFAULT 'profile.jpg',
   `archived` tinyint(1) DEFAULT 0,
   `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp(),
   `UpdatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -299,9 +384,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserID`, `Username`, `PasswordHash`, `Email`, `FirstName`, `LastName`, `Address`, `City`, `ZipCode`, `PhoneNumber`, `is_admin`, `UserImage`, `archived`, `CreatedAt`, `UpdatedAt`) VALUES
-(1, 'LoveBird', '$2y$10$tXov3cucd5HJEYsWxvGjHe2uiNJBZan5qWbRZbnM36BBnDogZcuUC', 'badr@mail.com', 'Oussama', 'LEKHAL', NULL, NULL, NULL, NULL, 1, '', 0, '2024-05-18 12:03:36', '2024-05-18 20:29:46'),
-(2, 'CleverTimes', '$2y$10$tXov3cucd5HJEYsWxvGjHe2uiNJBZan5qWbRZbnM36BBnDogZcuUC', 'oussa@mail.com', NULL, NULL, NULL, NULL, NULL, NULL, 0, '', 0, '2024-05-18 20:06:01', '2024-05-18 20:32:55'),
-(4, 'CleverTimes_', '$2y$10$m8lCSTkv2KnGHN6degq4qOIQVkztTAmT2Np9STKWwUv578Aqqzere', 'yacin@mail.com', NULL, NULL, NULL, NULL, NULL, NULL, 0, '', 0, '2024-05-18 20:35:15', '2024-05-18 20:35:15');
+(1, 'Love', '$2y$10$dMfLhWChDyMDfxjpHk.acuReiZv68ZSvu5al.GiJAJpShwVFQfUeW', 'badr@mail.com', 'Oussama', 'LEKHAL', 'fill addres here ', 'sale', '1233', '+212 234 3242', 1, '665c98b188c60.png', 0, '2024-05-18 12:03:36', '2024-06-03 11:46:15'),
+(2, 'CleverTimes', '$2y$10$dMfLhWChDyMDfxjpHk.acuReiZv68ZSvu5al.GiJAJpShwVFQfUeW', 'oussa@mail.com', NULL, NULL, NULL, NULL, NULL, NULL, 0, 'profile.jpg', 1, '2024-05-18 20:06:01', '2024-06-10 20:04:25'),
+(4, 'CleverTimes_hh', '$2y$10$m8lCSTkv2KnGHN6degq4qOIQVkztTAmT2Np9STKWwUv578Aqqzere', 'yacin@mail.com', 'Yacin', 'bchkl', '', 'q<sdfh', '', '', 0, 'profile.jpg', 0, '2024-05-18 20:35:15', '2024-06-06 17:10:50'),
+(5, 'BqdTimes_hh', '$2y$10$68wE3mMUTvmY/oCFywD7a.pdQoY0J.Y.iKs2t.IKl0Y0mkHpH3mwu', 'mail@mail.com', NULL, NULL, NULL, NULL, NULL, NULL, 0, 'profile.jpg', 0, '2024-06-11 14:03:38', '2024-06-11 14:03:38');
 
 -- --------------------------------------------------------
 
@@ -315,6 +401,15 @@ CREATE TABLE `wishlistitems` (
   `ProductID` int(11) DEFAULT NULL,
   `AddedAt` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Déchargement des données de la table `wishlistitems`
+--
+
+INSERT INTO `wishlistitems` (`WishlistItemID`, `UserID`, `ProductID`, `AddedAt`) VALUES
+(1, 2, 2, '2024-06-11 21:46:36'),
+(6, 5, 13, '2024-06-11 22:13:15'),
+(21, 5, 9, '2024-06-11 22:46:10');
 
 --
 -- Index pour les tables déchargées
@@ -399,8 +494,8 @@ ALTER TABLE `producttypes`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`UserID`),
-  ADD UNIQUE KEY `Username` (`Username`),
-  ADD UNIQUE KEY `Email` (`Email`);
+  ADD UNIQUE KEY `Email` (`Email`),
+  ADD UNIQUE KEY `Username` (`Username`);
 
 --
 -- Index pour la table `wishlistitems`
@@ -418,25 +513,25 @@ ALTER TABLE `wishlistitems`
 -- AUTO_INCREMENT pour la table `cartitems`
 --
 ALTER TABLE `cartitems`
-  MODIFY `CartItemID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `CartItemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT pour la table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `orderdetails`
 --
 ALTER TABLE `orderdetails`
-  MODIFY `OrderDetailID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `OrderDetailID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `payments`
@@ -448,37 +543,37 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT pour la table `productattributes`
 --
 ALTER TABLE `productattributes`
-  MODIFY `AttributeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `AttributeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT pour la table `productattributevalues`
 --
 ALTER TABLE `productattributevalues`
-  MODIFY `AttributeValueID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `AttributeValueID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT pour la table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ProductID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT pour la table `producttypes`
 --
 ALTER TABLE `producttypes`
-  MODIFY `ProductTypeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ProductTypeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `wishlistitems`
 --
 ALTER TABLE `wishlistitems`
-  MODIFY `WishlistItemID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `WishlistItemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Contraintes pour les tables déchargées
