@@ -73,7 +73,7 @@ include ("proccess.php");
         <form action="produit.php" method="get" style="display: flex;justify-content: center;margin: 24px 0;">
             <div class="row" style="width: 80%;">
                 <div class="col-4">
-                <?php $tst =  (isset($_GET['max'])) ? $_GET['max'] : 0 ; ?>
+                    <?php $tst = (isset($_GET['max'])) ? $_GET['max'] : 0; ?>
                     <input type="number" name="min" class="form-control" placeholder="Min Price" value="">
                 </div>
                 <div class="col-4">
@@ -298,7 +298,7 @@ include ("proccess.php");
 
         </div>
     </div>
-    </div>
+
 
 
     <!-- script offcanvas -->

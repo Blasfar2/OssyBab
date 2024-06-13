@@ -34,58 +34,6 @@ include ("./includes/connection.php");
 
 
 
-  <!-- it offCavans is HIDEEN !!!!
-  <div class="offcanvas offcanvas-end" data-bs-scroll="false" tabindex="-1" id="Id2"
-    aria-labelledby="staticBackdropLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="staticBackdropLabel">
-        Cart
-      </h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <hr>
-      <div class="row align-items-center">
-        <div class="col-4 p-1 ">
-          <img src="./img/Fashion.jpg" class="rounded-2 " style="width: 100px; height: 100px; object-fit: cover;">
-        </div>
-
-        <div class="col-auto">
-          <div class="text-center">
-            <div><strong> Xiamio n-12</strong></div>
-            <div><strong>Prix : </strong>15Dh</div>
-            <div><strong>Categorie : </strong>Phone & Tablets</div>
-            <div class="row gap-1 ">
-              <button class="btn btn-primary col-3"><i class="fa-solid fa-plus"></i></button>
-              <p class="col-2">1</p>
-              <button class="btn btn-primary col-3"><i class="fa-solid fa-minus"></i></button>
-              <div class="btn btn-danger col-3">del</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr>
-      <div class="row align-items-center">
-        <div class="col-4 p-1 ">
-          <img src="./img/Fashion.jpg" class="rounded-2 " style="width: 100px; height: 100px; object-fit: cover;">
-        </div>
-
-        <div class="col-auto">
-          <div class="text-center">
-            <div><strong> Xiamio n-12</strong></div>
-            <div><strong>Prix : </strong>15£</div>
-            <div><strong>Categorie : </strong>Phone & Tablets</div>
-            <div class="row gap-1 ">
-              <button class="btn btn-primary col-3"><i class="fa-solid fa-plus"></i></button>
-              <p class="col-2">1</p>
-              <button class="btn btn-primary col-3"><i class="fa-solid fa-minus"></i></button>
-              <div class="btn btn-danger col-3">del</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
 
 
   <!-- Ads Image -->
