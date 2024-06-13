@@ -46,60 +46,7 @@ include ("proccess.php");
 
 
   <?php include ('./offcanvas/index.php'); ?>
-  <!-- it offCavans is HIDEEN !!!! -->
-  <!-- <div class="offcanvas offcanvas-end" data-bs-scroll="false" tabindex="-1" id="Id2"
-    aria-labelledby="staticBackdropLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="staticBackdropLabel">
-        Cart
-      </h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <hr>
-      <div class="row align-items-center">
-        <div class="col-4 p-1 ">
-          <img src="../img/Fashion.jpg" class="rounded-2 " style="width: 100px; height: 100px; object-fit: cover;">
-        </div>
-
-        <div class="col-auto">
-          <div class="text-center">
-            <div><strong> Xiamio n-12</strong></div>
-            <div><strong>Prix : </strong>15Dh</div>
-            <div><strong>Categorie : </strong>Phone & Tablets</div>
-            <div class="row gap-1 ">
-              <button class="btn btn-primary col-3"><i class="fa-solid fa-plus"></i></button>
-              <p class="col-2">1</p>
-              <button class="btn btn-primary col-3"><i class="fa-solid fa-minus"></i></button>
-              <div class="btn btn-danger col-3">del</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr>
-      <div class="row align-items-center">
-        <div class="col-4 p-1 ">
-          <img src="../img/Fashion.jpg" class="rounded-2 " style="width: 100px; height: 100px; object-fit: cover;">
-        </div>
-
-        <div class="col-auto">
-          <div class="text-center">
-            <div><strong> Xiamio n-12</strong></div>
-            <div><strong>Prix : </strong>15£</div>
-            <div><strong>Categorie : </strong>Phone & Tablets</div>
-            <div class="row gap-1 ">
-              <button class="btn btn-primary col-3"><i class="fa-solid fa-plus"></i></button>
-              <p class="col-2">1</p>
-              <button class="btn btn-primary col-3"><i class="fa-solid fa-minus"></i></button>
-              <div class="btn btn-danger col-3">del</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-
+  
 
   <!-- Ads Image -->
   <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -172,23 +119,6 @@ include ("proccess.php");
   <!-- <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button> -->
 
 
-
-
-  <div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <img src="..." class="rounded me-2" alt="...">
-        <strong class="me-auto">Bootstrap</strong>
-        <small>11 mins ago</small>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-      <div class="toast-body">
-        Hello, world! This is a toast message.
-      </div>
-    </div>
-  </div>
-
-
   <!-- Footer -->
   <footer class="footer-09 bg-primary">
     <div class="container">
@@ -222,8 +152,6 @@ include ("proccess.php");
               class="icon d-flex align-items-center justify-content-center"><i
                 class="fa-solid fa-newspaper"></i></span>Latest News</h2>
           <div class="block-21 mb-4 d-flex">
-            <a class="img mr-4 rounded"
-              style="background-image: url(./img/sale1.jpg);background-size:cover ; background-repeat: no-repeat;"></a>
             <div class="text">
               <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
               <div class="meta">
@@ -234,8 +162,6 @@ include ("proccess.php");
             </div>
           </div>
           <div class="block-21 mb-4 d-flex">
-            <a class="img mr-4 rounded"
-              style="background-image: url(../img/sale2.jpg);background-size:cover ; background-repeat: no-repeat;"></a>
             <div class="text">
               <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
               <div class="meta">
@@ -262,34 +188,7 @@ include ("proccess.php");
           <h2 class="footer-heading d-flex align-items-center"><span
               class="icon d-flex align-items-center justify-content-center"><i
                 class="fa-brands fa-instagram"></i></i></span>Instagram</h2>
-          <div class="block-24">
-            <div class="row no-gutters">
-              <div class="col-4 col-md-4 p-1">
-                <a href="#" class="img rounded"
-                  style="background-image: url(./img/inst1.jpg); background-size:cover ; background-repeat: no-repeat;"></a>
-              </div>
-              <div class="col-4 col-md-4 p-1">
-                <a href="#" class="img rounded"
-                  style="background-image: url(./img/inst2.jpg);background-size:cover ; background-repeat: no-repeat;"></a>
-              </div>
-              <div class="col-4 col-md-4 p-1">
-                <a href="#" class="img rounded"
-                  style="background-image: url(./img/inst3.jpg);background-size:cover ; background-repeat: no-repeat;"></a>
-              </div>
-              <div class="col-4 col-md-4 p-1">
-                <a href="#" class="img rounded"
-                  style="background-image: url(./img/inst4.jpg);background-size:cover ; background-repeat: no-repeat;"></a>
-              </div>
-              <div class="col-4 col-md-4 p-1">
-                <a href="#" class="img rounded"
-                  style="background-image: url(./img/inst5.jpg);background-size:cover ; background-repeat: no-repeat;"></a>
-              </div>
-              <div class="col-4 col-md-4 p-1">
-                <a href="#" class="img rounded"
-                  style="background-image: url(./img/inst6.jpg);background-size:cover ; background-repeat: no-repeat;"></a>
-              </div>
-            </div>
-          </div>
+         
         </div>
       </div>
       <div class="row mt-5 pt-4 border-top">

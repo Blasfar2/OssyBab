@@ -60,7 +60,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <form class="d-flex align-items-center w-100 form-search">
+            <form class="d-flex align-items-center w-100 form-search" >
                 <div class="input-group">
 
 
