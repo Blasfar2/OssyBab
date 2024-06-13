@@ -99,8 +99,8 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
 
 
                         echo "    <div style='display: flex;justify-content: flex-end;gap: 5px;'>";
-                        echo "        <button class='btn btn-outline-primary'><i class='fa-solid fa-cart-shopping'></i></button>";
-                        echo "        <button class='btn btn-outline-danger '><i class='fa-regular fa-heart'></i></button>";
+                        echo "        <button class='btn btn-outline-primary' id='cartButton'><i class='fa-solid fa-cart-shopping'></i></button>";
+                        echo "        <button class='btn btn-outline-danger ' id='heartButton'><i class='fa-regular fa-heart'></i></button>";
                         echo "    </div>";
                         echo "</div>  ";
 
@@ -142,8 +142,8 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
 
 
                         echo "    <div style='display: flex;justify-content: flex-end;gap: 5px;'>";
-                        echo "        <button class='btn btn-outline-primary'><i class='fa-solid fa-cart-shopping'></i></button>";
-                        echo "        <button class='btn btn-outline-danger '><i class='fa-regular fa-heart'></i></button>";
+                        echo "        <button class='btn btn-outline-primary' id='cartButton'><i class='fa-solid fa-cart-shopping'></i></button>";
+                        echo "        <button class='btn btn-outline-danger ' id='heartButton'><i class='fa-regular fa-heart'></i></button>";
                         echo "    </div>";
                         echo "</div>  ";
 
@@ -192,8 +192,8 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
                         }
 
                         echo "    <div style='display: flex;justify-content: flex-end;gap: 5px;'>";
-                        echo "        <button class='btn btn-outline-primary'><i class='fa-solid fa-cart-shopping'></i></button>";
-                        echo "        <button class='btn btn-outline-danger '><i class='fa-regular fa-heart'></i></button>";
+                        echo "        <button class='btn btn-outline-primary' id='cartButton'><i class='fa-solid fa-cart-shopping'></i></button>";
+                        echo "        <button class='btn btn-outline-danger ' id='heartButton'><i class='fa-regular fa-heart'></i></button>";
                         echo "    </div>";
                         echo "</div>  ";
 
@@ -230,8 +230,8 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
 
 
                         echo "    <div style='display: flex;justify-content: flex-end;gap: 5px;'>";
-                        echo "        <button class='btn btn-outline-primary'><i class='fa-solid fa-cart-shopping'></i></button>";
-                        echo "        <button class='btn btn-outline-danger '><i class='fa-regular fa-heart'></i></button>";
+                        echo "        <button class='btn btn-outline-primary' id='cartButton'><i class='fa-solid fa-cart-shopping'></i></button>";
+                        echo "        <button class='btn btn-outline-danger ' id='heartButton'><i class='fa-regular fa-heart'></i></button>";
                         echo "    </div>";
                         echo "</div>  ";
 
@@ -259,7 +259,6 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
 
 
     <script src="./assets/JS/bootstrap.bundle.js"></script>
-    <script src="./assets/JS/range.js"></script>
     <script src="./assets/JS/produit.js"></script>
     <script>
         const toastTrigger = document.getElementById('liveToastBtn')
@@ -271,7 +270,16 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
                 toast.show()
             })
         }
+        
     </script>
+    <script>
+    document.getElementById("cartButton").addEventListener("click", function() {
+        window.location.href = "login/";
+    });
+    document.getElementById("heartButton").addEventListener("click", function() {
+        window.location.href = "login/";
+    });
+</script>
 </body>
 
 </html>
