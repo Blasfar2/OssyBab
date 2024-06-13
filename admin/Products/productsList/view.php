@@ -53,7 +53,7 @@ if (isset($_GET['prod_id'])) {
         }
 
         .product-title {
-            font-size: 3rem;
+            /* font-size: 3rem; */
             text-transform: capitalize;
             font-weight: 700;
             position: relative;
