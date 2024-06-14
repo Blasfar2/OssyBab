@@ -8,8 +8,9 @@ if (isset($_GET['token']) && isset($_GET['PT_id']) && isset($_GET['CT_id'])) {
     $PT_id = $_GET['PT_id'];
 } elseif (isset($_GET['token']) && isset($_GET['CT_id'])) {
     $CT_id = $_GET['CT_id'];
-} else {
-
+} 
+if (isset($_GET['searchInput'])){
+    $searchInput = $_GET['searchInput'];
 }
 
 if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
@@ -247,6 +248,51 @@ include ("proccess.php");
                     }
                 }
 
+            } elseif (isset($searchInput)) {
+               
+                $escaped_query = htmlspecialchars($searchInput, ENT_QUOTES, 'UTF-8');
+                $sql = "SELECT * FROM products where Name LIKE '%$escaped_query%' AND IsDeleted=0";
+                $result = mysqli_query($conn, $sql);
+                if ($result && mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<div class='p-2 my-3 mx-2 rounded 'style='width: 15rem; height:15rem ;line-height:2px; background-color:white;position:relative ;box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;' >";
+
+
+
+
+                        $sql1 = "SELECT `ProductID` , `AttributeName` , `ValueInteger`   FROM productattributevalues left JOIN productattributes on productattributevalues.`AttributeID` = productattributes.`AttributeID` WHERE `ProductID`=" . $row['ProductID'] . " AND `AttributeName` = 'sold'";
+                        $result1 = mysqli_query($conn, $sql1);
+                        if ($result1 && mysqli_num_rows($result1) > 0) {
+                            $row1 = mysqli_fetch_assoc($result1);
+                            echo "<p style='position:absolute ; right:9px; top:9px'class='bg-primary px-3 py-2 text-light rounded'>" . $row1['ValueInteger'] . "%</p>";
+                            echo "<img src='../uploads/" . $row['ProductImage'] . "' style='width:100% ; height:59%;object-fit: contain;' class=' rounded'>";
+                            echo "<p style='white-space: nowrap;overflow: hidden; text-overflow: ellipsis;' class='py-2'>" . $row['Name'] . "</p>";
+                            echo "<p><span class='text-primary fw-bold'>" . $row['Price'] - ($row['Price'] * $row1['ValueInteger'] / 100) . "Dhs </span> <s>" . $row['Price'] . "Dhs</s></p>";
+                        } else {
+                            echo "<img src='../uploads/" . $row['ProductImage'] . "' style='width:100% ; height:59%;object-fit: contain;' class=' rounded'>";
+                            echo "<p style='white-space: nowrap;overflow: hidden; text-overflow: ellipsis;' class='py-2'>" . $row['Name'] . "</p>";
+                            echo "<p><b>" . $row['Price'] . "Dhs</b></p>";
+                        }
+                        echo "    <div style='display: flex;justify-content: flex-end;gap: 5px;'>";
+                        echo "       <form method='post'>";
+                        echo "          <input type='hidden' name='buy_product_id' value='" . $row['ProductID'] . "'>";
+                        echo "          <input type='hidden' name='buy_user_id' value='" . $adminId . "'>";
+                        echo "        <button class='btn btn-outline-primary' name='add_to_buy'><i class='fa-solid fa-cart-shopping'></i></button>";
+                        echo "        </form>";
+                        echo "       <form method='post'>";
+                        echo "          <input type='hidden' name='wishlist_product_id' value='" . $row['ProductID'] . "'>";
+                        echo "          <input type='hidden' name='wishlist_user_id' value='" . $adminId . "'>";
+                        echo "          <button class='btn btn-outline-danger' name='add_to_wishlist' id='favorite'><i class='fa-regular fa-heart'></i></button>";
+                        echo "        </form>";
+                        echo "    </div>";
+                        echo "</div>  ";
+
+
+                    }
+                }else {
+                    echo "<h2 style='text-align: center;'>No products found.</h2>";
+                    echo $query;
+                }
             } else {
                 $sql = "SELECT * FROM products";
 

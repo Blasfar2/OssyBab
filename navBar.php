@@ -53,7 +53,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-            <form class="d-flex align-items-center w-100 form-search">
+            <form class="d-flex align-items-center w-100 form-search" action="produit.php" method="get">
                 <div class="input-group">
 
 
@@ -96,7 +96,7 @@
                         }
                         ?>
                     </ul>
-                    <input type="search" class="form-control" id="searchInput" placeholder="Search products, brands and categories"
+                    <input type="search" class="form-control" id="searchInput" name="searchInput" placeholder="Search products, brands and categories"
                         aria-label="Search products, brands and catégorie" aria-describedby="button-addon2" />
                 </div>
                 <a class="text-white p-0" href="#" id="button-addon2"><i class="fas fa-search ps-3"></i></a>
