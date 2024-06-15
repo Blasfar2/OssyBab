@@ -337,6 +337,44 @@ include ("../proccess.php");
                 <div class="container-l px-4 mt-4">
                     <div class="row">
                         <div class="col-lg-4">
+                            <div class="card mb-4 mb-xl-0">
+                                <div class="card-header">Orders</div>
+
+                                <div class="card-body text-center">
+
+
+                                    <?php
+
+
+                                    $sqlOrderIds = "SELECT OrderID FROM orders WHERE UserID  = $adminId";
+                                    $resultOrderIds = mysqli_query($conn, $sqlOrderIds);
+                                    $orderIds = [];
+                                    if (mysqli_num_rows($resultOrderIds) > 0) {
+                                        while ($rowOrderIds = mysqli_fetch_assoc($resultOrderIds)) {
+                                            $orderIds[] = $rowOrderIds['OrderID'];
+                                        }
+                                    }
+                                    $token = uniqid(); // Generate a unique token
+                                    $_SESSION['token'] = $token;
+                                    if (count($orderIds) > 0) {
+                                        echo "<ul class='list' style='display: flex;flex-direction: column;align-items: flex-start;margin-left: 15%;'>";
+                                        foreach ($orderIds as $orderId) {
+                                            echo "<li><strong><a href='../orders/view.php?token=" . $token . "&order_id=" . $orderId . "'>Order ID: " . $orderId . "</a></strong></li>";
+                                        }
+                                        echo "</ul>";
+                                    } else {
+                                        echo "<p>No orders found</p>";
+                                    }
+
+
+
+
+                                    ?>
+
+
+                                </div>
+
+                            </div>
                         </div>
                         <div class="col-lg-8">
                             <!-- Change password card-->
@@ -419,15 +457,15 @@ include ("../proccess.php");
                 var href = $(this).attr('href');
                 $(this).attr('href', '../' + href);
             });
-            $('.profile-menu1 img').each(function () {
-                var src = $(this).attr('src');
-                $(this).attr('src', '../' + src);
-            });
-            
+            // $('.profile-menu1 img').each(function () {
+            //     var src = $(this).attr('src');
+            //     $(this).attr('src', '../' + src);
+            // });
+
 
             $('#cancelButton, #cancelModalImg').click(function () {
                 $('input[type="file"]').val('');
-                $('#imgPreview').attr('src', '../../assets/img/profile.jpg');
+                // $('#imgPreview').attr('src', '../../assets/img/profile.jpg');
                 $('#cancelButton').hide();
                 $('#confirmButton').hide();
             });

@@ -99,8 +99,8 @@ if (isset($_GET['searchInput'])){
 
 
                         echo "    <div style='display: flex;justify-content: flex-end;gap: 5px;'>";
-                        echo "        <button class='btn btn-outline-primary' id='cartButton'><i class='fa-solid fa-cart-shopping'></i></button>";
-                        echo "        <button class='btn btn-outline-danger ' id='heartButton'><i class='fa-regular fa-heart'></i></button>";
+                       echo "       <a  href='login/'><button class='btn btn-outline-primary' id='cartButton'><i class='fa-solid fa-cart-shopping'></i></button></a>";
+                        echo "       <a  href='login/'> <button class='btn btn-outline-danger ' id='heartButton'><i class='fa-regular fa-heart'></i></button></a>";
                         echo "    </div>";
                         echo "</div>  ";
 
@@ -142,8 +142,8 @@ if (isset($_GET['searchInput'])){
 
 
                         echo "    <div style='display: flex;justify-content: flex-end;gap: 5px;'>";
-                        echo "        <button class='btn btn-outline-primary' id='cartButton'><i class='fa-solid fa-cart-shopping'></i></button>";
-                        echo "        <button class='btn btn-outline-danger ' id='heartButton'><i class='fa-regular fa-heart'></i></button>";
+                       echo "       <a  href='login/'><button class='btn btn-outline-primary' id='cartButton'><i class='fa-solid fa-cart-shopping'></i></button></a>";
+                        echo "       <a  href='login/'> <button class='btn btn-outline-danger ' id='heartButton'><i class='fa-regular fa-heart'></i></button></a>";
                         echo "    </div>";
                         echo "</div>  ";
 
@@ -192,8 +192,8 @@ if (isset($_GET['searchInput'])){
                         }
 
                         echo "    <div style='display: flex;justify-content: flex-end;gap: 5px;'>";
-                        echo "        <button class='btn btn-outline-primary' id='cartButton'><i class='fa-solid fa-cart-shopping'></i></button>";
-                        echo "        <button class='btn btn-outline-danger ' id='heartButton'><i class='fa-regular fa-heart'></i></button>";
+                       echo "       <a  href='login/'><button class='btn btn-outline-primary' id='cartButton'><i class='fa-solid fa-cart-shopping'></i></button></a>";
+                        echo "       <a  href='login/'> <button class='btn btn-outline-danger ' id='heartButton'><i class='fa-regular fa-heart'></i></button></a>";
                         echo "    </div>";
                         echo "</div>  ";
 
@@ -228,8 +228,8 @@ if (isset($_GET['searchInput'])){
 
 
                         echo "    <div style='display: flex;justify-content: flex-end;gap: 5px;'>";
-                        echo "        <button class='btn btn-outline-primary' id='cartButton'><i class='fa-solid fa-cart-shopping'></i></button>";
-                        echo "        <button class='btn btn-outline-danger ' id='heartButton'><i class='fa-regular fa-heart'></i></button>";
+                        echo "       <a  href='login/'><button class='btn btn-outline-primary' id='cartButton'><i class='fa-solid fa-cart-shopping'></i></button></a>";
+                        echo "       <a  href='login/'> <button class='btn btn-outline-danger ' id='heartButton'><i class='fa-regular fa-heart'></i></button></a>";
                         echo "    </div>";
                         echo "</div>  ";
 
@@ -265,8 +265,8 @@ if (isset($_GET['searchInput'])){
 
 
                         echo "    <div style='display: flex;justify-content: flex-end;gap: 5px;'>";
-                        echo "        <button class='btn btn-outline-primary' id='cartButton'><i class='fa-solid fa-cart-shopping'></i></button>";
-                        echo "        <button class='btn btn-outline-danger ' id='heartButton'><i class='fa-regular fa-heart'></i></button>";
+                        echo "       <a  href='login/'><button class='btn btn-outline-primary' id='cartButton'><i class='fa-solid fa-cart-shopping'></i></button></a>";
+                        echo "       <a  href='login/'> <button class='btn btn-outline-danger ' id='heartButton'><i class='fa-regular fa-heart'></i></button></a>";
                         echo "    </div>";
                         echo "</div>  ";
 
