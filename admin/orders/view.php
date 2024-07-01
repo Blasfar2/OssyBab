@@ -426,7 +426,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['order_id'])) {
                     html += '<p>Price: <span>' + response.productPrice + ' DH</span></p>';
                     html += '<p>Qty Stock: <span>' + response.productStock + '</span></p>';
                     html += '</div>';
-                    html += '<div class="product-detail">';
+                    html += '<div class="product-detail">'; 
                     html += '<h2>About this item:</h2>';
                     html += '<p>' + (response.productDescription ? response.productDescription : 'No description found.') + '</p>';
                     // html += '<h3>Product Attributes:</h3>';
